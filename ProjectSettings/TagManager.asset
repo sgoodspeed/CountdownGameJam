@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -38,8 +38,26 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackgroundFloor
+    uniqueID: 653876943
+    locked: 0
+  - name: BackgroundDecor
+    uniqueID: 3508170457
+    locked: 0
+  - name: StaticStructures
+    uniqueID: 679378095
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ProjectileEffects
+    uniqueID: 236208483
+    locked: 0
+  - name: ForegroundStructures
+    uniqueID: 1912337079
+    locked: 0
+  - name: HUD
+    uniqueID: 2151498107
     locked: 0
   m_RenderingLayers:
   - Default
@@ -50,27 +68,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
