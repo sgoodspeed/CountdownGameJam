@@ -8,6 +8,9 @@ namespace Countdown
     /// </summary>
     public class GameState : Singleton<GameState>
     {
+        private const float HoursPerCycle = 12f;
+        private const float MinutesPerCycle = HoursPerCycle * 60f;
+
         public float MaxTime { get; private set; }
         public float CurrentTime { get; private set; }
 
@@ -21,6 +24,28 @@ namespace Countdown
         public void SetCurrentTime(float currentTime)
         {
             CurrentTime = currentTime;
+        }
+
+        /// <summary>Moves the clock forward (positive) or backward (negative) by a number of in-game minutes.</summary>
+        public void AddMinutes(float minutes)
+        {
+            AddNormalizedTime(minutes / MinutesPerCycle);
+        }
+
+        /// <summary>Moves the clock forward (positive) or backward (negative) by a number of in-game hours.</summary>
+        public void AddHours(float hours)
+        {
+            AddNormalizedTime(hours / HoursPerCycle);
+        }
+
+        private void AddNormalizedTime(float normalizedDelta)
+        {
+            if (MaxTime <= 0f)
+            {
+                return;
+            }
+
+            CurrentTime = Mathf.Clamp(CurrentTime + normalizedDelta * MaxTime, 0f, MaxTime);
         }
     }
 }
