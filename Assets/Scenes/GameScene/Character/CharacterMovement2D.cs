@@ -8,17 +8,15 @@ namespace Countdown
     /// slides along the boundary edge instead of exiting the circle.
     /// </summary>
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(Rigidbody2D))]
     public class CharacterMovement2D : MonoBehaviour
     {
-        [SerializeField] private CircleBoundary boundary;
+        [SerializeField] private Rigidbody2D body;
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float characterRadius = 0.3f;
 
-        private Rigidbody2D body;
-
         private void Awake()
         {
-            body = gameObject.AddComponent<Rigidbody2D>();
             body.bodyType = RigidbodyType2D.Kinematic;
             body.gravityScale = 0f;
         }
@@ -32,12 +30,6 @@ namespace Countdown
             }
 
             Vector2 targetPosition = body.position + input * moveSpeed * Time.fixedDeltaTime;
-
-            if (boundary != null)
-            {
-                //targetPosition = boundary.ClampInside(targetPosition, characterRadius);
-            }
-
             body.MovePosition(targetPosition);
         }
     }
