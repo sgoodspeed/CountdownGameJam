@@ -30,6 +30,9 @@ namespace Countdown
             remainingSeconds = model.GameDuration;
             countdownFinished = false;
             view.SetTime(remainingSeconds);
+
+            GameState.Instance.SetMaxTime(model.GameDuration);
+            GameState.Instance.SetCurrentTime(0f);
         }
 
         private void Update()
@@ -46,11 +49,13 @@ namespace Countdown
                 remainingSeconds = 0f;
                 countdownFinished = true;
                 view.SetTime(remainingSeconds);
+                GameState.Instance.SetCurrentTime(model.GameDuration);
                 TimeExpired?.Invoke();
                 return;
             }
 
             view.SetTime(remainingSeconds);
+            GameState.Instance.SetCurrentTime(model.GameDuration - remainingSeconds);
         }
     }
 }
