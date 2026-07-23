@@ -12,6 +12,11 @@ namespace Countdown
         
         private void Update()
         {
+            if (Application.isPlaying)
+            {
+                normalizedPosition = GameState.Instance.NormalizedTime;
+            }
+
             UpdateClockPositions();
         }
         
