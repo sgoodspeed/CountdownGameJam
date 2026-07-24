@@ -51,6 +51,8 @@ MonoBehaviour:
   hourText: {fileID: 8451672536000752299}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   endColor: {r: 0.30817598, g: 0.30817598, b: 0.30817598, a: 1}
+  textStartColor: {r: 0, g: 0, b: 0, a: 0}
+  textEndColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
 --- !u!212 &701196814678454279
 SpriteRenderer:
   serializedVersion: 2

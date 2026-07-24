@@ -37,5 +37,22 @@ namespace Countdown
             int hour = gameState.GetCurrentHour();
             return Mathf.Clamp01(totalHours - hour);
         }
+        
+        public static float GetTargetHourProgress(this GameState gameState, int targetHour)
+        {
+            int currentHour = gameState.GetCurrentHour() + 1;
+            if (currentHour > targetHour)
+            {
+                return 1f;
+            }
+            else if (currentHour < targetHour)
+            {
+                return 0f;
+            }
+            else
+            {
+                return gameState.GetCurrentHourProgress();
+            }
+        }
     }
 }
