@@ -20,6 +20,10 @@ namespace Countdown
         {
             playButton.onClick.AddListener(HandlePlayClicked);
             quitButton.onClick.AddListener(HandleQuitClicked);
+            
+#if UNITY_WEBGL
+            quitButton.gameObject.SetActive(false);
+#endif
         }
 
         private void OnDestroy()
