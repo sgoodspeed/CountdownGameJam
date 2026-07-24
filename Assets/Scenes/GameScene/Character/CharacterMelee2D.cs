@@ -68,7 +68,10 @@ namespace Countdown
 
                 if (swordPivot != null)
                 {
-                    swordPivot.localRotation = Quaternion.Euler(0f, 0f, currentZ);
+                    // Negated: rotating around Z (2D, facing the camera) reads in the
+                    // opposite visual direction from rotating around Y (3D top-down)
+                    // for the same signed angle, so flip it to match the intended swing.
+                    swordPivot.localRotation = Quaternion.Euler(0f, 0f, -currentZ);
                 }
 
                 yield return null;

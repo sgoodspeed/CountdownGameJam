@@ -72,8 +72,7 @@ namespace Countdown
             Vector3 screenDepth = _mainCamera.WorldToScreenPoint(transform.position);
             Vector3 worldPoint = _mainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, screenDepth.z));
 
-            Vector2 targetDir = (Vector2)worldPoint - body.position;
-
+            Vector2 targetDir = ((Vector2)worldPoint - body.position).normalized;
             //Only rotate if mouse is beyond the threshold distance
             if (targetDir.sqrMagnitude > (aimDeadZone * aimDeadZone))
             {
