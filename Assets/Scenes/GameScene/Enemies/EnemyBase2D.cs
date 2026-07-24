@@ -80,7 +80,7 @@ namespace Countdown
             if (toTarget.sqrMagnitude < 0.0001f) return;
 
             Vector2 direction = toTarget.normalized;
-            var distance = moveSpeed * Time.deltaTime;
+            var distance = moveSpeed * Time.fixedDeltaTime;
             var hitCount = collision.Cast(direction, hits, distance + Mathf.Epsilon);
             for (var i = 0; i < hitCount; i++)
             {

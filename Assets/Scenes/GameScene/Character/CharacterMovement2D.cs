@@ -53,7 +53,7 @@ namespace Countdown
             Vector2 input = _moveAction.ReadValue<Vector2>();
             if (input.sqrMagnitude > 1f) { input.Normalize(); }
 
-            var distance = moveSpeed * Time.deltaTime;
+            var distance = moveSpeed * Time.fixedDeltaTime;
             var direction = input.normalized * (distance);
             var hitCount = collision.Cast(direction, hits, direction.magnitude + Mathf.Epsilon);
             for (var i = 0; i < hitCount; i++) {
@@ -79,7 +79,7 @@ namespace Countdown
                 float targetAngle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
 
                 //slerp it up: Smoothly rotate toward the cursor over time
-                float newAngle = Mathf.LerpAngle(body.rotation, targetAngle, Time.deltaTime * aimDamping);
+                float newAngle = Mathf.LerpAngle(body.rotation, targetAngle, Time.fixedDeltaTime * aimDamping);
                 body.MoveRotation(newAngle);
             }
         }
