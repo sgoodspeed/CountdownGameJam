@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 578169102021449705}
+  collision: {fileID: 7825701209967404880}
+  skinDistance: 0.1
   moveSpeed: 5
 --- !u!212 &196064418291999902
 SpriteRenderer:
