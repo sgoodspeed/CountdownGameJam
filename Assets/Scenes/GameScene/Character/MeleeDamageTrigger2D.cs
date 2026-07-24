@@ -22,7 +22,7 @@ namespace Countdown
             if (_hitTargetsThisSwing.Contains(other)) return;
 
             // Check if hit object is an enemy
-            if (other.TryGetComponent(out EnemyBase enemy))
+            if (other.TryGetComponent(out EnemyBase2D enemy))
             {
                 _hitTargetsThisSwing.Add(other);
                 enemy.TakeDamage(damageAmount);
