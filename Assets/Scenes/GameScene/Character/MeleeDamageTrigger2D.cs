@@ -6,6 +6,8 @@ namespace Countdown
     public class MeleeDamageTrigger2D : MonoBehaviour
     {
         [SerializeField] private float damageAmount = 10f;
+        [Tooltip("The character that owns this weapon. Its facing direction (transform.right) is used as the knockback direction.")]
+        [SerializeField] private Transform owner;
 
         // Track targets hit during the CURRENT swing to prevent hitting the same enemy every frame
         private readonly HashSet<Collider2D> _hitTargetsThisSwing = new HashSet<Collider2D>();
@@ -25,7 +27,9 @@ namespace Countdown
             if (other.TryGetComponent(out IDamageable damageable))
             {
                 _hitTargetsThisSwing.Add(other);
-                Vector2 hitDirection = (other.transform.position - transform.position).normalized;
+                Vector2 hitDirection = owner != null
+                    ? (Vector2)owner.right
+                    : (other.transform.position - transform.position).normalized;
                 damageable.TakeDamage(damageAmount, hitDirection);
             }
         }

@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.MeleeDamageTrigger2D
   damageAmount: 4
+  owner: {fileID: 2373678540942378834}
 --- !u!61 &234205810962981440
 BoxCollider2D:
   m_ObjectHideFlags: 0
