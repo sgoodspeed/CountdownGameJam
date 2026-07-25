@@ -1,4 +1,4 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Countdown
@@ -19,6 +19,7 @@ namespace Countdown
 
         private EnemyBase2D _enemy;
         private Collider2D _collision;
+        private Tween _deathTween;
 
         protected override void Awake()
         {
@@ -51,18 +52,20 @@ namespace Countdown
 
             if (EnemySpawner2D.Instance != null) EnemySpawner2D.Instance.EnemyDied();
 
-            StartCoroutine(DeathRoutine());
-        }
-
-        private IEnumerator DeathRoutine()
-        {
             if (animator != null && !string.IsNullOrEmpty(deathTrigger))
             {
                 animator.SetTrigger(deathTrigger);
-                yield return new WaitForSeconds(deathAnimDuration);
+                _deathTween = DOVirtual.DelayedCall(deathAnimDuration, () => Destroy(gameObject));
             }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
-            Destroy(gameObject);
+        private void OnDestroy()
+        {
+            _deathTween?.Kill();
         }
     }
 }
