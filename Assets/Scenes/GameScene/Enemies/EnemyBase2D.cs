@@ -25,7 +25,8 @@ namespace Countdown
         [Header("References")]
         [SerializeField] private Rigidbody2D body;
         [SerializeField] private Collider2D collision;
-        [SerializeField] private LayerMask movementCastLayers;
+        [Tooltip("Layers considered as obstacles by the chase movement's avoidance cast.")]
+        [SerializeField] private LayerMask movementCastLayers = ~0;
 
         // Wobble variables to spread out pathing
         private float _wobbleSpeed;
@@ -33,10 +34,14 @@ namespace Countdown
         private float _wobbleOffset;
 
         private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
+        private ContactFilter2D movementCastFilter;
 
         protected virtual void Awake()
         {
             body.freezeRotation = true;
+
+            movementCastFilter = ContactFilter2D.noFilter;
+            movementCastFilter.SetLayerMask(movementCastLayers);
 
             // Give each enemy instance a unique wobble personality
             _wobbleSpeed = Random.Range(0.8f, 2.5f);
@@ -77,7 +82,7 @@ namespace Countdown
 
             Vector2 direction = toTarget.normalized;
             var distance = moveSpeed * Time.fixedDeltaTime;
-            var hitCount = collision.Cast(direction, hits, distance + Mathf.Epsilon);
+            var hitCount = collision.Cast(direction, movementCastFilter, hits, distance + Mathf.Epsilon);
             for (var i = 0; i < hitCount; i++)
             {
                 distance = Mathf.Min(distance, hits[i].distance - skinDistance);

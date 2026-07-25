@@ -18,6 +18,8 @@ namespace Countdown
         [SerializeField] private Collider2D collision;
         [SerializeField] private float skinDistance = 0.1f;
         [SerializeField] private float moveSpeed = 5f;
+        [Tooltip("Layers considered as obstacles by the movement's avoidance cast.")]
+        [SerializeField] private LayerMask movementCastLayers = ~0;
 
         [Header("Aiming")]
         [SerializeField] private float aimDeadZone = 0.5f;
@@ -27,11 +29,15 @@ namespace Countdown
         private Camera _mainCamera;
 
         private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
+        private ContactFilter2D movementCastFilter;
 
         private void Awake()
         {
             body.freezeRotation = true;
             _mainCamera = Camera.main;
+
+            movementCastFilter = ContactFilter2D.noFilter;
+            movementCastFilter.SetLayerMask(movementCastLayers);
         }
 
         private void Start()
@@ -55,7 +61,7 @@ namespace Countdown
 
             var distance = moveSpeed * Time.fixedDeltaTime;
             var direction = input.normalized * (distance);
-            var hitCount = collision.Cast(direction, hits, direction.magnitude + Mathf.Epsilon);
+            var hitCount = collision.Cast(direction, movementCastFilter, hits, direction.magnitude + Mathf.Epsilon);
             for (var i = 0; i < hitCount; i++) {
                 distance = Mathf.Min(distance, hits[i].distance - skinDistance);
             }

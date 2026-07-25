@@ -178,6 +178,9 @@ MonoBehaviour:
   collision: {fileID: 7825701209967404880}
   skinDistance: 0.01
   moveSpeed: 15
+  movementCastLayers:
+    serializedVersion: 2
+    m_Bits: 1
   aimDeadZone: 0.5
   aimDamping: 15
 --- !u!114 &7606034132019858255
