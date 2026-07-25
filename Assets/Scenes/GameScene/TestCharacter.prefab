@@ -216,8 +216,16 @@ MonoBehaviour:
   invulnerabilityDuration: 3
   flashRenderers:
   - {fileID: 196064418291999902}
-  hitFlashColor: {r: 1, g: 0, b: 0, a: 1}
-  hitFlashDuration: 0.2
+  hitFlash:
+    color: {r: 2, g: 2, b: 2, a: 1}
+    intensity: 1
+    duration: 1
+    flashes: 4
+  deathFlash:
+    color: {r: 4, g: 4, b: 4, a: 1}
+    intensity: 1
+    duration: 1
+    flashes: 1
   deathFadeDuration: 0.6
   movement: {fileID: 1280592077513628606}
   melee: {fileID: 7606034132019858255}
@@ -448,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998cc9645a472f9439f9287004a2f299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.MeleeDamageTrigger2D
-  damageAmount: 10
+  damageAmount: 4
 --- !u!61 &234205810962981440
 BoxCollider2D:
   m_ObjectHideFlags: 0

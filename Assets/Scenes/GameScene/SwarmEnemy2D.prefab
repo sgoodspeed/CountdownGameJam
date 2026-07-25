@@ -77,12 +77,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4293906ee651048468c60bc84f07e8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.EnemyDamageModule
-  maxHealth: 10
   animator: {fileID: 4027083013345845105}
   hitTrigger: IsHit
   deathTrigger: IsDead
   deathAnimDuration: 1
   attackHitbox: {fileID: 8815234109887701234}
+  flashRenderers:
+  - {fileID: 331618969692743726}
+  hitFlash:
+    color: {r: 2, g: 2, b: 2, a: 1}
+    intensity: 1
+    duration: 1
+    flashes: 4
+  deathFlash:
+    color: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
+    intensity: 1
+    duration: 1
+    flashes: 1
+  maxHealth: 10
 --- !u!50 &7464281791331421156
 Rigidbody2D:
   serializedVersion: 5

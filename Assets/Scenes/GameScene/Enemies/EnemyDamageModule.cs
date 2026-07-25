@@ -3,12 +3,6 @@ using UnityEngine;
 
 namespace Countdown
 {
-    /// <summary>
-    /// Enemy-side DamageModule. Reaction to damage/death is driven through the
-    /// Animator (matching the trigger pattern already used for attacks), and
-    /// death disables the enemy's AI/collider and notifies the spawner before
-    /// destroying the object once the death animation has had time to play.
-    /// </summary>
     public class EnemyDamageModule : DamageModule
     {
         [Header("Enemy Effects")]
@@ -18,7 +12,12 @@ namespace Countdown
         [SerializeField] private float deathAnimDuration = 1.0f;
         [Tooltip("Optional - any attack hitbox this enemy owns, force-disabled on death in case it died mid-swing.")]
         [SerializeField] private GameObject attackHitbox;
-        
+
+        [Header("Flash Effects")]
+        [SerializeField] private SpriteRenderer[] flashRenderers;
+        [SerializeField] private SpriteFlashSettings hitFlash;
+        [SerializeField] private SpriteFlashSettings deathFlash;
+
         [Header("Health")]
         [SerializeField] protected float maxHealth = 10f;
 
@@ -28,6 +27,7 @@ namespace Countdown
         private EnemyBase2D _enemy;
         private Collider2D _collision;
         private Tween _deathTween;
+        private Tween _flashTween;
 
         private void Awake()
         {
@@ -35,6 +35,8 @@ namespace Countdown
             _enemy = GetComponent<EnemyBase2D>();
             _collision = GetComponent<Collider2D>();
             if (animator == null) animator = GetComponentInChildren<Animator>();
+            if (flashRenderers == null || flashRenderers.Length == 0)
+                flashRenderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
         public override void TakeDamage(float amount)
@@ -50,46 +52,42 @@ namespace Countdown
                 Die();
             }
         }
-        
+
         private void OnDamaged(float amount)
         {
+            _flashTween?.Kill(true);
+            _flashTween = SpriteFlash.Play(flashRenderers, hitFlash);
+
             if (animator != null && !string.IsNullOrEmpty(hitTrigger))
-            {
                 animator.SetTrigger(hitTrigger);
-            }
         }
 
         private void Die()
         {
-            // Stop AI/attack behaviour (and any in-flight attack coroutine) immediately.
+            _flashTween?.Kill(true);
+
             if (_enemy != null)
             {
                 _enemy.StopAllCoroutines();
                 _enemy.enabled = false;
             }
 
-            // Let projectiles/melee pass through the corpse during the death animation.
             if (_collision != null) _collision.enabled = false;
-
-            // In case death interrupted an attack coroutine mid-swing (StopAllCoroutines
-            // doesn't run its cleanup), make sure the hitbox doesn't stay live on a corpse.
             if (attackHitbox != null) attackHitbox.SetActive(false);
-
             if (EnemySpawner2D.Instance != null) EnemySpawner2D.Instance.EnemyDied();
 
+            _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);
+
             if (animator != null && !string.IsNullOrEmpty(deathTrigger))
-            {
                 animator.SetTrigger(deathTrigger);
-                _deathTween = DOVirtual.DelayedCall(deathAnimDuration, () => Destroy(gameObject));
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+
+            float destroyDelay = Mathf.Max(deathAnimDuration, deathFlash != null ? deathFlash.duration : 0f);
+            _deathTween = DOVirtual.DelayedCall(destroyDelay, () => Destroy(gameObject));
         }
 
         private void OnDestroy()
         {
+            _flashTween?.Kill();
             _deathTween?.Kill();
         }
     }
