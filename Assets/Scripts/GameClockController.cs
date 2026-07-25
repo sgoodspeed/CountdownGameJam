@@ -73,7 +73,7 @@ namespace Countdown
             float secondsPerHour = gameDuration / HoursPerCycle;
             float target = Mathf.Max(0f, remainingSeconds + hours * secondsPerHour); 
             
-            SetHoursRemaining(target, lerpDuration);
+            SetHoursInternal(target, lerpDuration);
         }
 
         private void CheckExpired()
