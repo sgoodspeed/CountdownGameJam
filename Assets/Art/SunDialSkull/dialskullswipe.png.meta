@@ -1,0 +1,516 @@
+fileFormatVersion: 2
+guid: e46d7c97b3c9d4e4b8520e2d9afaa24d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4035819382950678075
+    second: dialskullswipe_0
+  - first:
+      213: -8392476071839588481
+    second: dialskullswipe_1
+  - first:
+      213: 4093749163846843599
+    second: dialskullswipe_2
+  - first:
+      213: -3935685840464961913
+    second: dialskullswipe_3
+  - first:
+      213: 1205663418343105958
+    second: dialskullswipe_4
+  - first:
+      213: -7488007349230550544
+    second: dialskullswipe_5
+  - first:
+      213: 7542083390985540272
+    second: dialskullswipe_6
+  - first:
+      213: 6427116639054982085
+    second: dialskullswipe_7
+  - first:
+      213: 6066644326930006453
+    second: dialskullswipe_8
+  - first:
+      213: 4081103952130267791
+    second: dialskullswipe_9
+  - first:
+      213: 3772646464410937033
+    second: dialskullswipe_10
+  - first:
+      213: 1920036403989002777
+    second: dialskullswipe_11
+  - first:
+      213: 2938836285916367189
+    second: dialskullswipe_12
+  - first:
+      213: -168187948775625607
+    second: dialskullswipe_13
+  - first:
+      213: -7551662787315992324
+    second: dialskullswipe_14
+  - first:
+      213: -6374204987593225130
+    second: dialskullswipe_15
+  - first:
+      213: 7757911440940276469
+    second: dialskullswipe_16
+  - first:
+      213: -5715172107580765444
+    second: dialskullswipe_17
+  - first:
+      213: -1719899313303405169
+    second: dialskullswipe_18
+  - first:
+      213: -7592695071763138102
+    second: dialskullswipe_19
+  - first:
+      213: -8463905609744593031
+    second: dialskullswipe_20
+  - first:
+      213: 8676821093180183317
+    second: dialskullswipe_21
+  - first:
+      213: 4922044657961724524
+    second: dialskullswipe_22
+  - first:
+      213: -4380229737350065983
+    second: dialskullswipe_23
+  - first:
+      213: -2691939870471660275
+    second: dialskullswipe_24
+  - first:
+      213: 5181371620105530674
+    second: dialskullswipe_25
+  - first:
+      213: 4775405686435769630
+    second: dialskullswipe_26
+  - first:
+      213: -5434718971313359641
+    second: dialskullswipe_27
+  - first:
+      213: -8737431535800823659
+    second: dialskullswipe_28
+  - first:
+      213: -4885061698716621053
+    second: dialskullswipe_29
+  - first:
+      213: -6711131910439150855
+    second: dialskullswipe_30
+  - first:
+      213: -6776303515004246467
+    second: dialskullswipe_31
+  - first:
+      213: 4262643597760427685
+    second: dialskullswipe_32
+  - first:
+      213: -2694272201806547527
+    second: dialskullswipe_33
+  - first:
+      213: -7867760939071130710
+    second: dialskullswipe_34
+  - first:
+      213: 2161927689864132159
+    second: dialskullswipe_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dialskullswipe_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3e496a985c120830800000000000000
+      internalID: 4035819382950678075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7f19085a7fe78b80800000000000000
+      internalID: -8392476071839588481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fccb4a6cc2befc830800000000000000
+      internalID: 4093749163846843599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78e1d8b8492a169c0800000000000000
+      internalID: -3935685840464961913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a52609bd706bb010800000000000000
+      internalID: 1205663418343105958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_5
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f149913df0451890800000000000000
+      internalID: -7488007349230550544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_6
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b2111a62ecdaa860800000000000000
+      internalID: 7542083390985540272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_7
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cbefd8e784b13950800000000000000
+      internalID: 6427116639054982085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_8
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b14d457fdc013450800000000000000
+      internalID: 6066644326930006453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_9
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ada2efb6ef2a830800000000000000
+      internalID: 4081103952130267791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_10
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c6e85698f12b5430800000000000000
+      internalID: 3772646464410937033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullswipe_11
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a3597cfe655aa10800000000000000
+      internalID: 1920036403989002777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3f93d680aa0a8d3439f58d1ad3e95e90
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":12.0,"y":1.0},"gridSpriteSize":{"x":100.0,"y":100.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      dialskullswipe_0: 4035819382950678075
+      dialskullswipe_1: -8392476071839588481
+      dialskullswipe_10: 3772646464410937033
+      dialskullswipe_11: 1920036403989002777
+      dialskullswipe_2: 4093749163846843599
+      dialskullswipe_3: -3935685840464961913
+      dialskullswipe_4: 1205663418343105958
+      dialskullswipe_5: -7488007349230550544
+      dialskullswipe_6: 7542083390985540272
+      dialskullswipe_7: 6427116639054982085
+      dialskullswipe_8: 6066644326930006453
+      dialskullswipe_9: 4081103952130267791
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

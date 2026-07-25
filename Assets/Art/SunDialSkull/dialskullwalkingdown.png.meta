@@ -1,0 +1,716 @@
+fileFormatVersion: 2
+guid: 3a5c1fa7ea709ac42a6dfe7810b03498
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8894881887595253447
+    second: dialskullwalkingdown_0
+  - first:
+      213: 6218269905621596323
+    second: dialskullwalkingdown_1
+  - first:
+      213: 611772426777985188
+    second: dialskullwalkingdown_2
+  - first:
+      213: 4239659179276276308
+    second: dialskullwalkingdown_3
+  - first:
+      213: 2068212726818247410
+    second: dialskullwalkingdown_4
+  - first:
+      213: -269748638129064532
+    second: dialskullwalkingdown_5
+  - first:
+      213: -4424399971235210845
+    second: dialskullwalkingdown_6
+  - first:
+      213: -2089743900907262947
+    second: dialskullwalkingdown_7
+  - first:
+      213: 2805895390317174533
+    second: dialskullwalkingdown_8
+  - first:
+      213: 7693434991777793747
+    second: dialskullwalkingdown_9
+  - first:
+      213: -2681851842733016931
+    second: dialskullwalkingdown_10
+  - first:
+      213: 8047834781750827511
+    second: dialskullwalkingdown_11
+  - first:
+      213: -1274894777979722000
+    second: dialskullwalkingdown_12
+  - first:
+      213: 6183643737439809658
+    second: dialskullwalkingdown_13
+  - first:
+      213: 891008571832582850
+    second: dialskullwalkingdown_14
+  - first:
+      213: -6626570418587933570
+    second: dialskullwalkingdown_15
+  - first:
+      213: -5817339645736211061
+    second: dialskullwalkingdown_16
+  - first:
+      213: -6043682668753084934
+    second: dialskullwalkingdown_17
+  - first:
+      213: -1658487689049852835
+    second: dialskullwalkingdown_18
+  - first:
+      213: -810040449467785374
+    second: dialskullwalkingdown_19
+  - first:
+      213: -7286734426727617431
+    second: dialskullwalkingdown_20
+  - first:
+      213: 735723958532434631
+    second: dialskullwalkingdown_21
+  - first:
+      213: 573488448674208930
+    second: dialskullwalkingdown_22
+  - first:
+      213: -3064205741272611987
+    second: dialskullwalkingdown_23
+  - first:
+      213: -1681549090608226516
+    second: dialskullwalkingdown_24
+  - first:
+      213: -4064992509279481284
+    second: dialskullwalkingdown_25
+  - first:
+      213: 8772188007940485313
+    second: dialskullwalkingdown_26
+  - first:
+      213: -5085382401248636638
+    second: dialskullwalkingdown_27
+  - first:
+      213: 2617982835441086907
+    second: dialskullwalkingdown_28
+  - first:
+      213: -3570802611422073843
+    second: dialskullwalkingdown_29
+  - first:
+      213: -8466580719406596753
+    second: dialskullwalkingdown_30
+  - first:
+      213: -4924983347596849811
+    second: dialskullwalkingdown_31
+  - first:
+      213: 1414325661514324672
+    second: dialskullwalkingdown_32
+  - first:
+      213: -6408668004561384788
+    second: dialskullwalkingdown_33
+  - first:
+      213: -6834157715860224325
+    second: dialskullwalkingdown_34
+  - first:
+      213: -4353923196620655049
+    second: dialskullwalkingdown_35
+  - first:
+      213: 8721318427373617844
+    second: dialskullwalkingdown_36
+  - first:
+      213: -881114152840567542
+    second: dialskullwalkingdown_37
+  - first:
+      213: 7633630921857984291
+    second: dialskullwalkingdown_38
+  - first:
+      213: -99880581173181
+    second: dialskullwalkingdown_39
+  - first:
+      213: -2325476862711553095
+    second: dialskullwalkingdown_40
+  - first:
+      213: 6805271934363547797
+    second: dialskullwalkingdown_41
+  - first:
+      213: -19703711008601744
+    second: dialskullwalkingdown_42
+  - first:
+      213: 1577451936110851734
+    second: dialskullwalkingdown_43
+  - first:
+      213: -5036402265808958684
+    second: dialskullwalkingdown_44
+  - first:
+      213: 1020197699077043919
+    second: dialskullwalkingdown_45
+  - first:
+      213: -3406976514885228354
+    second: dialskullwalkingdown_46
+  - first:
+      213: 1371084747580077244
+    second: dialskullwalkingdown_47
+  - first:
+      213: -9141955290030313895
+    second: dialskullwalkingdown_48
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dialskullwalkingdown_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cecb2d13f7f07b70800000000000000
+      internalID: 8894881887595253447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a8b31a888bbb4650800000000000000
+      internalID: 6218269905621596323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a00b75e7c37d7800800000000000000
+      internalID: 611772426777985188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4529c759f8b46da30800000000000000
+      internalID: 4239659179276276308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f291f56484c3bc10800000000000000
+      internalID: 2068212726818247410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_5
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca5fba5fa09a14cf0800000000000000
+      internalID: -269748638129064532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_6
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a9d64aeaaf5992c0800000000000000
+      internalID: -4424399971235210845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_7
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1c22ea7efcbff2e0800000000000000
+      internalID: -2089743900907262947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_8
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50fd2c0cdfa80f620800000000000000
+      internalID: 2805895390317174533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_9
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d6c97b0d5294ca60800000000000000
+      internalID: 7693434991777793747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_10
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d98fba545f528cad0800000000000000
+      internalID: -2681851842733016931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_11
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f99a414817afaf60800000000000000
+      internalID: 8047834781750827511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f6a48044f9ae4ee0800000000000000
+      internalID: -1274894777979722000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_13
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a703ba38737b0d550800000000000000
+      internalID: 6183643737439809658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_14
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c2c8e7439f7d5c00800000000000000
+      internalID: 891008571832582850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_15
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7464f83051b904a0800000000000000
+      internalID: -6626570418587933570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_16
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8da81ee968a44fa0800000000000000
+      internalID: -5817339645736211061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_17
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afd99c132a6802ca0800000000000000
+      internalID: -6043682668753084934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dialskullwalkingdown_18
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0
+        width: 100
+        height: 100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5433dddb3edbf8e0800000000000000
+      internalID: -1658487689049852835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ba59d590ffa8eeb43b95e56b5d4b8168
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":19.0,"y":1.0},"gridSpriteSize":{"x":100.0,"y":100.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      dialskullwalkingdown_0: 8894881887595253447
+      dialskullwalkingdown_1: 6218269905621596323
+      dialskullwalkingdown_10: -2681851842733016931
+      dialskullwalkingdown_11: 8047834781750827511
+      dialskullwalkingdown_12: -1274894777979722000
+      dialskullwalkingdown_13: 6183643737439809658
+      dialskullwalkingdown_14: 891008571832582850
+      dialskullwalkingdown_15: -6626570418587933570
+      dialskullwalkingdown_16: -5817339645736211061
+      dialskullwalkingdown_17: -6043682668753084934
+      dialskullwalkingdown_18: -1658487689049852835
+      dialskullwalkingdown_2: 611772426777985188
+      dialskullwalkingdown_3: 4239659179276276308
+      dialskullwalkingdown_4: 2068212726818247410
+      dialskullwalkingdown_5: -269748638129064532
+      dialskullwalkingdown_6: -4424399971235210845
+      dialskullwalkingdown_7: -2089743900907262947
+      dialskullwalkingdown_8: 2805895390317174533
+      dialskullwalkingdown_9: 7693434991777793747
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
