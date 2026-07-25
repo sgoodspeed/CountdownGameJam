@@ -5,11 +5,12 @@ namespace Countdown
 {
     public enum HourMarkerPhase { Rising, Active, Destroyed }
 
-    public class HourMarker : MonoBehaviour
+    public class HourMarker : MonoBehaviour, ISerializationCallbackReceiver
     {
         [SerializeField] private int hour;
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private TMP_Text hourText;
+        [SerializeField] private HourMarkerContainer container;
 
         [Header("Rising / Active Colors")]
         [SerializeField] private Color startColor;
@@ -21,6 +22,7 @@ namespace Countdown
         [SerializeField] private Color destroyedColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
         [SerializeField] private Color destroyedTextColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
 
+        public int Hour => hour;
         public HourMarkerPhase Phase { get; private set; } = HourMarkerPhase.Rising;
 
         private static readonly (int Value, string Numeral)[] RomanNumerals =
@@ -55,6 +57,10 @@ namespace Countdown
         public void OnDestroyed()
         {
             Phase = HourMarkerPhase.Destroyed;
+        }
+
+        public void ApplyDestroyedVisuals()
+        {
             sprite.color = destroyedColor;
             hourText.color = destroyedTextColor;
         }
@@ -73,5 +79,14 @@ namespace Countdown
 
             return result.ToString();
         }
+
+        public void OnBeforeSerialize()
+        {
+            if (!container)
+            {
+                container = GetComponentInParent<HourMarkerContainer>();
+            }
+        }
+        public void OnAfterDeserialize() { }
     }
 }

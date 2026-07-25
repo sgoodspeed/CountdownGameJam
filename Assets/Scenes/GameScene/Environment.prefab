@@ -168,6 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4200692070633563993}
   - component: {fileID: 8719684423759343324}
+  - component: {fileID: 1150502963795363371}
   m_Layer: 0
   m_Name: HourMarkers
   m_TagString: Untagged
@@ -261,6 +262,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1150502963795363371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893901927040340365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebbd2184ba86d1f45aa139af2d102072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarkerContainer
+  hourMarkers:
+  - {fileID: 3911620525376473530}
+  - {fileID: 4169682491793480711}
+  - {fileID: 4418085164087461785}
+  - {fileID: 346445536132810375}
+  - {fileID: 4597802338929022830}
+  - {fileID: 3306179095492772935}
+  - {fileID: 3806901137597761957}
+  - {fileID: 4293991700038837414}
+  - {fileID: 7436281364019758398}
+  - {fileID: 5323227472238875067}
+  - {fileID: 7744608168043649881}
+  - {fileID: 8497586666036750694}
 --- !u!1 &3099008238559925227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,6 +1120,14 @@ PrefabInstance:
       propertyPath: hour
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1104,6 +1138,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
   m_PrefabInstance: {fileID: 1953986270633984761}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5323227472238875067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 1953986270633984761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!1001 &2823595386695875108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1160,6 +1205,14 @@ PrefabInstance:
       propertyPath: hour
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1170,6 +1223,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
   m_PrefabInstance: {fileID: 2823595386695875108}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8497586666036750694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 2823595386695875108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!1001 &3886863248074888828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1226,6 +1290,14 @@ PrefabInstance:
       propertyPath: hour
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1236,6 +1308,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
   m_PrefabInstance: {fileID: 3886863248074888828}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7436281364019758398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 3886863248074888828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!1001 &4159200833471481883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1292,6 +1375,14 @@ PrefabInstance:
       propertyPath: hour
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1302,6 +1393,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
   m_PrefabInstance: {fileID: 4159200833471481883}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7744608168043649881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 4159200833471481883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!1001 &6200543433286768069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1358,11 +1460,30 @@ PrefabInstance:
       propertyPath: hour
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+--- !u!114 &346445536132810375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 6200543433286768069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!4 &6175384386450252749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
@@ -1424,11 +1545,30 @@ PrefabInstance:
       propertyPath: hour
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+--- !u!114 &3911620525376473530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 7244828501314247416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!4 &7436941773988572400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
@@ -1490,11 +1630,30 @@ PrefabInstance:
       propertyPath: hour
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+--- !u!114 &3806901137597761957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 7356286314633534183}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!4 &7325484583303032047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
@@ -1556,11 +1715,30 @@ PrefabInstance:
       propertyPath: hour
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+--- !u!114 &4293991700038837414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 7590044992195622884}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!4 &7704216076617335276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
@@ -1622,11 +1800,30 @@ PrefabInstance:
       propertyPath: hour
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+--- !u!114 &4169682491793480711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 7719067669365985093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!4 &7539092995936565581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
@@ -1688,11 +1885,30 @@ PrefabInstance:
       propertyPath: hour
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+--- !u!114 &4597802338929022830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 7857866394205160492}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!4 &7976756599647121956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
@@ -1754,11 +1970,30 @@ PrefabInstance:
       propertyPath: hour
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+--- !u!114 &4418085164087461785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 8039525718681212123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!4 &7795093293300212435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
@@ -1820,11 +2055,30 @@ PrefabInstance:
       propertyPath: hour
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+--- !u!114 &3306179095492772935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
+  m_PrefabInstance: {fileID: 9161442428533364485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!4 &8979163213555851533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}

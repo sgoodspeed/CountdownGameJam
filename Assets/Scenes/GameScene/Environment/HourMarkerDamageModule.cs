@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Countdown
 {
-    public class HourMarkerDamageModule : DamageModule
+    public class HourMarkerDamageModule : DamageModule, ISerializationCallbackReceiver
     {
         [Header("Hour Marker")]
         [SerializeField] private HourMarker hourMarker;
-        [SerializeField] private float hoursRestored = 1f;
         [SerializeField] private float restoreLerpDuration = 0.5f;
+        [SerializeField] private HourMarkerContainer container;
 
         [Header("Health")]
         [SerializeField] private float maxHealth = 10f;
@@ -55,12 +55,21 @@ namespace Countdown
             _flashTween?.Kill(true);
             if (_collider != null) _collider.enabled = false;
 
-            GameState.Instance.GameClock.RestoreTime(hoursRestored, restoreLerpDuration);
+            hourMarker.OnDestroyed();
+            
+            if (!container.AnyActiveMarkerAbove(hourMarker.Hour))
+            {
+                var lowestDestroyed = container.FindNextLowestHour(hourMarker.Hour) - 1;
+                float currentHours = GameState.Instance.NormalizedTime * 12f;
+                float hoursToRestore = currentHours - lowestDestroyed;
+                if (hoursToRestore > 0f)
+                    GameState.Instance.GameClock.RestoreTime(hoursToRestore, restoreLerpDuration);
+            }
 
             _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);
 
             float delay = deathFlash != null ? deathFlash.duration : 0f;
-            _deathTween = DOVirtual.DelayedCall(delay, () => hourMarker.OnDestroyed());
+            _deathTween = DOVirtual.DelayedCall(delay, () => hourMarker.ApplyDestroyedVisuals());
         }
 
         private void OnDestroy()
@@ -68,5 +77,14 @@ namespace Countdown
             _flashTween?.Kill();
             _deathTween?.Kill();
         }
+
+        public void OnBeforeSerialize()
+        {
+            if (!container)
+            {
+                container = GetComponentInParent<HourMarkerContainer>();
+            }
+        }
+        public void OnAfterDeserialize() { }
     }
 }
