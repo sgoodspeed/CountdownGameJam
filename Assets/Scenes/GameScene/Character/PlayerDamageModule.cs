@@ -45,7 +45,7 @@ namespace Countdown
 
             _invulnerableUntil = Time.time + invulnerabilityDuration;
             OnDamaged(amount);
-            GameState.Instance.RequestClockDamage(amount, invulnerabilityDuration);
+            GameState.Instance.GameClock.ApplyDamage(amount, invulnerabilityDuration);
         }
 
         private void OnDamaged(float amount)

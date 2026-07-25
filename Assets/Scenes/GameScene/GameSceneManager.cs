@@ -19,7 +19,7 @@ namespace Countdown
         {
             mainMenuPresenter.PlayRequested += HandlePlayRequested;
             mainMenuPresenter.QuitRequested += HandleQuitRequested;
-            gameHudPresenter.TimeExpired += HandleTimeExpired;
+            GameState.Instance.ClockRanOut += HandleTimeExpired;
             gameOverPresenter.AgainRequested += HandleAgainRequested;
             gameOverPresenter.QuitRequested += HandleQuitRequested;
         }
@@ -28,7 +28,8 @@ namespace Countdown
         {
             mainMenuPresenter.PlayRequested -= HandlePlayRequested;
             mainMenuPresenter.QuitRequested -= HandleQuitRequested;
-            gameHudPresenter.TimeExpired -= HandleTimeExpired;
+            if (GameState.Instance != null)
+                GameState.Instance.ClockRanOut -= HandleTimeExpired;
             gameOverPresenter.AgainRequested -= HandleAgainRequested;
             gameOverPresenter.QuitRequested -= HandleQuitRequested;
         }
