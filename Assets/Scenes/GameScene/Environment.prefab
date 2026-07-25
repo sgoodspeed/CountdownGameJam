@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 557608102287127704}
   - component: {fileID: 8503005256533392774}
   - component: {fileID: 1280082688944789899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ClockFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}

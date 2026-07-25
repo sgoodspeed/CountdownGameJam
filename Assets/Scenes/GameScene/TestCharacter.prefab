@@ -91,6 +91,53 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+--- !u!1 &5223951254118190266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6370209905567549422}
+  - component: {fileID: 2809113494846744828}
+  m_Layer: 0
+  m_Name: Projectiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6370209905567549422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223951254118190266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2373678540942378834}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2809113494846744828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223951254118190266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d8325558df83543a4e5ff4276130b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.ProjectilePool
+  prefab: {fileID: 1677574445782303017, guid: e4c6d418d00a86741a57909ceb26be59, type: 3}
+  defaultCapacity: 50
+  maxSize: 100
 --- !u!1 &5577843522192968795
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2373678540942378834}
   - component: {fileID: 1280592077513628606}
-  - component: {fileID: 7606034132019858255}
+  - component: {fileID: 3408124903990807966}
   - component: {fileID: 7441983194462198133}
   - component: {fileID: 196064418291999902}
   - component: {fileID: 578169102021449705}
@@ -160,6 +207,7 @@ Transform:
   m_Children:
   - {fileID: 4139033535043953178}
   - {fileID: 2774334310472628714}
+  - {fileID: 6370209905567549422}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1280592077513628606
@@ -183,7 +231,7 @@ MonoBehaviour:
     m_Bits: 1
   aimDeadZone: 0.5
   aimDamping: 15
---- !u!114 &7606034132019858255
+--- !u!114 &3408124903990807966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,15 +240,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6388713516558362022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddcc2eedf5d7c3144b76ce6895f90fdc, type: 3}
+  m_Script: {fileID: 11500000, guid: aafefaacb89daaa43962b2faf5100c8e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Countdown.CharacterMelee2D
-  attackDuration: 0.25
-  startAngle: -90
-  endAngle: 90
-  easeType: 10
-  swordPivot: {fileID: 2774334310472628714}
-  swordVisual: {fileID: 8368273487754497912}
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.CharacterRanged2D
+  fireRate: 5
+  spawnOffset: 0.5
+  inputActionName: Attack
+  projectilePool: {fileID: 2809113494846744828}
 --- !u!114 &7441983194462198133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,8 +276,8 @@ MonoBehaviour:
     flashes: 1
   deathFadeDuration: 0.6
   movement: {fileID: 1280592077513628606}
-  melee: {fileID: 7606034132019858255}
-  body: {fileID: 0}
+  melee: {fileID: 0}
+  body: {fileID: 578169102021449705}
 --- !u!212 &196064418291999902
 SpriteRenderer:
   serializedVersion: 2
@@ -364,10 +410,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2913697638187399502}
   - component: {fileID: 599481728451717909}
-  - component: {fileID: 3839370754735858569}
-  - component: {fileID: 234205810962981440}
   m_Layer: 10
-  m_Name: Sword
+  m_Name: Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,7 +426,7 @@ Transform:
   m_GameObject: {fileID: 8368273487754497912}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -442,68 +486,8 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 4, y: 0.45}
+  m_Size: {x: 0.45, y: 0.45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &3839370754735858569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8368273487754497912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 998cc9645a472f9439f9287004a2f299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Countdown.MeleeDamageTrigger2D
-  damageAmount: 4
-  owner: {fileID: 2373678540942378834}
---- !u!61 &234205810962981440
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8368273487754497912}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 4, y: 0.45}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 1
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 4.06, y: 0.64}
-  m_EdgeRadius: 0
