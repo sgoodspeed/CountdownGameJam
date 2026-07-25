@@ -21,11 +21,11 @@ namespace Countdown
             // Ignore if we already hit this collider during this swing
             if (_hitTargetsThisSwing.Contains(other)) return;
 
-            // Check if hit object is an enemy
-            if (other.TryGetComponent(out EnemyBase2D enemy))
+            // Check if hit object can take damage (enemy, player, etc.)
+            if (other.TryGetComponent(out IDamageable damageable))
             {
                 _hitTargetsThisSwing.Add(other);
-                enemy.TakeDamage(damageAmount);
+                damageable.TakeDamage(damageAmount);
             }
         }
     }

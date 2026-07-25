@@ -15,7 +15,6 @@ namespace Countdown
         public enum AIState { Chasing, Guarding }
 
         [Header("Base Properties")]
-        [SerializeField] private float maxHealth = 10f;
         [SerializeField] private float moveSpeed = 3f;
         [SerializeField] private float skinDistance = 0.1f;
 
@@ -26,8 +25,6 @@ namespace Countdown
         [Header("References")]
         [SerializeField] private Rigidbody2D body;
         [SerializeField] private Collider2D collision;
-
-        protected float currentHealth;
 
         // Wobble variables to spread out pathing
         private float _wobbleSpeed;
@@ -48,8 +45,6 @@ namespace Countdown
 
         protected virtual void Start()
         {
-            currentHealth = maxHealth;
-
             // find player by tag if no target is assigned
             if (target == null)
             {
@@ -88,27 +83,6 @@ namespace Countdown
             }
 
             body.MovePosition(body.position + direction * distance);
-        }
-
-        public virtual void TakeDamage(float amount)
-        {
-            currentHealth -= amount;
-
-            if (currentHealth <= 0)
-            {
-                Die();
-            }
-        }
-
-        protected virtual void Die()
-        {
-            // Notify spawner so it can decrement active enemy count
-            if (EnemySpawner2D.Instance != null)
-            {
-                EnemySpawner2D.Instance.EnemyDied();
-            }
-
-            Destroy(gameObject);
         }
     }
 }
