@@ -14,7 +14,7 @@ public class PlayerMelee : MonoBehaviour
     [Tooltip("The pivot object that will rotate during the attack arc.")]
     [SerializeField] private Transform swordPivot;
     [Tooltip("The actual visual object inside the pivot.")]
-    [SerializeField] private GameObject swordVisual;
+    [SerializeField] private GameObject meleeHitbox;
 
     private InputAction _attackAction;
     private bool _isAttacking;
@@ -25,9 +25,9 @@ public class PlayerMelee : MonoBehaviour
         _attackAction = InputSystem.actions.FindAction("Attack");
 
         // Ensure sword visual starts inactive
-        if (swordVisual != null)
+        if (meleeHitbox != null)
         {
-            swordVisual.SetActive(false);
+            meleeHitbox.SetActive(false);
         }
     }
 
@@ -46,9 +46,9 @@ public class PlayerMelee : MonoBehaviour
     {
         _isAttacking = true;
 
-        if (swordVisual != null)
+        if (meleeHitbox != null)
         {
-            swordVisual.SetActive(true);
+            meleeHitbox.SetActive(true);
         }
 
         float elapsed = 0f;
@@ -73,9 +73,9 @@ public class PlayerMelee : MonoBehaviour
         }
 
         // Hide visual after swing completes
-        if (swordVisual != null)
+        if (meleeHitbox != null)
         {
-            swordVisual.SetActive(false);
+            meleeHitbox.SetActive(false);
         }
 
         _isAttacking = false;
