@@ -36,7 +36,7 @@ namespace Countdown
         public override void TakeDamage(float amount, Vector2 hitDirection)
         {
             if (IsDead || amount <= 0f) return;
-            if (!hourMarker.IsActive) return;
+            if (hourMarker.Phase != HourMarkerPhase.Active) return;
 
             CurrentHealth = Mathf.Max(0f, CurrentHealth - amount);
 
@@ -55,13 +55,12 @@ namespace Countdown
             _flashTween?.Kill(true);
             if (_collider != null) _collider.enabled = false;
 
-            hourMarker.OnDestroyed();
             GameState.Instance.GameClock.RestoreTime(hoursRestored, restoreLerpDuration);
 
             _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);
 
-            float destroyDelay = deathFlash != null ? deathFlash.duration : 0.5f;
-            _deathTween = DOVirtual.DelayedCall(destroyDelay, () => Destroy(gameObject));
+            float delay = deathFlash != null ? deathFlash.duration : 0f;
+            _deathTween = DOVirtual.DelayedCall(delay, () => hourMarker.OnDestroyed());
         }
 
         private void OnDestroy()
