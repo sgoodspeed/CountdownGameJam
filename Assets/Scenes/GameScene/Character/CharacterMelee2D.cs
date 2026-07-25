@@ -33,7 +33,7 @@ namespace Countdown
             // Ensure sword visual starts inactive
             if (meleeHitbox != null)
             {
-                //meleeHitbox.SetActive(false);
+                meleeHitbox.SetActive(false);
             }
         }
 

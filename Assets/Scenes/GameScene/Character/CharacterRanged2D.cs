@@ -8,6 +8,8 @@ namespace Countdown
         [Header("Firing")]
         [SerializeField] private float fireRate = 5f;
         [SerializeField] private float spawnOffset = 0.5f;
+        [SerializeField] private Transform staffArm;
+        
         [Tooltip("Name of the InputSystem action that triggers firing.")]
         [SerializeField] private string inputActionName = "Shoot";
 
@@ -35,7 +37,7 @@ namespace Countdown
 
         private void Fire()
         {
-            Vector2 direction = transform.right;
+            Vector2 direction = -staffArm.right;
             Vector2 spawnPos = (Vector2)transform.position + direction * spawnOffset;
 
             var projectile = projectilePool.Get();
