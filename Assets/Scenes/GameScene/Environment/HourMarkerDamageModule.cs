@@ -20,14 +20,12 @@ namespace Countdown
 
         public float CurrentHealth { get; private set; }
 
-        private Collider2D _collider;
         private Tween _flashTween;
         private Tween _deathTween;
 
         private void Awake()
         {
             CurrentHealth = maxHealth;
-            _collider = GetComponent<Collider2D>();
             if (hourMarker == null) hourMarker = GetComponent<HourMarker>();
             if (flashRenderers == null || flashRenderers.Length == 0)
                 flashRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -53,8 +51,7 @@ namespace Countdown
         private void Die()
         {
             _flashTween?.Kill(true);
-            if (_collider != null) _collider.enabled = false;
-
+            
             hourMarker.OnDestroyed();
             
             if (!container.AnyActiveMarkerAbove(hourMarker.Hour))

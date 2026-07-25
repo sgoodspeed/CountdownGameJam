@@ -39,19 +39,20 @@ namespace Countdown
 
         private void Update()
         {
-            if (Phase == HourMarkerPhase.Destroyed) return;
+            var progress = GameState.Instance.GetTargetHourProgress(hour);
+            if (Phase == HourMarkerPhase.Destroyed && progress >= 1f)
+            { // if destroyed leave visible, but allow progress to revert if time moves backwards
+                return;
+            }
 
-            GameState gameState = GameState.Instance;
-            var lerp = gameState.GetTargetHourProgress(hour);
-
-            if (lerp >= 1f && Phase == HourMarkerPhase.Rising)
+            if (progress >= 1f && Phase == HourMarkerPhase.Rising)
                 Phase = HourMarkerPhase.Active;
 
-            if (lerp < 1f && Phase == HourMarkerPhase.Active)
+            if (progress < 1f && Phase == HourMarkerPhase.Active)
                 Phase = HourMarkerPhase.Rising;
 
-            sprite.color = Color.Lerp(startColor, endColor, lerp);
-            hourText.color = Color.Lerp(textStartColor, textEndColor, lerp);
+            sprite.color = Color.Lerp(startColor, endColor, progress);
+            hourText.color = Color.Lerp(textStartColor, textEndColor, progress);
         }
 
         public void OnDestroyed()
