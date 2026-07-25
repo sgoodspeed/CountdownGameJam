@@ -55,10 +55,16 @@ namespace Countdown
             }
 
             if (progress >= 1f && Phase == HourMarkerPhase.Rising)
+            {
                 Phase = HourMarkerPhase.Active;
+                damageModule.Activate();
+            }
 
             if (progress < 1f && Phase == HourMarkerPhase.Active)
+            {
                 Phase = HourMarkerPhase.Rising;
+                damageModule.Reset();
+            }
 
             sprite.color = Color.Lerp(startColor, endColor, progress);
             hourText.color = Color.Lerp(textStartColor, textEndColor, progress);

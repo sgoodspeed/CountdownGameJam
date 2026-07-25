@@ -9,6 +9,7 @@ namespace Countdown
         [SerializeField] private HourMarker hourMarker;
         [SerializeField] private float restoreLerpDuration = 0.5f;
         [SerializeField] private HourMarkerContainer container;
+        [SerializeField] private Collider2D collision;
 
         [Header("Health")]
         [SerializeField] private float maxHealth = 10f;
@@ -27,6 +28,12 @@ namespace Countdown
         {
             CurrentHealth = maxHealth;
             IsDead = false;
+            collision.enabled = false;
+        }
+
+        public void Activate()
+        {
+            collision.enabled = true;
         }
 
         private void Awake()
