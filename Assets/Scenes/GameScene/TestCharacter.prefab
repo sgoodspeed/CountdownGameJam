@@ -213,6 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b3666ec598fa846b3f657aca101b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.PlayerDamageModule
+  knockbackDistance: 0.5
+  stunDuration: 0.3
   invulnerabilityDuration: 3
   flashRenderers:
   - {fileID: 196064418291999902}
@@ -229,6 +231,7 @@ MonoBehaviour:
   deathFadeDuration: 0.6
   movement: {fileID: 1280592077513628606}
   melee: {fileID: 7606034132019858255}
+  body: {fileID: 0}
 --- !u!212 &196064418291999902
 SpriteRenderer:
   serializedVersion: 2

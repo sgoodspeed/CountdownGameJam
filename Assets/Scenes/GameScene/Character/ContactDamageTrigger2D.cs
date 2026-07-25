@@ -19,7 +19,8 @@ namespace Countdown
                 if(!other.CompareTag("Player")) { return; }
                 if (other.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.TakeDamage(damageAmount);
+                    Vector2 hitDirection = (other.transform.position - transform.position).normalized;
+                    damageable.TakeDamage(damageAmount, hitDirection);
                 }
             }
         }

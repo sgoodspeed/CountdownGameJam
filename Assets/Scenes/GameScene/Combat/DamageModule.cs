@@ -1,18 +1,20 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Countdown
 {
-    /// <summary>
-    /// Shared health/damage tracking for anything that can be hurt and die.
-    /// Subclasses (PlayerDamageModule, EnemyDamageModule) plug in their own
-    /// hit/death reactions via the OnDamaged/Die hooks, and can override
-    /// TakeDamage itself for different rules (e.g. invulnerability frames).
-    /// </summary>
     [DisallowMultipleComponent]
     public abstract class DamageModule : MonoBehaviour, IDamageable
     {
+        [FormerlySerializedAs("knockbackForce")]
+        [Header("Hit Reactions")]
+        [SerializeField] private float knockbackDistance = 5f;
+        [SerializeField] private float stunDuration = 0.3f;
+
+        public float KnockbackDistance => knockbackDistance;
+        public float StunDuration => stunDuration;
         public bool IsDead { get; protected set; }
 
-        public abstract void TakeDamage(float amount);
+        public abstract void TakeDamage(float amount, Vector2 hitDirection);
     }
 }

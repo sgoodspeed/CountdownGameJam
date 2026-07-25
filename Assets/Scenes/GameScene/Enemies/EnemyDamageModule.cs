@@ -26,25 +26,28 @@ namespace Countdown
 
         private EnemyBase2D _enemy;
         private Collider2D _collision;
+        private Rigidbody2D _body;
         private Tween _deathTween;
         private Tween _flashTween;
+        private Tween _stunTween;
 
         private void Awake()
         {
             CurrentHealth = maxHealth;
             _enemy = GetComponent<EnemyBase2D>();
             _collision = GetComponent<Collider2D>();
+            _body = GetComponent<Rigidbody2D>();
             if (animator == null) animator = GetComponentInChildren<Animator>();
             if (flashRenderers == null || flashRenderers.Length == 0)
                 flashRenderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
-        public override void TakeDamage(float amount)
+        public override void TakeDamage(float amount, Vector2 hitDirection)
         {
             if (IsDead || amount <= 0f) return;
 
             CurrentHealth = Mathf.Max(0f, CurrentHealth - amount);
-            OnDamaged(amount);
+            OnDamaged(hitDirection);
 
             if (CurrentHealth <= 0f)
             {
@@ -53,18 +56,43 @@ namespace Countdown
             }
         }
 
-        private void OnDamaged(float amount)
+        private void OnDamaged(Vector2 hitDirection)
         {
             _flashTween?.Kill(true);
             _flashTween = SpriteFlash.Play(flashRenderers, hitFlash);
+
+            ApplyKnockback(hitDirection);
+            ApplyStun();
 
             if (animator != null && !string.IsNullOrEmpty(hitTrigger))
                 animator.SetTrigger(hitTrigger);
         }
 
+        private void ApplyKnockback(Vector2 direction)
+        {
+            if (_body != null && KnockbackDistance > 0f)
+                _body.MovePosition(_body.position + direction * KnockbackDistance);
+        }
+
+        private void ApplyStun()
+        {
+            if (StunDuration <= 0f) return;
+
+            _stunTween?.Kill();
+            if (_enemy != null) _enemy.enabled = false;
+
+            _stunTween = DOVirtual.DelayedCall(StunDuration, () =>
+            {
+                if (this == null || IsDead) return;
+                if (_body != null) _body.linearVelocity = Vector2.zero;
+                if (_enemy != null) _enemy.enabled = true;
+            });
+        }
+
         private void Die()
         {
             _flashTween?.Kill(true);
+            _stunTween?.Kill();
 
             if (_enemy != null)
             {
@@ -88,6 +116,7 @@ namespace Countdown
         private void OnDestroy()
         {
             _flashTween?.Kill();
+            _stunTween?.Kill();
             _deathTween?.Kill();
         }
     }

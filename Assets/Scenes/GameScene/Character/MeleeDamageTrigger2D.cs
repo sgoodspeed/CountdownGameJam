@@ -25,7 +25,8 @@ namespace Countdown
             if (other.TryGetComponent(out IDamageable damageable))
             {
                 _hitTargetsThisSwing.Add(other);
-                damageable.TakeDamage(damageAmount);
+                Vector2 hitDirection = (other.transform.position - transform.position).normalized;
+                damageable.TakeDamage(damageAmount, hitDirection);
             }
         }
     }
