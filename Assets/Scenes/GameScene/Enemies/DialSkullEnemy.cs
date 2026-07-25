@@ -21,6 +21,8 @@ namespace Countdown
 
         [Header("Components")]
         [SerializeField] protected Animator animator;
+        [Tooltip("Trigger hitbox enabled for the duration of the swipe - disabled the rest of the time.")]
+        [SerializeField] private GameObject attackHitbox;
 
         private bool _isAttacking = false;
 
@@ -62,7 +64,6 @@ namespace Countdown
 
             // Wait for attack swipe animation to complete
             yield return new WaitForSeconds(attackPauseDuration);
-
             skullState = SkullState.Chasing;
 
             // Wait out cooldown before next attack

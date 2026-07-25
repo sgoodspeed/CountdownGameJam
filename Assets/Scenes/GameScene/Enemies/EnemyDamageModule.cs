@@ -16,6 +16,8 @@ namespace Countdown
         [SerializeField] private string hitTrigger = "IsHit";
         [SerializeField] private string deathTrigger = "IsDead";
         [SerializeField] private float deathAnimDuration = 1.0f;
+        [Tooltip("Optional - any attack hitbox this enemy owns, force-disabled on death in case it died mid-swing.")]
+        [SerializeField] private GameObject attackHitbox;
 
         private EnemyBase2D _enemy;
         private Collider2D _collision;
@@ -49,6 +51,10 @@ namespace Countdown
 
             // Let projectiles/melee pass through the corpse during the death animation.
             if (_collision != null) _collision.enabled = false;
+
+            // In case death interrupted an attack coroutine mid-swing (StopAllCoroutines
+            // doesn't run its cleanup), make sure the hitbox doesn't stay live on a corpse.
+            if (attackHitbox != null) attackHitbox.SetActive(false);
 
             if (EnemySpawner2D.Instance != null) EnemySpawner2D.Instance.EnemyDied();
 

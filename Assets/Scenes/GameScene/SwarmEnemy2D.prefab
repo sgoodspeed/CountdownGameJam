@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4611621505076989987}
+  - component: {fileID: 7089252861137524166}
+  - component: {fileID: 30361018359578323}
   - component: {fileID: 7464281791331421156}
   - component: {fileID: 7029324339065225356}
   - component: {fileID: 331618969692743726}
   - component: {fileID: 4027083013345845105}
-  - component: {fileID: 7089252861137524166}
-  - component: {fileID: 30361018359578323}
   m_Layer: 0
   m_Name: SwarmEnemy2D
   m_TagString: Untagged
@@ -34,9 +34,55 @@ Transform:
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8815234109887701235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7089252861137524166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236298257837654032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f56da4b4d7579741b568c0100142157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.DialSkullEnemy
+  moveSpeed: 3
+  skinDistance: 0.1
+  currentState: 0
+  target: {fileID: 0}
+  body: {fileID: 7464281791331421156}
+  collision: {fileID: 7029324339065225356}
+  movementCastLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  skullState: 0
+  attackRange: 1.5
+  attackCooldown: 1.5
+  attackPauseDuration: 0.8
+  animator: {fileID: 4027083013345845105}
+  attackHitbox: {fileID: 8815234109887701234}
+--- !u!114 &30361018359578323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236298257837654032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4293906ee651048468c60bc84f07e8df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.EnemyDamageModule
+  maxHealth: 10
+  animator: {fileID: 4027083013345845105}
+  hitTrigger: IsHit
+  deathTrigger: IsDead
+  deathAnimDuration: 1
+  attackHitbox: {fileID: 8815234109887701234}
 --- !u!50 &7464281791331421156
 Rigidbody2D:
   serializedVersion: 5
@@ -99,7 +145,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!212 &331618969692743726
 SpriteRenderer:
   serializedVersion: 2
@@ -181,43 +227,85 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7089252861137524166
+--- !u!1 &8815234109887701234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8815234109887701235}
+  - component: {fileID: 8815234109887701236}
+  - component: {fileID: 8815234109887701237}
+  m_Layer: 10
+  m_Name: AttackHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8815234109887701235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8815234109887701234}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4611621505076989987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &8815234109887701236
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8815234109887701234}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
+--- !u!114 &8815234109887701237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2236298257837654032}
+  m_GameObject: {fileID: 8815234109887701234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f56da4b4d7579741b568c0100142157, type: 3}
+  m_Script: {fileID: 11500000, guid: 998cc9645a472f9439f9287004a2f299, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Countdown.DialSkullEnemy
-  moveSpeed: 3
-  skinDistance: 0.1
-  currentState: 0
-  target: {fileID: 0}
-  body: {fileID: 7464281791331421156}
-  collision: {fileID: 7029324339065225356}
-  skullState: 0
-  attackRange: 1.5
-  attackCooldown: 1.5
-  attackPauseDuration: 0.8
-  animator: {fileID: 4027083013345845105}
---- !u!114 &30361018359578323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2236298257837654032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4293906ee651048468c60bc84f07e8df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Countdown.EnemyDamageModule
-  maxHealth: 10
-  animator: {fileID: 4027083013345845105}
-  hitTrigger: IsHit
-  deathTrigger: IsDead
-  deathAnimDuration: 1
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.MeleeDamageTrigger2D
+  damageAmount: 5

@@ -25,6 +25,7 @@ namespace Countdown
         [Header("References")]
         [SerializeField] private Rigidbody2D body;
         [SerializeField] private Collider2D collision;
+        [SerializeField] private LayerMask movementCastLayers;
 
         // Wobble variables to spread out pathing
         private float _wobbleSpeed;
