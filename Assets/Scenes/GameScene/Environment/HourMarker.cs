@@ -48,6 +48,10 @@ namespace Countdown
                     Phase = HourMarkerPhase.Rising;
                     damageModule.Reset();
                 }
+                else
+                { // stay in damaged / destroyed looking visual state
+                    return;
+                }
             }
 
             if (progress >= 1f && Phase == HourMarkerPhase.Rising)
