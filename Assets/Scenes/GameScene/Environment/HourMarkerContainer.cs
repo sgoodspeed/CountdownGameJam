@@ -33,7 +33,7 @@ namespace Countdown
         public int FindNextLowestHour(int thisHour)
         {
             var lowest = thisHour;
-            for(var i = lowest - 1; i >=0; i--)
+            for(var i = lowest - 1; i >= 0; i--)
             {
                 if (hourMap.TryGetValue(i, out var nextMarker)) 
                 {

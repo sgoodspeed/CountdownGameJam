@@ -41,19 +41,17 @@ namespace Countdown
             CheckExpired();
         }
 
-        public void ApplyDamage(float hours, float lerpDuration)
+        public void SetHoursInternal(float hour, float lerpDuration)
         {
             if (!running) return;
-
+            
             damageTween?.Kill();
-
-            float secondsPerHour = gameDuration / HoursPerCycle;
-            float target = Mathf.Max(0f, remainingSeconds - hours * secondsPerHour);
-
+            
+            hour = Mathf.Min(gameDuration, hour);
             damageTween = DOTween.To(
                 () => remainingSeconds,
                 x => remainingSeconds = x,
-                target,
+                hour,
                 lerpDuration
             ).OnComplete(() =>
             {
@@ -62,24 +60,20 @@ namespace Countdown
             });
         }
 
-        public void RestoreTime(float hours, float lerpDuration)
+        public void SetHoursRemaining(float hours, float lerpDuration)
         {
-            if (!running) return;
-
-            damageTween?.Kill();
-
             float secondsPerHour = gameDuration / HoursPerCycle;
-            float target = Mathf.Min(gameDuration, remainingSeconds + hours * secondsPerHour);
+            float target = Mathf.Max(0f, hours * secondsPerHour); 
+            
+            SetHoursInternal(target, lerpDuration);
+        }
 
-            damageTween = DOTween.To(
-                () => remainingSeconds,
-                x => remainingSeconds = x,
-                target,
-                lerpDuration
-            ).OnComplete(() =>
-            {
-                damageTween = null;
-            });
+        public void AddHours(float hours, float lerpDuration)
+        {
+            float secondsPerHour = gameDuration / HoursPerCycle;
+            float target = Mathf.Max(0f, remainingSeconds + hours * secondsPerHour); 
+            
+            SetHoursRemaining(target, lerpDuration);
         }
 
         private void CheckExpired()

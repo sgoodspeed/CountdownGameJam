@@ -22,13 +22,16 @@ namespace Countdown
 
         private Tween _flashTween;
         private Tween _deathTween;
+        
+        public void Reset()
+        {
+            CurrentHealth = maxHealth;
+            IsDead = false;
+        }
 
         private void Awake()
         {
-            CurrentHealth = maxHealth;
-            if (hourMarker == null) hourMarker = GetComponent<HourMarker>();
-            if (flashRenderers == null || flashRenderers.Length == 0)
-                flashRenderers = GetComponentsInChildren<SpriteRenderer>();
+            Reset();
         }
 
         public override void TakeDamage(float amount, Vector2 hitDirection)
@@ -60,7 +63,7 @@ namespace Countdown
                 float currentHours = GameState.Instance.NormalizedTime * 12f;
                 float hoursToRestore = currentHours - lowestDestroyed;
                 if (hoursToRestore > 0f)
-                    GameState.Instance.GameClock.RestoreTime(hoursToRestore, restoreLerpDuration);
+                    GameState.Instance.GameClock.SetHoursRemaining(12 - lowestDestroyed, restoreLerpDuration);
             }
 
             _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);

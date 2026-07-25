@@ -50,7 +50,7 @@ namespace Countdown
             ApplyKnockback(hitDirection);
             ApplyStun();
 
-            GameState.Instance.GameClock.ApplyDamage(amount, invulnerabilityDuration);
+            GameState.Instance.GameClock.AddHours(-amount, invulnerabilityDuration);
         }
 
         private void ApplyKnockback(Vector2 direction)

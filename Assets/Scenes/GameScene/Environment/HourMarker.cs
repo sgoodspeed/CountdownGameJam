@@ -11,6 +11,7 @@ namespace Countdown
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private TMP_Text hourText;
         [SerializeField] private HourMarkerContainer container;
+        [SerializeField] private HourMarkerDamageModule damageModule;
 
         [Header("Rising / Active Colors")]
         [SerializeField] private Color startColor;
@@ -40,9 +41,13 @@ namespace Countdown
         private void Update()
         {
             var progress = GameState.Instance.GetTargetHourProgress(hour);
-            if (Phase == HourMarkerPhase.Destroyed && progress >= 1f)
-            { // if destroyed leave visible, but allow progress to revert if time moves backwards
-                return;
+            if (Phase == HourMarkerPhase.Destroyed)
+            { // if destroyed leave visible
+                if (progress < 1f)
+                { // but allow progress to revert if time moves backwards
+                    Phase = HourMarkerPhase.Rising;
+                    damageModule.Reset();
+                }
             }
 
             if (progress >= 1f && Phase == HourMarkerPhase.Rising)

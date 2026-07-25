@@ -51,10 +51,14 @@ MonoBehaviour:
   hour: 0
   sprite: {fileID: 701196814678454279}
   hourText: {fileID: 8451672536000752299}
+  container: {fileID: 0}
+  damageModule: {fileID: 7668853536564285904}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   endColor: {r: 0.30817598, g: 0.30817598, b: 0.30817598, a: 1}
   textStartColor: {r: 0, g: 0, b: 0, a: 0}
   textEndColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+  destroyedColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.5}
+  destroyedTextColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.5}
 --- !u!114 &7668853536564285904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,8 +74,8 @@ MonoBehaviour:
   knockbackDistance: 0
   stunDuration: 0
   hourMarker: {fileID: 5963349780469322562}
-  hoursRestored: 1
   restoreLerpDuration: 0.5
+  container: {fileID: 0}
   maxHealth: 20
   flashRenderers:
   - {fileID: 701196814678454279}
