@@ -26,6 +26,7 @@ namespace Countdown
 
         private int _currentEnemyCount = 0;
         private int _lastAngleIndex = -1;
+        private Coroutine _spawnCoroutine;
 
         private void Awake()
         {
@@ -51,8 +52,19 @@ namespace Countdown
             {
                 levelBoundary = FindFirstObjectByType<CircleBoundary>();
             }
+        }
 
-            StartCoroutine(DripSpawnRoutine());
+        public void StartSpawning()
+        {
+            if (_spawnCoroutine != null) return;
+            _spawnCoroutine = StartCoroutine(DripSpawnRoutine());
+        }
+
+        public void StopSpawning()
+        {
+            if (_spawnCoroutine == null) return;
+            StopCoroutine(_spawnCoroutine);
+            _spawnCoroutine = null;
         }
 
         public void EnemyDied()

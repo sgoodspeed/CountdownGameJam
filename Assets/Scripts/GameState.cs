@@ -3,8 +3,20 @@ using UnityEngine;
 
 namespace Countdown
 {
+    public enum GamePhase { Menu, Playing, GameOver }
+
     public class GameState : Singleton<GameState>
     {
+        public GamePhase CurrentPhase { get; private set; } = GamePhase.Menu;
+        public event Action<GamePhase> PhaseChanged;
+
+        public void SetPhase(GamePhase phase)
+        {
+            if (CurrentPhase == phase) return;
+            CurrentPhase = phase;
+            PhaseChanged?.Invoke(phase);
+        }
+
         private const float HoursPerCycle = 12f;
         private const float MinutesPerCycle = HoursPerCycle * 60f;
 
