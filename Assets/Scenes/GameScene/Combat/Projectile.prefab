@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba500cc4ec76ab49bab5175310ab699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.Projectile2D
-  damage: 5
+  damage: 2
   targetLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 12
+  speed: 15
   lifetime: 3
   hitEffectPrefab: {fileID: 0}
 --- !u!50 &25678930563477578

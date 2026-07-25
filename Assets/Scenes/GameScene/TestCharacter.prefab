@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafefaacb89daaa43962b2faf5100c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.CharacterRanged2D
-  fireRate: 5
+  fireRate: 10
   spawnOffset: 0.5
   staffArm: {fileID: 3151947449526335536}
   inputActionName: Shoot
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998cc9645a472f9439f9287004a2f299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.MeleeDamageTrigger2D
-  damageAmount: 10
+  damageAmount: 4
   owner: {fileID: 2373678540942378834}
 --- !u!212 &4481023688987666213
 SpriteRenderer:
