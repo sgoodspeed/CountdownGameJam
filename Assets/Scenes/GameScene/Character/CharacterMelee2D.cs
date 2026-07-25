@@ -1,4 +1,4 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +10,7 @@ namespace Countdown
         [SerializeField] private float attackDuration = 0.2f;
         [SerializeField] private float startAngle = -90f;
         [SerializeField] private float endAngle = 90f;
-        [SerializeField] private EasingFunction.Ease easeType = EasingFunction.Ease.EaseOutBack;
+        [SerializeField] private Ease easeType = Ease.OutBack;
 
         [Header("References")]
         [Tooltip("The pivot object that will rotate during the attack arc.")]
@@ -20,6 +20,7 @@ namespace Countdown
 
         private InputAction _attackAction;
         private bool _isAttacking;
+        private Tween _swingTween;
 
         private void Start()
         {
@@ -40,11 +41,11 @@ namespace Countdown
             //trigger attack on input if not currently mid-attack
             if (_attackAction.triggered && !_isAttacking)
             {
-                StartCoroutine(SwingRoutine());
+                Swing();
             }
         }
 
-        private IEnumerator SwingRoutine()
+        private void Swing()
         {
             _isAttacking = true;
 
@@ -53,30 +54,27 @@ namespace Countdown
                 swordVisual.SetActive(true);
             }
 
-            float elapsed = 0f;
-
-            // Cache the ease function
-            EasingFunction.Function easeFunc = EasingFunction.GetEasingFunction(easeType);
-
-            while (elapsed < attackDuration)
+            if (swordPivot != null)
             {
-                elapsed += Time.deltaTime;
-                float normalizedTime = Mathf.Clamp01(elapsed / attackDuration);
+                // Negated: rotating around Z (2D, facing the camera) reads in the
+                // opposite visual direction from rotating around Y (3D top-down)
+                // for the same signed angle, so flip it to match the intended swing.
+                swordPivot.localRotation = Quaternion.Euler(0f, 0f, -startAngle);
 
-                //Z angle = progress from start to end based on easing method (2D swing is visible around Z, not Y)
-                float currentZ = easeFunc(startAngle, endAngle, normalizedTime);
-
-                if (swordPivot != null)
-                {
-                    // Negated: rotating around Z (2D, facing the camera) reads in the
-                    // opposite visual direction from rotating around Y (3D top-down)
-                    // for the same signed angle, so flip it to match the intended swing.
-                    swordPivot.localRotation = Quaternion.Euler(0f, 0f, -currentZ);
-                }
-
-                yield return null;
+                _swingTween?.Kill();
+                _swingTween = swordPivot
+                    .DOLocalRotate(new Vector3(0f, 0f, -endAngle), attackDuration)
+                    .SetEase(easeType)
+                    .OnComplete(OnSwingComplete);
             }
+            else
+            {
+                OnSwingComplete();
+            }
+        }
 
+        private void OnSwingComplete()
+        {
             // Hide visual after swing completes
             if (swordVisual != null)
             {
@@ -84,6 +82,11 @@ namespace Countdown
             }
 
             _isAttacking = false;
+        }
+
+        private void OnDestroy()
+        {
+            _swingTween?.Kill();
         }
     }
 }

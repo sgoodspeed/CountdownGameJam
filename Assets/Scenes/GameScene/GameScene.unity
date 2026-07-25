@@ -400,6 +400,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 642790048399557058, guid: 55fa3ca295474ce4988d4e6bd15a2898, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2493741040646697011, guid: 55fa3ca295474ce4988d4e6bd15a2898, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -581,6 +585,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9049227639677437636, guid: c97de0799130a3a4e88acc6d33f87768, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049227639677437636, guid: c97de0799130a3a4e88acc6d33f87768, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049227639677437636, guid: c97de0799130a3a4e88acc6d33f87768, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049227639677437636, guid: c97de0799130a3a4e88acc6d33f87768, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -641,7 +661,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9070132533319328557, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8235671382898472592, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8558944114242759950, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 5717769694802357264, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8383986729313664505, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 7383267866825207504, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 9170348317657064242, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8070479034595479089, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 3217173080250396585, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 164570991092136748, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2372600166828208590, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4501969410527855601, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1d6f777c9fe3e1e468d2fcab23e8bdb6, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcc2eedf5d7c3144b76ce6895f90fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.CharacterMelee2D
-  attackDuration: 0.2
+  attackDuration: 0.25
   startAngle: -90
   endAngle: 90
-  easeType: 27
+  easeType: 10
   swordPivot: {fileID: 2774334310472628714}
   swordVisual: {fileID: 8368273487754497912}
 --- !u!212 &196064418291999902
