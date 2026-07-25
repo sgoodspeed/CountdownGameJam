@@ -25,33 +25,30 @@ namespace Countdown
         [SerializeField] private CharacterMovement2D movement;
         [SerializeField] private CharacterMelee2D melee;
 
-        public event Action Died;
-
         private float _invulnerableUntil;
         private Sequence _hitFlashSequence;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
-
-            if (flashRenderers == null || flashRenderers.Length == 0)
-            {
-                flashRenderers = GetComponentsInChildren<SpriteRenderer>();
-            }
-
-            if (movement == null) movement = GetComponent<CharacterMovement2D>();
-            if (melee == null) melee = GetComponent<CharacterMelee2D>();
+            GameState.Instance.ClockRanOut += Die;
+        }
+        
+        private void OnDestroy()
+        {
+            GameState.Instance.ClockRanOut -= Die;
         }
 
         public override void TakeDamage(float amount)
         {
+            if (IsDead || amount <= 0f) return;
             if (Time.time < _invulnerableUntil) return;
 
             _invulnerableUntil = Time.time + invulnerabilityDuration;
-            base.TakeDamage(amount);
+            OnDamaged(amount);
+            GameState.Instance.RequestClockDamage(amount, invulnerabilityDuration);
         }
 
-        protected override void OnDamaged(float amount)
+        private void OnDamaged(float amount)
         {
             _hitFlashSequence?.Kill();
             _hitFlashSequence = DOTween.Sequence();
@@ -61,7 +58,7 @@ namespace Countdown
             }
         }
 
-        protected override void Die()
+        private void Die()
         {
             _hitFlashSequence?.Kill();
 
@@ -72,13 +69,6 @@ namespace Countdown
             {
                 flashRenderer.DOFade(0f, deathFadeDuration);
             }
-
-            Died?.Invoke();
-        }
-
-        private void OnDestroy()
-        {
-            _hitFlashSequence?.Kill();
         }
     }
 }

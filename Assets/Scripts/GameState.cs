@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Countdown
@@ -10,6 +11,7 @@ namespace Countdown
     {
         private const float HoursPerCycle = 12f;
         private const float MinutesPerCycle = HoursPerCycle * 60f;
+        private bool firedClockRanOut = false;
 
         public float MaxTime { get; private set; }
         public float CurrentTime { get; private set; }
@@ -38,6 +40,14 @@ namespace Countdown
             AddNormalizedTime(hours / HoursPerCycle);
         }
 
+        public event Action<float, float> ClockDamageRequested;
+        public event Action ClockRanOut;
+
+        public void RequestClockDamage(float hours, float lerpDuration)
+        {
+            ClockDamageRequested?.Invoke(hours, lerpDuration);
+        }
+
         private void AddNormalizedTime(float normalizedDelta)
         {
             if (MaxTime <= 0f)
@@ -46,6 +56,16 @@ namespace Countdown
             }
 
             CurrentTime = Mathf.Clamp(CurrentTime + normalizedDelta * MaxTime, 0f, MaxTime);
+            if (CurrentTime <= 0f && !firedClockRanOut)
+            {
+                firedClockRanOut = true;
+                ClockRanOut?.Invoke();
+            }
+        }
+
+        public void Reset()
+        {
+            firedClockRanOut = false;
         }
     }
 }

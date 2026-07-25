@@ -18,21 +18,40 @@ namespace Countdown
         [SerializeField] private float deathAnimDuration = 1.0f;
         [Tooltip("Optional - any attack hitbox this enemy owns, force-disabled on death in case it died mid-swing.")]
         [SerializeField] private GameObject attackHitbox;
+        
+        [Header("Health")]
+        [SerializeField] protected float maxHealth = 10f;
+
+        public float MaxHealth => maxHealth;
+        public float CurrentHealth { get; protected set; }
 
         private EnemyBase2D _enemy;
         private Collider2D _collision;
         private Tween _deathTween;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
-
+            CurrentHealth = maxHealth;
             _enemy = GetComponent<EnemyBase2D>();
             _collision = GetComponent<Collider2D>();
             if (animator == null) animator = GetComponentInChildren<Animator>();
         }
 
-        protected override void OnDamaged(float amount)
+        public override void TakeDamage(float amount)
+        {
+            if (IsDead || amount <= 0f) return;
+
+            CurrentHealth = Mathf.Max(0f, CurrentHealth - amount);
+            OnDamaged(amount);
+
+            if (CurrentHealth <= 0f)
+            {
+                IsDead = true;
+                Die();
+            }
+        }
+        
+        private void OnDamaged(float amount)
         {
             if (animator != null && !string.IsNullOrEmpty(hitTrigger))
             {
@@ -40,7 +59,7 @@ namespace Countdown
             }
         }
 
-        protected override void Die()
+        private void Die()
         {
             // Stop AI/attack behaviour (and any in-flight attack coroutine) immediately.
             if (_enemy != null)
