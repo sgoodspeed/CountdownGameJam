@@ -6,15 +6,18 @@ namespace Countdown
     public class MeleeDamageTrigger2D : MonoBehaviour
     {
         [SerializeField] private float damageAmount = 10f;
-        [Tooltip("The character that owns this weapon. Its facing direction (transform.right) is used as the knockback direction.")]
+        [Tooltip("The character that owns this weapon (e.g. TestCharacter). Used to calculate outward knockback direction.")]
         [SerializeField] private Transform owner;
 
-        // Track targets hit during the CURRENT swing to prevent hitting the same enemy every frame
         private readonly HashSet<Collider2D> _hitTargetsThisSwing = new HashSet<Collider2D>();
 
         private void OnEnable()
         {
-            // Reset hit list whenever the sword visual becomes active at start of a swing
+            ClearHits();
+        }
+
+        public void ClearHits()
+        {
             _hitTargetsThisSwing.Clear();
         }
 
@@ -23,13 +26,27 @@ namespace Countdown
             // Ignore if we already hit this collider during this swing
             if (_hitTargetsThisSwing.Contains(other)) return;
 
-            // Check if hit object can take damage (enemy, player, etc.)
             if (other.TryGetComponent(out IDamageable damageable))
             {
                 _hitTargetsThisSwing.Add(other);
-                Vector2 hitDirection = owner != null
-                    ? (Vector2)owner.right
-                    : (other.transform.position - transform.position).normalized;
+
+                // Always calculate knockback directly AWAY from the player center
+                Vector2 hitDirection;
+                if (owner != null)
+                {
+                    hitDirection = ((Vector2)other.transform.position - (Vector2)owner.position).normalized;
+                }
+                else
+                {
+                    hitDirection = ((Vector2)other.transform.position - (Vector2)transform.position).normalized;
+                }
+
+                // Safety fallback if enemy and player overlap perfectly on exact same spot
+                if (hitDirection == Vector2.zero)
+                {
+                    hitDirection = Vector2.right;
+                }
+
                 damageable.TakeDamage(damageAmount, hitDirection);
             }
         }

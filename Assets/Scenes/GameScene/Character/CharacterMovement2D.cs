@@ -25,6 +25,11 @@ namespace Countdown
         [SerializeField] private float aimDeadZone = 0.5f;
         [SerializeField] private float aimDamping = 15f;
 
+        [Header("Visual & Aim References")]
+        [SerializeField] private Transform bodyVisual;       // Drag 'BodyVisual' here
+        [SerializeField] private Transform staffPivot;       // Drag 'StaffPivot' here
+        [SerializeField] private SpriteRenderer staffRenderer;// Drag 'StaffArm' SpriteRenderer here
+
         private InputAction _moveAction;
         private Camera _mainCamera;
 
@@ -62,7 +67,8 @@ namespace Countdown
             var distance = moveSpeed * Time.fixedDeltaTime;
             var direction = input.normalized * (distance);
             var hitCount = collision.Cast(direction, movementCastFilter, hits, direction.magnitude + Mathf.Epsilon);
-            for (var i = 0; i < hitCount; i++) {
+            for (var i = 0; i < hitCount; i++)
+            {
                 distance = Mathf.Min(distance, hits[i].distance - skinDistance);
             }
 
@@ -71,22 +77,41 @@ namespace Countdown
 
         private void HandleAim()
         {
-            if (_mainCamera == null || Mouse.current == null) return;
+            if (_mainCamera == null || Mouse.current == null || staffPivot == null) return;
 
-            //Convert mouse screen position to a world point on the character's depth plane
+            // 1. Get mouse world position on character plane
             Vector2 mousePos = Mouse.current.position.ReadValue();
             Vector3 screenDepth = _mainCamera.WorldToScreenPoint(transform.position);
             Vector3 worldPoint = _mainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, screenDepth.z));
 
-            Vector2 targetDir = ((Vector2)worldPoint - body.position).normalized;
-            //Only rotate if mouse is beyond the threshold distance
+            // 2. Rotate StaffPivot toward mouse (+180 offset for staff art orientation)
+            Vector2 targetDir = ((Vector2)worldPoint - (Vector2)staffPivot.position).normalized;
             if (targetDir.sqrMagnitude > (aimDeadZone * aimDeadZone))
             {
-                float targetAngle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
+                float targetAngle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg + 180f;
+                staffPivot.rotation = Quaternion.Euler(0f, 0f, targetAngle);
+            }
 
-                //slerp it up: Smoothly rotate toward the cursor over time
-                float newAngle = Mathf.LerpAngle(body.rotation, targetAngle, Time.fixedDeltaTime * aimDamping);
-                body.MoveRotation(newAngle);
+            // 3. Determine if mouse is to the left of the player character
+            bool isMouseToLeft = worldPoint.x > transform.position.x;
+
+            // 4. Flip body visual horizontally based on mouse direction
+            if (bodyVisual != null)
+            {
+                Vector3 scale = bodyVisual.localScale;
+                scale.x = isMouseToLeft ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+                bodyVisual.localScale = scale;
+            }
+
+            // 5. Mirror StaffPivot's local X position so the shoulder socket flips sides
+            Vector3 pivotPos = staffPivot.localPosition;
+            pivotPos.x = isMouseToLeft ? Mathf.Abs(pivotPos.x) : -Mathf.Abs(pivotPos.x);
+            staffPivot.localPosition = pivotPos;
+
+            // 6. Flip staff sprite vertically when aiming left so it stays upright
+            if (staffRenderer != null)
+            {
+                staffRenderer.flipY = isMouseToLeft;
             }
         }
     }

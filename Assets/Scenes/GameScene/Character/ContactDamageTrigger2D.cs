@@ -14,9 +14,9 @@ namespace Countdown
             if (lastHitTime < Time.time + cooldown)
             {
                 lastHitTime = Time.time;
-                
+
                 // Check if hit object can take damage (enemy, player, etc.)
-                if(!other.CompareTag("Player")) { return; }
+                if (!other.CompareTag("Player")) { return; }
                 if (other.TryGetComponent(out IDamageable damageable))
                 {
                     Vector2 hitDirection = (other.transform.position - transform.position).normalized;
