@@ -11,9 +11,12 @@ namespace Countdown
 
         [SerializeField] private Color startColor;
         [SerializeField] private Color endColor;
-        
+
         [SerializeField] private Color textStartColor;
         [SerializeField] private Color textEndColor;
+
+        public bool IsActive { get; private set; }
+        private bool _destroyed;
 
         private static readonly (int Value, string Numeral)[] RomanNumerals =
         {
@@ -29,7 +32,13 @@ namespace Countdown
 
         private void Update()
         {
+            if (_destroyed) return;
             UpdateColors();
+        }
+
+        public void OnDestroyed()
+        {
+            _destroyed = true;
         }
 
         private static string ToRomanNumeral(int number)
@@ -51,6 +60,7 @@ namespace Countdown
         {
             GameState gameState = GameState.Instance;
             var lerp = gameState.GetTargetHourProgress(hour);
+            IsActive = lerp >= 1f;
             sprite.color = Color.Lerp(startColor, endColor, lerp);
             hourText.color = Color.Lerp(textStartColor, textEndColor, lerp);
         }

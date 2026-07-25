@@ -62,6 +62,26 @@ namespace Countdown
             });
         }
 
+        public void RestoreTime(float hours, float lerpDuration)
+        {
+            if (!running) return;
+
+            damageTween?.Kill();
+
+            float secondsPerHour = gameDuration / HoursPerCycle;
+            float target = Mathf.Min(gameDuration, remainingSeconds + hours * secondsPerHour);
+
+            damageTween = DOTween.To(
+                () => remainingSeconds,
+                x => remainingSeconds = x,
+                target,
+                lerpDuration
+            ).OnComplete(() =>
+            {
+                damageTween = null;
+            });
+        }
+
         private void CheckExpired()
         {
             if (remainingSeconds > 0f) return;
