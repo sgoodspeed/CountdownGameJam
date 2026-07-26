@@ -308,8 +308,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.CharacterMelee2D
   attackDuration: 0.2
-  meleeAnimator: {fileID: 3672948722526521770}
+  startAngle: -90
+  endAngle: 90
+  easeType: 27
+  swordPivot: {fileID: 4351455118746227778}
   meleeHitbox: {fileID: 7186336733642501584}
+  staffRenderer: {fileID: 4244870428754904510}
+  meleeAnimator: {fileID: 3672948722526521770}
   attackTrigger: Attack
 --- !u!114 &3408124903990807966
 MonoBehaviour:
