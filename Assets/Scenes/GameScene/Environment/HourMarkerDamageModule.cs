@@ -20,6 +20,7 @@ namespace Countdown
         [SerializeField] private SpriteFlashSettings deathFlash;
 
         public float CurrentHealth { get; private set; }
+        public float NormalizedHealth => maxHealth > 0f ? CurrentHealth / maxHealth : 0f;
 
         private Tween _flashTween;
         private Tween _deathTween;

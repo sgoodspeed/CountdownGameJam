@@ -23,8 +23,17 @@ namespace Countdown
         [SerializeField] private Color destroyedColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
         [SerializeField] private Color destroyedTextColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
 
+        [Header("Health Indicators")]
+        [SerializeField] private float indicatorRadius = 3f;
+        [SerializeField] private float indicatorScale = 0.3f;
+        [SerializeField] private Color indicatorColor = Color.white;
+
+        private const int IndicatorCount = 9;
+
         public int Hour => hour;
         public HourMarkerPhase Phase { get; private set; } = HourMarkerPhase.Rising;
+
+        private SpriteRenderer[] _healthIndicators;
 
         private static readonly (int Value, string Numeral)[] RomanNumerals =
         {
@@ -36,6 +45,7 @@ namespace Countdown
         private void Awake()
         {
             hourText.text = ToRomanNumeral(hour);
+            CreateHealthIndicators();
         }
 
         private void Update()
@@ -68,6 +78,7 @@ namespace Countdown
 
             sprite.color = Color.Lerp(startColor, endColor, progress);
             hourText.color = Color.Lerp(textStartColor, textEndColor, progress);
+            UpdateHealthIndicators();
         }
 
         public void OnDestroyed()
@@ -79,6 +90,7 @@ namespace Countdown
         {
             sprite.color = destroyedColor;
             hourText.color = destroyedTextColor;
+            SetAllIndicators(false);
         }
 
         private static string ToRomanNumeral(int number)
@@ -94,6 +106,61 @@ namespace Countdown
             }
 
             return result.ToString();
+        }
+
+        private void CreateHealthIndicators()
+        {
+            _healthIndicators = new SpriteRenderer[IndicatorCount];
+            var usedSprite = sprite.sprite;
+
+            for (int i = 0; i < IndicatorCount; i++)
+            {
+                float angle = 90f - (i * 360f / IndicatorCount);
+                float rad = angle * Mathf.Deg2Rad;
+
+                var go = new GameObject($"HealthIndicator_{i}");
+                go.transform.SetParent(transform, false);
+                go.transform.localPosition = new Vector3(
+                    Mathf.Cos(rad) * indicatorRadius,
+                    Mathf.Sin(rad) * indicatorRadius,
+                    0f
+                );
+                go.transform.localScale = Vector3.one * indicatorScale;
+
+                var sr = go.AddComponent<SpriteRenderer>();
+                sr.sprite = usedSprite;
+                sr.drawMode = SpriteDrawMode.Simple;
+                sr.color = indicatorColor;
+                sr.sortingLayerID = sprite.sortingLayerID;
+                sr.sortingOrder = sprite.sortingOrder;
+
+                _healthIndicators[i] = sr;
+                go.SetActive(false);
+            }
+        }
+
+        private void UpdateHealthIndicators()
+        {
+            if (_healthIndicators == null) return;
+
+            if (Phase != HourMarkerPhase.Active)
+            {
+                SetAllIndicators(false);
+                return;
+            }
+
+            float normalizedHealth = damageModule.NormalizedHealth;
+            int activeCount = Mathf.CeilToInt(normalizedHealth * IndicatorCount);
+
+            for (int i = 0; i < IndicatorCount; i++)
+                _healthIndicators[i].gameObject.SetActive(i < activeCount);
+        }
+
+        private void SetAllIndicators(bool active)
+        {
+            if (_healthIndicators == null) return;
+            for (int i = 0; i < IndicatorCount; i++)
+                _healthIndicators[i].gameObject.SetActive(active);
         }
 
         public void OnBeforeSerialize()
