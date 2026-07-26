@@ -53,3 +53,7 @@ MonoBehaviour:
   flyingEnemyPrefab: {fileID: 2236298257837654032, guid: ba63155c0fb4230419e617f897f8984f, type: 3}
   flyingEnemyChance: 0.15
   flyingSpawnOffset: 1
+  towerEnemyPrefab: {fileID: 5000000000000001, guid: f1e2d3c4b5a697081234abcd56789ef0, type: 3}
+  towerEnemyChance: 0.1
+  towerMarkerInset: 1.2
+  maxTowerEnemies: 3
