@@ -35,8 +35,8 @@ namespace Countdown
         [SerializeField] private GameObject towerEnemyPrefab;
         [Tooltip("Chance (0-1) that a spawn produces a tower enemy instead of a ground/flying enemy.")]
         [SerializeField] private float towerEnemyChance = 0.1f;
-        [Tooltip("How far in front of the hour marker (toward center) the tower spawns.")]
-        [SerializeField] private float towerMarkerInset = 1.2f;
+        [Tooltip("How far along the line from center to marker the tower guards (0 = center, 1 = at marker).")]
+        [SerializeField, Range(0f, 1f)] private float towerGuardFraction = 0.55f;
         [SerializeField] private int maxTowerEnemies = 3;
 
         private int _currentEnemyCount = 0;
@@ -187,8 +187,7 @@ namespace Countdown
                 : Vector2.zero;
 
             Vector2 markerPos = (Vector2)highest.transform.position;
-            Vector2 toCenter = (center - markerPos).normalized;
-            Vector2 guardPos = markerPos + toCenter * towerMarkerInset;
+            Vector2 guardPos = Vector2.Lerp(center, markerPos, towerGuardFraction);
 
             // Spawn at normal radius like ground enemies, then walk to the guard position
             float angle = Random.Range(0f, 360f);
