@@ -14,7 +14,6 @@ namespace Countdown
 
         private Vector2 _destination;
         private float _nextFireTime;
-        private CircleBoundary _boundary;
 
         public void SetDestination(Vector2 destination)
         {
@@ -26,7 +25,6 @@ namespace Countdown
             base.Start();
             currentState = AIState.Guarding;
             _nextFireTime = Time.time + fireStartDelay;
-            _boundary = GameState.Instance.Boundary;
         }
 
         protected override void Update()

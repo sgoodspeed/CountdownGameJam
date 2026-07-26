@@ -52,9 +52,9 @@ MonoBehaviour:
   sprite: {fileID: 701196814678454279}
   container: {fileID: 0}
   damageModule: {fileID: 7668853536564285904}
-  startColor: {r: 0, g: 0, b: 0, a: 0}
-  endColor: {r: 0.30817598, g: 0.30817598, b: 0.30817598, a: 1}
-  destroyedColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.5}
+  startColor: {r: 0.09019608, g: 0.10196079, b: 0.1764706, a: 0}
+  endColor: {r: 1, g: 1, b: 1, a: 1}
+  destroyedColor: {r: 1, g: 1, b: 1, a: 0}
   animator: {fileID: 5916042778166901202}
   baseSpawnCount: 1
   spawnScatter: 2

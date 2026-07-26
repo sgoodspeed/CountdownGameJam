@@ -42,7 +42,7 @@ namespace Countdown
         private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
         private ContactFilter2D movementCastFilter;
 
-        private CircleBoundary _boundary;
+        protected CircleBoundary _boundary;
         private SpriteRenderer[] _spriteRenderers;
         private Color[] _originalColors;
 
