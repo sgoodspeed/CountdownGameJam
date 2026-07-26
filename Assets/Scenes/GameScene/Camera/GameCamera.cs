@@ -36,12 +36,19 @@ namespace Countdown
         [Tooltip("Smoothing time for the lean, so it eases in/out instead of snapping.")]
         [SerializeField] private float leanSmoothTime = 0.35f;
         
+        [Header("Zoom")]
         [SerializeField] private float minOrthoSize = 10f;
         [SerializeField] private float maxOrthoSize = 13f;
+        [SerializeField] private float zoomSmoothTime = 0.5f;
+
+        [Header("Aim Offset")]
+        [Tooltip("How far (world units) the aim direction pushes the camera anchor.")]
+        [SerializeField] private float aimInfluence = 1.5f;
 
         private Transform anchor;
         private float currentLean;
         private float leanVelocity;
+        private float zoomVelocity;
 
         protected override void Awake()
         {
@@ -71,21 +78,28 @@ namespace Countdown
 
         private void Update()
         {
-            if (followTarget == null)
-            {
-                return;
-            }
+            if (followTarget == null) return;
 
             Vector2 offsetFromCenter = (Vector2)followTarget.position - boundsCenter;
+
+            if (player != null)
+                offsetFromCenter += player.AimDirection.normalized * aimInfluence;
+
             Vector2 clampedOffset = Vector2.ClampMagnitude(offsetFromCenter, boundsRadius);
             anchor.position = boundsCenter + clampedOffset;
 
             float targetLean = boundsRadius > 0f ? Mathf.Clamp(offsetFromCenter.x / boundsRadius, -1f, 1f) : 0f;
             currentLean = Mathf.SmoothDamp(currentLean, targetLean, ref leanVelocity, leanSmoothTime);
-
-            var target = container.ActiveMarkers / container.MarkerCount;
-
             ApplyLean(currentLean);
+
+            if (container != null && container.MarkerCount > 0)
+            {
+                float activeRatio = (float)container.ActiveMarkers / container.MarkerCount;
+                float targetSize = Mathf.Lerp(minOrthoSize, maxOrthoSize, activeRatio);
+                var lens = virtualCamera.Lens;
+                lens.OrthographicSize = Mathf.SmoothDamp(lens.OrthographicSize, targetSize, ref zoomVelocity, zoomSmoothTime);
+                virtualCamera.Lens = lens;
+            }
         }
 
         private void ApplyLean(float lean)
