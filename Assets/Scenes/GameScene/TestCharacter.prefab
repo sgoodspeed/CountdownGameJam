@@ -308,12 +308,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.CharacterMelee2D
   attackDuration: 0.2
-  startAngle: -90
-  endAngle: 90
-  easeType: 27
-  swordPivot: {fileID: 4351455118746227778}
+  meleeAnimator: {fileID: 3672948722526521770}
   meleeHitbox: {fileID: 7186336733642501584}
-  staffRenderer: {fileID: 4244870428754904510}
+  attackTrigger: Attack
 --- !u!114 &3408124903990807966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,13 +494,14 @@ GameObject:
   - component: {fileID: 2489749337444024568}
   - component: {fileID: 3905980871694444046}
   - component: {fileID: 4481023688987666213}
+  - component: {fileID: 3672948722526521770}
   m_Layer: 0
   m_Name: MeleeHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5293741419716582307
 Transform:
   m_ObjectHideFlags: 0
@@ -553,17 +551,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.22, y: -0.14632809}
+  m_Offset: {x: -1.22, y: 0.07947898}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 4.65, y: 5.02}
+    newSize: {x: 2.72, y: 3.72}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.78, y: 0.81}
+  m_Size: {x: 2.7800002, y: 4.44618}
   m_EdgeRadius: 0
 --- !u!114 &3905980871694444046
 MonoBehaviour:
@@ -629,16 +627,38 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 8888461806267099605, guid: b02aa38d620f7a14ca780b92ab413b50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_DrawMode: 1
+  m_Size: {x: 2.72, y: 3.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &3672948722526521770
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7186336733642501584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 08a7527dd42913e439b24870b5912ce8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7672258588876655247
 GameObject:
   m_ObjectHideFlags: 0
