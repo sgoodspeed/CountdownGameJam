@@ -14,7 +14,7 @@ namespace Countdown
 
         private Vector2 _destination;
         private float _nextFireTime;
-        private bool _reachedDestination;
+        private CircleBoundary _boundary;
 
         public void SetDestination(Vector2 destination)
         {
@@ -26,13 +26,14 @@ namespace Countdown
             base.Start();
             currentState = AIState.Guarding;
             _nextFireTime = Time.time + fireStartDelay;
+            _boundary = GameState.Instance.Boundary;
         }
 
         protected override void Update()
         {
             base.Update();
 
-            if (_reachedDestination || target == null) return;
+            if (target == null) return;
 
             if (Time.time >= _nextFireTime)
             {
@@ -43,22 +44,33 @@ namespace Countdown
 
         protected override void FixedUpdate()
         {
-            if (_reachedDestination) return;
-
             Vector2 toDestination = _destination - body.position;
             if (toDestination.sqrMagnitude < 0.5f)
             {
-                _reachedDestination = true;
-                var col = GetComponent<Collider2D>();
-                if (col != null) col.enabled = false;
-                if (EnemySpawner2D.Instance != null)
-                    EnemySpawner2D.Instance.EnemyDied();
-                Destroy(gameObject);
+                PickNewDestination();
                 return;
             }
 
             Vector2 direction = toDestination.normalized;
             body.MovePosition(body.position + direction * (flySpeed * Time.fixedDeltaTime));
+        }
+
+        private void PickNewDestination()
+        {
+            Vector2 center = _boundary != null
+                ? (Vector2)_boundary.transform.position
+                : Vector2.zero;
+            float radius = _boundary != null ? _boundary.radius : 8f;
+
+            float currentAngle = Mathf.Atan2(
+                body.position.y - center.y,
+                body.position.x - center.x) * Mathf.Rad2Deg;
+
+            float newAngle = currentAngle + 180f + Random.Range(-45f, 45f);
+            float dist = radius + 1f;
+
+            float rad = newAngle * Mathf.Deg2Rad;
+            _destination = center + new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * dist;
         }
 
         private void FireAtPlayer()
