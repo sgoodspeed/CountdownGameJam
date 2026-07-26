@@ -31,9 +31,19 @@ namespace Countdown
         [Tooltip("How far beyond the boundary edge the flying enemy spawns/exits.")]
         [SerializeField] private float flyingSpawnOffset = 1f;
 
+        [Header("Tower Enemy")]
+        [SerializeField] private GameObject towerEnemyPrefab;
+        [Tooltip("Chance (0-1) that a spawn produces a tower enemy instead of a ground/flying enemy.")]
+        [SerializeField] private float towerEnemyChance = 0.1f;
+        [Tooltip("How far in front of the hour marker (toward center) the tower spawns.")]
+        [SerializeField] private float towerMarkerInset = 1.2f;
+        [SerializeField] private int maxTowerEnemies = 3;
+
         private int _currentEnemyCount = 0;
+        private int _currentTowerCount = 0;
         private int _lastAngleIndex = -1;
         private Coroutine _spawnCoroutine;
+        private HourMarkerContainer _hourMarkerContainer;
 
         private void Awake()
         {
@@ -59,6 +69,8 @@ namespace Countdown
             {
                 levelBoundary = GameState.Instance.Boundary;
             }
+
+            _hourMarkerContainer = FindAnyObjectByType<HourMarkerContainer>();
         }
 
         public void StartSpawning()
@@ -79,6 +91,12 @@ namespace Countdown
             _currentEnemyCount = Mathf.Max(0, _currentEnemyCount - 1);
         }
 
+        public void TowerEnemyDied()
+        {
+            _currentTowerCount = Mathf.Max(0, _currentTowerCount - 1);
+            _currentEnemyCount = Mathf.Max(0, _currentEnemyCount - 1);
+        }
+
         private IEnumerator DripSpawnRoutine()
         {
             while (true)
@@ -94,6 +112,11 @@ namespace Countdown
 
         public void ExecuteSingleSpawn()
         {
+            if (towerEnemyPrefab != null && _currentTowerCount < maxTowerEnemies && Random.value < towerEnemyChance)
+            {
+                if (TrySpawnTowerEnemy()) return;
+            }
+
             if (flyingEnemyPrefab != null && Random.value < flyingEnemyChance)
             {
                 SpawnFlyingEnemy();
@@ -150,6 +173,33 @@ namespace Countdown
             float x = Mathf.Cos(radians) * radius;
             float y = Mathf.Sin(radians) * radius;
             return new Vector2(x, y);
+        }
+
+        private bool TrySpawnTowerEnemy()
+        {
+            if (_hourMarkerContainer == null) return false;
+
+            var positions = _hourMarkerContainer.GetActiveMarkerPositions();
+            if (positions.Count == 0) return false;
+
+            Vector2 center = levelBoundary != null
+                ? (Vector2)levelBoundary.transform.position
+                : Vector2.zero;
+
+            Vector2 markerPos = positions[Random.Range(0, positions.Count)];
+            Vector2 toCenter = (center - markerPos).normalized;
+            Vector2 spawnPos = markerPos + toCenter * towerMarkerInset;
+
+            GameObject newEnemy = Instantiate(towerEnemyPrefab, spawnPos, Quaternion.identity);
+            _currentEnemyCount++;
+            _currentTowerCount++;
+
+            if (newEnemy.TryGetComponent(out TowerEnemy2D tower))
+            {
+                tower.target = playerTransform;
+            }
+
+            return true;
         }
 
         public void SpawnNear(Vector2 center, int count, float scatter = 1.5f)

@@ -25,6 +25,7 @@ namespace Countdown
         public float CurrentHealth { get; protected set; }
 
         private EnemyBase2D _enemy;
+        private bool _isTower;
         private Collider2D _collision;
         private Rigidbody2D _body;
         private Tween _deathTween;
@@ -35,6 +36,7 @@ namespace Countdown
         {
             CurrentHealth = maxHealth;
             _enemy = GetComponent<EnemyBase2D>();
+            _isTower = _enemy is TowerEnemy2D;
             _collision = GetComponent<Collider2D>();
             _body = GetComponent<Rigidbody2D>();
             if (animator == null) animator = GetComponentInChildren<Animator>();
@@ -102,7 +104,13 @@ namespace Countdown
 
             if (_collision != null) _collision.enabled = false;
             if (attackHitbox != null) attackHitbox.SetActive(false);
-            if (EnemySpawner2D.Instance != null) EnemySpawner2D.Instance.EnemyDied();
+            if (EnemySpawner2D.Instance != null)
+            {
+                if (_isTower)
+                    EnemySpawner2D.Instance.TowerEnemyDied();
+                else
+                    EnemySpawner2D.Instance.EnemyDied();
+            }
 
             _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);
 
