@@ -5,39 +5,28 @@ namespace Countdown
 {
     public class TowerEnemy2D : EnemyBase2D
     {
-        public enum TowerState { Walking, Burrowed, Emerging, Shooting, Waiting, Burrowing }
+        public enum TowerState { Walking, Idle, Shooting, Waiting }
 
         [Header("Walking")]
         [SerializeField] private float arrivalDistance = 0.5f;
 
         [Header("Tower Cycle Timing")]
-        [SerializeField] private float burrowedDuration = 4f;
-        [SerializeField] private float emergeDuration = 0.6f;
         [SerializeField] private float shootDuration = 3f;
-        [SerializeField] private float waitAfterShootDuration = 0.5f;
-        [SerializeField] private float burrowDuration = 0.6f;
+        [SerializeField] private float waitDuration = 2f;
 
         [Header("Shooting")]
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private float fireRate = 2f;
         [SerializeField] private Transform firePoint;
 
-        [Header("Emerge / Burrow Visuals")]
-        [SerializeField] private Transform visuals;
-        [SerializeField] private float emergeHeight = 1.2f;
-
         [Header("Components")]
         [SerializeField] private Animator animator;
-        [SerializeField] private Collider2D hitCollider;
 
         private TowerState _state = TowerState.Walking;
         private Vector2 _guardPosition;
         private Transform _walkTarget;
         private Transform _playerTransform;
         private float _nextFireTime;
-        private float _burrowedY;
-
-        private static readonly int IsEmerged = Animator.StringToHash("IsEmerged");
 
         public TowerState State => _state;
 
@@ -59,7 +48,6 @@ namespace Countdown
         {
             base.Awake();
             if (animator == null) animator = GetComponentInChildren<Animator>();
-            if (hitCollider == null) hitCollider = GetComponent<Collider2D>();
         }
 
         protected override void Start()
@@ -69,9 +57,6 @@ namespace Countdown
 
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null) _playerTransform = playerObj.transform;
-
-            if (visuals != null)
-                _burrowedY = visuals.localPosition.y - emergeHeight;
         }
 
         protected override void FixedUpdate()
@@ -85,7 +70,7 @@ namespace Countdown
                 {
                     body.MovePosition(_guardPosition);
                     currentState = AIState.Guarding;
-                    StartCoroutine(TowerCycleRoutine());
+                    StartCoroutine(ShootCycleRoutine());
                 }
             }
         }
@@ -101,73 +86,17 @@ namespace Countdown
             }
         }
 
-        private IEnumerator TowerCycleRoutine()
+        private IEnumerator ShootCycleRoutine()
         {
-            SetBurrowed();
-            yield return new WaitForSeconds(burrowedDuration);
-
             while (true)
             {
-                _state = TowerState.Emerging;
-                if (hitCollider != null) hitCollider.enabled = true;
-                if (animator != null) animator.SetBool(IsEmerged, true);
-                yield return StartCoroutine(AnimateEmerge(true));
-
                 _state = TowerState.Shooting;
                 _nextFireTime = Time.time;
                 yield return new WaitForSeconds(shootDuration);
 
                 _state = TowerState.Waiting;
-                yield return new WaitForSeconds(waitAfterShootDuration);
-
-                _state = TowerState.Burrowing;
-                if (animator != null) animator.SetBool(IsEmerged, false);
-                yield return StartCoroutine(AnimateEmerge(false));
-                SetBurrowed();
-
-                yield return new WaitForSeconds(burrowedDuration);
+                yield return new WaitForSeconds(waitDuration);
             }
-        }
-
-        private void SetBurrowed()
-        {
-            _state = TowerState.Burrowed;
-            if (hitCollider != null) hitCollider.enabled = false;
-
-            if (visuals != null)
-            {
-                var pos = visuals.localPosition;
-                pos.y = _burrowedY;
-                visuals.localPosition = pos;
-            }
-        }
-
-        private IEnumerator AnimateEmerge(bool emerging)
-        {
-            if (visuals == null)
-            {
-                yield return new WaitForSeconds(emerging ? emergeDuration : burrowDuration);
-                yield break;
-            }
-
-            float duration = emerging ? emergeDuration : burrowDuration;
-            float startY = emerging ? _burrowedY : _burrowedY + emergeHeight;
-            float endY = emerging ? _burrowedY + emergeHeight : _burrowedY;
-            float elapsed = 0f;
-
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.SmoothStep(0f, 1f, elapsed / duration);
-                var pos = visuals.localPosition;
-                pos.y = Mathf.Lerp(startY, endY, t);
-                visuals.localPosition = pos;
-                yield return null;
-            }
-
-            var final = visuals.localPosition;
-            final.y = endY;
-            visuals.localPosition = final;
         }
 
         private void FireAtPlayer()
