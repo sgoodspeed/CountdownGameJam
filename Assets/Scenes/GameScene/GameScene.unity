@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba114a05a1948aeba89c4a56d8dfa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &140396306
+--- !u!43 &245979242
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -459,7 +459,7 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!43 &245979242
+--- !u!43 &324339648
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -828,6 +828,18 @@ PrefabInstance:
     - target: {fileID: 3636507102488486482, guid: 55fa3ca295474ce4988d4e6bd15a2898, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803742469862777723, guid: 55fa3ca295474ce4988d4e6bd15a2898, type: 3}
+      propertyPath: aimSmoothTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803742469862777723, guid: 55fa3ca295474ce4988d4e6bd15a2898, type: 3}
+      propertyPath: aimMaxDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803742469862777723, guid: 55fa3ca295474ce4988d4e6bd15a2898, type: 3}
+      propertyPath: zoomSmoothTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

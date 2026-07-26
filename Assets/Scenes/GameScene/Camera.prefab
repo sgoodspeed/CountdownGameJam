@@ -126,16 +126,16 @@ MonoBehaviour:
   container: {fileID: 0}
   player: {fileID: 0}
   boundsCenter: {x: 0, y: 0}
-  boundsRadius: 1
-  leanAmount: 0.12
+  boundsRadius: 4
+  leanAmount: 0.1
   leanSmoothTime: 0.35
   minOrthoSize: 8
   maxOrthoSize: 10
-  zoomSmoothTime: 0.5
+  zoomSmoothTime: 3
   aimInfluenceX: 10
-  aimInfluenceY: 15
+  aimInfluenceY: 10
   aimMaxDistance: 3
-  aimSmoothTime: 0.4
+  aimSmoothTime: 0.5
 --- !u!1 &6401230246044016056
 GameObject:
   m_ObjectHideFlags: 0
