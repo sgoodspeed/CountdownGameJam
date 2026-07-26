@@ -200,7 +200,7 @@ Transform:
   - {fileID: 3913477996247933044}
   - {fileID: 1775097949065131249}
   - {fileID: 4181571467281939987}
-  - {fileID: 2634873016485170220}
+  - {fileID: 3495350495159094705}
   m_Father: {fileID: 3273725425131031836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8719684423759343324
@@ -286,7 +286,7 @@ MonoBehaviour:
   - {fileID: 7436281364019758398}
   - {fileID: 5323227472238875067}
   - {fileID: 7744608168043649881}
-  - {fileID: 8497586666036750694}
+  - {fileID: 7060649987689588987}
 --- !u!1 &3099008238559925227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,91 +1149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
---- !u!1001 &2823595386695875108
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4200692070633563993}
-    m_Modifications:
-    - target: {fileID: 138028633241223257, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_Name
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: hour
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: container
-      value: 
-      objectReference: {fileID: 1150502963795363371}
-    - target: {fileID: 7668853536564285904, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-      propertyPath: container
-      value: 
-      objectReference: {fileID: 1150502963795363371}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
---- !u!4 &2634873016485170220 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 270108255880754696, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-  m_PrefabInstance: {fileID: 2823595386695875108}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8497586666036750694 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
-  m_PrefabInstance: {fileID: 2823595386695875108}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
 --- !u!1001 &3886863248074888828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1312,6 +1227,87 @@ Transform:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5963349780469322562, guid: 276e5163820d9434081a9ed116ab7587, type: 3}
   m_PrefabInstance: {fileID: 3886863248074888828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ba42aea873b499244f8fb1bffa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Countdown.HourMarker
+--- !u!1001 &3959211045276444018
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4200692070633563993}
+    m_Modifications:
+    - target: {fileID: 298915365901164178, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_Name
+      value: HourMarker_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272817986048609673, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    - target: {fileID: 8044176703560699675, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1150502963795363371}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+--- !u!4 &3495350495159094705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 463883653465827523, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+  m_PrefabInstance: {fileID: 3959211045276444018}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7060649987689588987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6272817986048609673, guid: 4686848834f210a49ada8999808ffe08, type: 3}
+  m_PrefabInstance: {fileID: 3959211045276444018}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

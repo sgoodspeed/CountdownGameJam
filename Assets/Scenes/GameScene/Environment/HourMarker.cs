@@ -1,5 +1,4 @@
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
 
 namespace Countdown
@@ -10,37 +9,31 @@ namespace Countdown
     {
         [SerializeField] private int hour;
         [SerializeField] private SpriteRenderer sprite;
-        [SerializeField] private TMP_Text hourText;
         [SerializeField] private HourMarkerContainer container;
         [SerializeField] private HourMarkerDamageModule damageModule;
 
         [Header("Rising / Active Colors")]
         [SerializeField] private Color startColor;
         [SerializeField] private Color endColor;
-        [SerializeField] private Color textStartColor;
-        [SerializeField] private Color textEndColor;
 
         [Header("Destroyed Colors")]
         [SerializeField] private Color destroyedColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
-        [SerializeField] private Color destroyedTextColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
 
-        [Header("Health Indicators")]
-        [SerializeField] private GameObject indicatorPrefab;
-        [SerializeField] private float indicatorRadius = 3f;
-        [SerializeField] private Color indicatorColor = Color.white;
+        [Header("Animation")]
+        [SerializeField] private Animator animator;
 
         [Header("Enemy Spawning")]
         [SerializeField] private int baseSpawnCount = 1;
         [SerializeField] private float spawnScatter = 2f;
 
-        private const int IndicatorCount = 9;
+        private const int MaxDamageState = 6;
+        private static readonly int DamageStateParam = Animator.StringToHash("DamageState");
+
         private Sequence animationSequence;
         private int _deathCount = 0;
 
         public int Hour => hour;
         public HourMarkerPhase Phase { get; private set; } = HourMarkerPhase.Rising;
-
-        private SpriteRenderer[] _healthIndicators;
 
         private static readonly (int Value, string Numeral)[] RomanNumerals =
         {
@@ -49,18 +42,10 @@ namespace Countdown
             (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I"),
         };
 
-        private void Awake()
-        {
-            hourText.text = ToRomanNumeral(hour);
-            CreateHealthIndicators();
-            
-        }
-
         private void Start()
         {
             sprite.color = startColor;
-            hourText.color = textStartColor;
-            SetAllIndicators(false);
+            SetDamageState(0);
         }
 
         private void Update()
@@ -93,7 +78,7 @@ namespace Countdown
                 damageModule.Reset();
             }
 
-            UpdateHealthIndicators();
+            UpdateDamageState();
         }
 
         public void OnDestroyed()
@@ -107,18 +92,18 @@ namespace Countdown
         {
             animationSequence?.Kill();
             animationSequence = DOTween.Sequence()
-                .Append(sprite.DOColor(endColor, 1f)).SetEase(Ease.InOutCubic)
-                .Append(hourText.DOColor(textEndColor, 1f)).SetEase(Ease.InOutCubic);
-            SetAllIndicators(true);
+                .Append(sprite.DOColor(endColor, 1f)).SetEase(Ease.InOutCubic);
+            SetDamageState(0);
+            animator.SetBool("IsDead", false);
         }
 
         public void ApplyDestroyedVisuals()
         {
             animationSequence?.Kill();
             animationSequence = DOTween.Sequence()
-                .Append(sprite.DOColor(startColor, 1f)).SetEase(Ease.InOutCubic)
-                .Append(hourText.DOColor(textStartColor, 1f)).SetEase(Ease.InOutCubic);
-            SetAllIndicators(false);
+                .Append(sprite.DOColor(startColor, 1f)).SetEase(Ease.InOutCubic);
+            SetDamageState(MaxDamageState);
+            animator.SetBool("IsDead", true);
         }
 
         private void SpawnEnemies()
@@ -128,55 +113,22 @@ namespace Countdown
             EnemySpawner2D.Instance.SpawnNear(transform.position, count, spawnScatter);
         }
 
-        private static string ToRomanNumeral(int number)
+        private void UpdateDamageState()
         {
-            var result = new System.Text.StringBuilder();
-            foreach (var (value, numeral) in RomanNumerals)
-            {
-                while (number >= value)
-                {
-                    result.Append(numeral);
-                    number -= value;
-                }
-            }
-
-            return result.ToString();
-        }
-
-        private void CreateHealthIndicators()
-        {
-            _healthIndicators = HourMarkerHealthIndicatorFactory.Create(new HourMarkerHealthIndicatorFactory.Config
-            {
-                Parent = transform,
-                Count = IndicatorCount,
-                Radius = indicatorRadius,
-                Prefab = indicatorPrefab,
-                SortingOrder = sprite.sortingOrder,
-            });
-        }
-
-        private void UpdateHealthIndicators()
-        {
-            if (_healthIndicators == null) return;
-
             if (Phase != HourMarkerPhase.Active)
             {
-                SetAllIndicators(false);
+                SetDamageState(Phase == HourMarkerPhase.Destroyed ? MaxDamageState : 0);
                 return;
             }
 
             float normalizedHealth = damageModule.NormalizedHealth;
-            int activeCount = Mathf.CeilToInt(normalizedHealth * IndicatorCount);
-
-            for (int i = 0; i < IndicatorCount; i++)
-                _healthIndicators[i].gameObject.SetActive(i < activeCount);
+            int state = Mathf.Clamp(Mathf.RoundToInt((1f - normalizedHealth) * MaxDamageState), 0, MaxDamageState);
+            SetDamageState(state);
         }
 
-        private void SetAllIndicators(bool active)
+        private void SetDamageState(int state)
         {
-            if (_healthIndicators == null) return;
-            for (int i = 0; i < IndicatorCount; i++)
-                _healthIndicators[i].gameObject.SetActive(active);
+            animator.SetFloat(DamageStateParam, state / (float)MaxDamageState);
         }
 
         public void OnBeforeSerialize()

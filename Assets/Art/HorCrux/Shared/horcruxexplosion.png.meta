@@ -223,7 +223,7 @@ TextureImporter:
         width: 199
         height: 190
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -242,10 +242,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1999
         y: 1
-        width: 243
+        width: 202
         height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -259,116 +259,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: horcruxexplosion_2
-      rect:
-        serializedVersion: 2
-        x: 2220
-        y: 154
-        width: 78
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 94aca3a52aac4ad30800000000000000
-      internalID: 4441897931141466697
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_3
-      rect:
-        serializedVersion: 2
-        x: 2296
-        y: 164
-        width: 63
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2700e199ad984f9f0800000000000000
-      internalID: -435571691983339406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_4
-      rect:
-        serializedVersion: 2
-        x: 2347
-        y: 8
-        width: 53
-        height: 191
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d157908119e2e2c40800000000000000
-      internalID: 5489376196519621917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_5
-      rect:
-        serializedVersion: 2
-        x: 2358
-        y: 193
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d13f1c2c8147a37b0800000000000000
-      internalID: -5243751166423993571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_6
-      rect:
-        serializedVersion: 2
-        x: 2366
-        y: 192
-        width: 13
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d94688498009c5630800000000000000
-      internalID: 3917164142431593629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: horcruxexplosion_7
       rect:
         serializedVersion: 2
@@ -377,7 +267,7 @@ TextureImporter:
         width: 188
         height: 181
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -391,50 +281,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: horcruxexplosion_8
-      rect:
-        serializedVersion: 2
-        x: 2238
-        y: 182
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6f50aabdc3ba09730800000000000000
-      internalID: 4003888346604111350
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_9
-      rect:
-        serializedVersion: 2
-        x: 2249
-        y: 185
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cbb89514f0d316470800000000000000
-      internalID: 8386051116870765500
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: horcruxexplosion_10
       rect:
         serializedVersion: 2
@@ -443,7 +289,7 @@ TextureImporter:
         width: 188
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -465,7 +311,7 @@ TextureImporter:
         width: 188
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -487,7 +333,7 @@ TextureImporter:
         width: 188
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -509,7 +355,7 @@ TextureImporter:
         width: 188
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -531,7 +377,7 @@ TextureImporter:
         width: 188
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -553,7 +399,7 @@ TextureImporter:
         width: 188
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -575,7 +421,7 @@ TextureImporter:
         width: 188
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -597,7 +443,7 @@ TextureImporter:
         width: 188
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -619,7 +465,7 @@ TextureImporter:
         width: 6
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -633,160 +479,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: horcruxexplosion_19
-      rect:
-        serializedVersion: 2
-        x: 2196
-        y: 115
-        width: 37
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7426d0aafc3a81c60800000000000000
-      internalID: 7789155667843834439
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_20
-      rect:
-        serializedVersion: 2
-        x: 2232
-        y: 144
-        width: 11
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f841c3cccb8356fb0800000000000000
-      internalID: -4655252256286042993
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_21
-      rect:
-        serializedVersion: 2
-        x: 2209
-        y: 71
-        width: 14
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47983d569bc259dd0800000000000000
-      internalID: -2480026845008656012
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_22
-      rect:
-        serializedVersion: 2
-        x: 2218
-        y: 64
-        width: 8
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b8bfe9d0d1f742110800000000000000
-      internalID: 1235251960565660555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_23
-      rect:
-        serializedVersion: 2
-        x: 2216
-        y: 23
-        width: 36
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6516bb02fa9dcf940800000000000000
-      internalID: 5331375405091479894
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_24
-      rect:
-        serializedVersion: 2
-        x: 2227
-        y: 8
-        width: 19
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 263dbd557ba7bda60800000000000000
-      internalID: 7699882915758068578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_25
-      rect:
-        serializedVersion: 2
-        x: 2235
-        y: 0
-        width: 61
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1a64567a708c91980800000000000000
-      internalID: -8567596880896899423
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: horcruxexplosion_26
       rect:
         serializedVersion: 2
@@ -795,7 +487,7 @@ TextureImporter:
         width: 7
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -817,7 +509,7 @@ TextureImporter:
         width: 7
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -831,138 +523,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: horcruxexplosion_28
-      rect:
-        serializedVersion: 2
-        x: 2294
-        y: 3
-        width: 15
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0b7a20ae1cf56b210800000000000000
-      internalID: 1348370424903411632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_29
-      rect:
-        serializedVersion: 2
-        x: 2308
-        y: 0
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 58d61b169b99e6f90800000000000000
-      internalID: -6958455352753820283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_30
-      rect:
-        serializedVersion: 2
-        x: 2313
-        y: 7
-        width: 8
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 84aed019bea4fd540800000000000000
-      internalID: 5034825284034882120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_31
-      rect:
-        serializedVersion: 2
-        x: 2317
-        y: 0
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bcda8e69088d53510800000000000000
-      internalID: 1528365695361396171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_32
-      rect:
-        serializedVersion: 2
-        x: 2320
-        y: 0
-        width: 49
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e61be0c174e301550800000000000000
-      internalID: 6129467567985570158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: horcruxexplosion_33
-      rect:
-        serializedVersion: 2
-        x: 2293
-        y: 0
-        width: 15
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b9a911e91c4b96a60800000000000000
-      internalID: 7667858584248621723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: horcruxexplosion_34
       rect:
         serializedVersion: 2
@@ -971,7 +531,7 @@ TextureImporter:
         width: 7
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -988,7 +548,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f0af16a79b3b4f548b968e8865971711
     internalID: 0
     vertices: []
     indices: 
@@ -1027,6 +587,7 @@ TextureImporter:
       horcruxexplosion_32: 6129467567985570158
       horcruxexplosion_33: 7667858584248621723
       horcruxexplosion_34: 3866025389861765116
+      horcruxexplosion_35: -1854656549
       horcruxexplosion_4: 5489376196519621917
       horcruxexplosion_5: -5243751166423993571
       horcruxexplosion_6: 3917164142431593629
