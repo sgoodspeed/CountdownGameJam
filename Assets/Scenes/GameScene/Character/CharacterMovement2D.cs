@@ -36,6 +36,8 @@ namespace Countdown
         private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
         private ContactFilter2D movementCastFilter;
 
+        public Vector2 AimDirection { get; private set; } = Vector2.one;
+
         private void Awake()
         {
             body.freezeRotation = true;
@@ -86,6 +88,7 @@ namespace Countdown
 
             // 2. Rotate StaffPivot toward mouse (+180 offset for staff art orientation)
             Vector2 targetDir = ((Vector2)worldPoint - (Vector2)staffPivot.position).normalized;
+            AimDirection = targetDir;
             if (targetDir.sqrMagnitude > (aimDeadZone * aimDeadZone))
             {
                 float targetAngle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg + 180f;

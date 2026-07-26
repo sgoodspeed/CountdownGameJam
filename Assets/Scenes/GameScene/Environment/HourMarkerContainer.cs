@@ -7,6 +7,22 @@ namespace Countdown
     {
         [SerializeField] private HourMarker[] hourMarkers;
         private Dictionary<int, HourMarker> hourMap;
+
+        public int MarkerCount { get => hourMarkers.Length; }
+        
+        public int ActiveMarkers
+        {
+            get
+            {
+                var activeCount = 0;
+                foreach (var marker in hourMarkers)
+                {
+                    if (marker.Phase == HourMarkerPhase.Active) { activeCount++; }
+                }
+
+                return activeCount;
+            }
+        }
         
         private void Awake()
         {

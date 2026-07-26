@@ -1,4 +1,3 @@
-using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -21,6 +20,9 @@ namespace Countdown
         [SerializeField] private CinemachineCamera virtualCamera;
         [SerializeField] private CinemachinePositionComposer composer;
         [SerializeField] private Transform followTarget;
+        
+        [SerializeField] private HourMarkerContainer container;
+        [SerializeField] private CharacterMovement2D player;
 
         [Header("Fixed area")]
         [Tooltip("World-space center of the play area the camera is allowed to look at.")]
@@ -33,6 +35,9 @@ namespace Countdown
         [SerializeField, Range(0f, 0.5f)] private float leanAmount = 0.12f;
         [Tooltip("Smoothing time for the lean, so it eases in/out instead of snapping.")]
         [SerializeField] private float leanSmoothTime = 0.35f;
+        
+        [SerializeField] private float minOrthoSize = 10f;
+        [SerializeField] private float maxOrthoSize = 13f;
 
         private Transform anchor;
         private float currentLean;
@@ -44,6 +49,7 @@ namespace Countdown
 
             anchor = new GameObject("GameCameraAnchor").transform;
             anchor.SetParent(transform, false);
+            
 
             virtualCamera.Follow = anchor;
         }
@@ -58,6 +64,9 @@ namespace Countdown
                     followTarget = character.transform;
                 }
             }
+            
+            this.player = FindAnyObjectByType<CharacterMovement2D>();
+            this.container = FindAnyObjectByType<HourMarkerContainer>();
         }
 
         private void Update()
@@ -73,6 +82,8 @@ namespace Countdown
 
             float targetLean = boundsRadius > 0f ? Mathf.Clamp(offsetFromCenter.x / boundsRadius, -1f, 1f) : 0f;
             currentLean = Mathf.SmoothDamp(currentLean, targetLean, ref leanVelocity, leanSmoothTime);
+
+            var target = container.ActiveMarkers / container.MarkerCount;
 
             ApplyLean(currentLean);
         }
