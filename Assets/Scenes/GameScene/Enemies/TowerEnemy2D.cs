@@ -33,6 +33,7 @@ namespace Countdown
         private TowerState _state = TowerState.Walking;
         private Vector2 _guardPosition;
         private Transform _walkTarget;
+        private Transform _playerTransform;
         private float _nextFireTime;
         private float _burrowedY;
 
@@ -66,6 +67,9 @@ namespace Countdown
             base.Start();
             currentState = AIState.Chasing;
 
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null) _playerTransform = playerObj.transform;
+
             if (visuals != null)
                 _burrowedY = visuals.localPosition.y - emergeHeight;
         }
@@ -90,7 +94,7 @@ namespace Countdown
         {
             base.Update();
 
-            if (_state == TowerState.Shooting && target != null && Time.time >= _nextFireTime)
+            if (_state == TowerState.Shooting && _playerTransform != null && Time.time >= _nextFireTime)
             {
                 FireAtPlayer();
                 _nextFireTime = Time.time + 1f / fireRate;
@@ -99,10 +103,6 @@ namespace Countdown
 
         private IEnumerator TowerCycleRoutine()
         {
-            // Re-target the player for shooting
-            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null) target = playerObj.transform;
-
             SetBurrowed();
             yield return new WaitForSeconds(burrowedDuration);
 
@@ -172,10 +172,10 @@ namespace Countdown
 
         private void FireAtPlayer()
         {
-            if (projectilePrefab == null || target == null) return;
+            if (projectilePrefab == null || _playerTransform == null) return;
 
             Vector2 origin = firePoint != null ? (Vector2)firePoint.position : body.position;
-            Vector2 direction = ((Vector2)target.position - origin).normalized;
+            Vector2 direction = ((Vector2)_playerTransform.position - origin).normalized;
             GameObject projObj = Instantiate(projectilePrefab, origin, Quaternion.identity);
             if (projObj.TryGetComponent(out Projectile2D projectile))
             {
