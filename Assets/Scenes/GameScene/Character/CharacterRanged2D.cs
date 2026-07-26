@@ -11,6 +11,8 @@ namespace Countdown
         [SerializeField] private float spawnJitter = 0.5f;
         [SerializeField] private Transform staffArm;
         
+        [Header("Sound")]
+        [SerializeField] private SoundConfig shootSound;
         
         [Tooltip("Name of the InputSystem action that triggers firing.")]
         [SerializeField] private string inputActionName = "Shoot";
@@ -40,6 +42,9 @@ namespace Countdown
         private void Fire()
         {
             GameCamera.Shake(.1f, .3f);
+            
+            if (shootSound != null)
+                SoundManager.Instance.Play(shootSound);
             
             Vector2 direction = -staffArm.right;
             Vector2 spawnPos = (Vector2)transform.position + direction * spawnOffset;

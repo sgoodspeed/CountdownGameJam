@@ -11,6 +11,8 @@ namespace Countdown
     {
         [SerializeField] private MainMenuModel model;
         [SerializeField] private MainMenuView view;
+        
+        [SerializeField] private AudioClip bgm;
 
         public event Action PlayRequested;
         public event Action QuitRequested;
@@ -19,12 +21,16 @@ namespace Countdown
         {
             view.PlayButtonClicked += HandlePlayButtonClicked;
             view.QuitButtonClicked += HandleQuitButtonClicked;
+            
+            SoundManager.Instance.PlayMusic(bgm);
         }
 
         private void OnDisable()
         {
             view.PlayButtonClicked -= HandlePlayButtonClicked;
             view.QuitButtonClicked -= HandleQuitButtonClicked;
+            
+            SoundManager.Instance.StopMusic();
         }
 
         public void Show() => gameObject.SetActive(true);

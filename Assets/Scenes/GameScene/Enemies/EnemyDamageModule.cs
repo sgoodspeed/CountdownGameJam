@@ -20,6 +20,7 @@ namespace Countdown
 
         [Header("Sound")]
         [SerializeField] private SoundConfig hitSound;
+        [SerializeField] private SoundConfig deathSound;
 
         [Header("Health")]
         [SerializeField] protected float maxHealth = 10f;
@@ -114,6 +115,9 @@ namespace Countdown
                 else
                     EnemySpawner2D.Instance.EnemyDied();
             }
+            
+            if (deathSound != null)
+                SoundManager.Instance.Play(deathSound);
 
             _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);
 

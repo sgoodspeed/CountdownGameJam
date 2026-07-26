@@ -19,6 +19,9 @@ namespace Countdown
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private float fireRate = 2f;
         [SerializeField] private Transform firePoint;
+        
+        [Header("Sound")]
+        [SerializeField] private SoundConfig shootSound;
 
         [Header("Components")]
         [SerializeField] private Animator animator;
@@ -129,6 +132,8 @@ namespace Countdown
             if (projObj.TryGetComponent(out Projectile2D projectile))
             {
                 projectile.Fire(origin, direction);
+                if (shootSound != null)
+                    SoundManager.Instance.Play(shootSound);
             }
         }
 

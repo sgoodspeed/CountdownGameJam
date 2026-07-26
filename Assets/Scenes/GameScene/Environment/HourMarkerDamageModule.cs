@@ -18,6 +18,10 @@ namespace Countdown
         [SerializeField] private SpriteRenderer[] flashRenderers;
         [SerializeField] private SpriteFlashSettings hitFlash;
         [SerializeField] private SpriteFlashSettings deathFlash;
+        
+        [Header("Sound")]
+        [SerializeField] private SoundConfig hitSound;
+        [SerializeField] private SoundConfig deathSound;
 
         public float CurrentHealth { get; private set; }
         public float NormalizedHealth => maxHealth > 0f ? CurrentHealth / maxHealth : 0f;
@@ -51,6 +55,9 @@ namespace Countdown
 
             _flashTween?.Kill(true);
             _flashTween = SpriteFlash.Play(flashRenderers, hitFlash);
+            
+            if (hitSound != null)
+                SoundManager.Instance.Play(hitSound);
 
             if (CurrentHealth <= 0f)
             {
@@ -75,9 +82,17 @@ namespace Countdown
             }
 
             _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);
-
+            
             float delay = deathFlash != null ? deathFlash.duration : 0f;
-            _deathTween = DOVirtual.DelayedCall(delay, () => hourMarker.ApplyDestroyedVisuals());
+            _deathTween = DOVirtual
+                .DelayedCall(delay, PlayDeathSound);
+        }
+
+        private void PlayDeathSound()
+        {
+            if (deathSound != null)
+                SoundManager.Instance.Play(deathSound);
+            hourMarker.ApplyDestroyedVisuals();
         }
 
         private void OnDestroy()

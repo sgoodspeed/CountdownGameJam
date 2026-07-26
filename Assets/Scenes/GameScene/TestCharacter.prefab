@@ -315,6 +315,7 @@ MonoBehaviour:
   meleeHitbox: {fileID: 7186336733642501584}
   staffRenderer: {fileID: 4244870428754904510}
   meleeAnimator: {fileID: 3672948722526521770}
+  slashSound: {fileID: 11400000, guid: cc9eb23632885584da1dc28dee922f02, type: 2}
   attackTrigger: Attack
 --- !u!114 &3408124903990807966
 MonoBehaviour:
@@ -332,6 +333,7 @@ MonoBehaviour:
   spawnOffset: 0.5
   spawnJitter: 0.5
   staffArm: {fileID: 3151947449526335536}
+  shootSound: {fileID: 11400000, guid: 5cbfe1fb7fa299c43a2c67db9c4e91a9, type: 2}
   inputActionName: Shoot
   projectilePool: {fileID: 2809113494846744828}
 --- !u!114 &7441983194462198133
@@ -346,7 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b3666ec598fa846b3f657aca101b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.PlayerDamageModule
-  stunDuration: 0.3
   invulnerabilityDuration: 3
   flashRenderers:
   - {fileID: 204854069890499031}
@@ -365,6 +366,8 @@ MonoBehaviour:
   movement: {fileID: 1280592077513628606}
   melee: {fileID: 1407678196955801302}
   body: {fileID: 578169102021449705}
+  hitSound: {fileID: 11400000, guid: 48635e510ddb3b94691b4a9dd61e3c61, type: 2}
+  deathSound: {fileID: 11400000, guid: 0e59b4e986ef9aa41b238b62a51d61d3, type: 2}
 --- !u!212 &196064418291999902
 SpriteRenderer:
   serializedVersion: 2
@@ -582,6 +585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.MeleeDamageTrigger2D
   damageAmount: 5
   knockbackDistance: 2
+  stunDuration: 0.3
   owner: {fileID: 2373678540942378834}
 --- !u!212 &4481023688987666213
 SpriteRenderer:

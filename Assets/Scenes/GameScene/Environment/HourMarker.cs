@@ -91,7 +91,6 @@ namespace Countdown
         
         public void ApplyActivatedVisual()
         {
-            if(Hour == 1) { Debug.Log("ApplyActivatedVisual"); }
             animationSequence?.Kill();
             animationSequence = DOTween.Sequence()
                 .Append(sprite.DOColor(endColor, 1f)).SetEase(Ease.InOutCubic);
@@ -101,7 +100,6 @@ namespace Countdown
 
         public void ApplyDestroyedVisuals()
         {
-            if(Hour == 1) { Debug.Log("ApplyDestroyedVisuals"); }
             animationSequence?.Kill();
             animationSequence = DOTween.Sequence()
                 .Append(sprite.DOColor(startColor, 1f)).SetEase(Ease.InOutCubic);

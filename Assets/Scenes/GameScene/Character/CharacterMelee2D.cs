@@ -17,6 +17,9 @@ namespace Countdown
         [SerializeField] private GameObject meleeHitbox;
         [SerializeField] private SpriteRenderer staffRenderer;
         [SerializeField] private Animator meleeAnimator;
+        
+        [Header("Sound")]
+        [SerializeField] private SoundConfig slashSound;
 
         [Header("Animation")]
         [SerializeField] private string attackTrigger = "Attack";
@@ -49,6 +52,9 @@ namespace Countdown
                 meleeHitbox.SetActive(true);
             
             GameCamera.Shake(.3f, .5f);
+            
+            if (slashSound != null)
+                SoundManager.Instance.Play(slashSound);
 
             if (swordPivot != null)
             {

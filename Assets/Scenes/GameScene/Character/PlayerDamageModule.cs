@@ -18,6 +18,10 @@ namespace Countdown
         [SerializeField] private CharacterMovement2D movement;
         [SerializeField] private CharacterMelee2D melee;
         [SerializeField] private Rigidbody2D body;
+        
+        [Header("Sound")]
+        [SerializeField] private SoundConfig hitSound;
+        [SerializeField] private SoundConfig deathSound;
 
         private float _invulnerableUntil;
         private Tween _flashTween;
@@ -49,6 +53,9 @@ namespace Countdown
 
             GameCamera.Shake(0.5f, .3f);
 
+            if (hitSound != null)
+                SoundManager.Instance.Play(hitSound);
+            
             ApplyKnockback(hitDirection, knockbackDistance);
             ApplyStun(stunDuration);
 
@@ -88,6 +95,9 @@ namespace Countdown
             if (melee != null) melee.enabled = false;
             
             GameCamera.Shake(1f, .5f);
+            
+            if (deathSound != null)
+                SoundManager.Instance.Play(deathSound);
 
             _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);
             if (_flashTween != null)
