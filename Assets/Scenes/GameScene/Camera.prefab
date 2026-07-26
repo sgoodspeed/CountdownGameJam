@@ -129,10 +129,13 @@ MonoBehaviour:
   boundsRadius: 1
   leanAmount: 0.12
   leanSmoothTime: 0.35
-  minOrthoSize: 10
-  maxOrthoSize: 13
+  minOrthoSize: 8
+  maxOrthoSize: 10
   zoomSmoothTime: 0.5
-  aimInfluence: 1.5
+  aimInfluenceX: 10
+  aimInfluenceY: 15
+  aimMaxDistance: 3
+  aimSmoothTime: 0.4
 --- !u!1 &6401230246044016056
 GameObject:
   m_ObjectHideFlags: 0

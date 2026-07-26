@@ -43,14 +43,22 @@ namespace Countdown
         [SerializeField] private float zoomSmoothTime = 0.5f;
 
         [Header("Aim Offset")]
-        [Tooltip("How far (world units) the aim direction pushes the camera anchor.")]
-        [SerializeField] private float aimInfluence = 1.5f;
+        [Tooltip("How far (world units) the aim direction pushes the camera anchor horizontally.")]
+        [SerializeField] private float aimInfluenceX = 1.5f;
+        [Tooltip("How far (world units) the aim direction pushes the camera anchor vertically.")]
+        [SerializeField] private float aimInfluenceY = 1.5f;
+        [Tooltip("Maximum world-unit distance the aim can push the anchor (independent of bounds).")]
+        [SerializeField] private float aimMaxDistance = 3f;
+        [Tooltip("Smoothing time for the aim offset. Higher = slower/softer camera response to aiming.")]
+        [SerializeField] private float aimSmoothTime = 0.4f;
 
         private Transform anchor;
         private Camera _outputCamera;
         private float currentLean;
         private float leanVelocity;
         private float zoomVelocity;
+        private Vector2 currentAimOffset;
+        private Vector2 aimOffsetVelocity;
 
         protected override void Awake()
         {
@@ -83,15 +91,22 @@ namespace Countdown
         {
             if (followTarget == null) return;
 
-            Vector2 offsetFromCenter = (Vector2)followTarget.position - boundsCenter;
+            Vector2 playerOffset = (Vector2)followTarget.position - boundsCenter;
 
+            Vector2 clampedPlayerOffset = Vector2.ClampMagnitude(playerOffset, boundsRadius);
+
+            Vector2 aimOffset = Vector2.zero;
             if (player != null)
-                offsetFromCenter += player.AimDirection.normalized * aimInfluence;
+            {
+                Vector2 aimDir = player.AimDirection.normalized;
+                Vector2 targetAimOffset = new Vector2(aimDir.x * aimInfluenceX, aimDir.y * aimInfluenceY);
+                currentAimOffset = Vector2.SmoothDamp(currentAimOffset, targetAimOffset, ref aimOffsetVelocity, aimSmoothTime);
+                aimOffset = Vector2.ClampMagnitude(currentAimOffset, aimMaxDistance);
+            }
 
-            Vector2 clampedOffset = Vector2.ClampMagnitude(offsetFromCenter, boundsRadius);
-            anchor.position = boundsCenter + clampedOffset;
+            anchor.position = boundsCenter + clampedPlayerOffset + aimOffset;
 
-            float targetLean = boundsRadius > 0f ? Mathf.Clamp(offsetFromCenter.x / boundsRadius, -1f, 1f) : 0f;
+            float targetLean = boundsRadius > 0f ? Mathf.Clamp(playerOffset.x / boundsRadius, -1f, 1f) : 0f;
             currentLean = Mathf.SmoothDamp(currentLean, targetLean, ref leanVelocity, leanSmoothTime);
             ApplyLean(currentLean);
         }
