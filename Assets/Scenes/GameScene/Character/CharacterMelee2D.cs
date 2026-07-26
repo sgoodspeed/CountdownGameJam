@@ -47,6 +47,8 @@ namespace Countdown
 
             if (meleeHitbox != null)
                 meleeHitbox.SetActive(true);
+            
+            GameCamera.Shake(.3f, .5f);
 
             if (swordPivot != null)
             {

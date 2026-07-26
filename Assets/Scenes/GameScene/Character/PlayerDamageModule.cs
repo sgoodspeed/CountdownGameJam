@@ -47,6 +47,8 @@ namespace Countdown
             _flashTween?.Kill(true);
             _flashTween = SpriteFlash.Play(flashRenderers, hitFlash);
 
+            GameCamera.Shake(0.5f, .3f);
+
             ApplyKnockback(hitDirection, knockbackDistance);
             ApplyStun(stunDuration);
 
@@ -84,6 +86,8 @@ namespace Countdown
 
             if (movement != null) movement.enabled = false;
             if (melee != null) melee.enabled = false;
+            
+            GameCamera.Shake(1f, .5f);
 
             _flashTween = SpriteFlash.Play(flashRenderers, deathFlash);
             if (_flashTween != null)

@@ -136,6 +136,7 @@ MonoBehaviour:
   aimInfluenceY: 10
   aimMaxDistance: 3
   aimSmoothTime: 0.5
+  shakeMaxOffset: 10
 --- !u!1 &6401230246044016056
 GameObject:
   m_ObjectHideFlags: 0

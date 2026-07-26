@@ -39,6 +39,8 @@ namespace Countdown
 
         private void Fire()
         {
+            GameCamera.Shake(.1f, .3f);
+            
             Vector2 direction = -staffArm.right;
             Vector2 spawnPos = (Vector2)transform.position + direction * spawnOffset;
             Vector2 jitter = staffArm.up * (Random.Range(-1f, 1f) * spawnJitter);

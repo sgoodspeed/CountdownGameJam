@@ -54,7 +54,7 @@ namespace Countdown
 
         [Header("Shake")]
         [Tooltip("World-unit displacement at intensity 1.")]
-        [SerializeField] private float shakeMaxOffset = 0.5f;
+        [SerializeField] private float shakeMaxOffset = 2f;
 
         private Transform anchor;
         private Camera _outputCamera;
