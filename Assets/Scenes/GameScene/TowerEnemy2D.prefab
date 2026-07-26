@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f1a606e04224b48b1d6dd638391657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.TowerEnemy2D
-  moveSpeed: 3
+  moveSpeed: 1
   skinDistance: 0.1
   currentState: 0
   target: {fileID: 0}
@@ -62,18 +62,12 @@ MonoBehaviour:
   outsideColor: {r: 0.09019608, g: 0.10196079, b: 0.1764706, a: 0}
   fadeDistance: 0.5
   arrivalDistance: 0.5
-  burrowedDuration: 4
-  emergeDuration: 0.6
-  shootDuration: 3
-  waitAfterShootDuration: 0.5
-  burrowDuration: 0.6
+  shootDuration: 5
+  waitDuration: 5
   projectilePrefab: {fileID: 7400657722132145818, guid: 7fa20347c3a5d5341a50a5f7b5e7b6f0, type: 3}
   fireRate: 10
   firePoint: {fileID: 5000000000000032}
-  visuals: {fileID: 5000000000000012}
-  emergeHeight: 1.2
   animator: {fileID: 5000000000000014}
-  hitCollider: {fileID: 143193230727909917}
 --- !u!114 &5000000000000004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +98,7 @@ MonoBehaviour:
     intensity: 1
     duration: 1
     flashes: 1
-  maxHealth: 25
+  maxHealth: 50
 --- !u!50 &5000000000000005
 Rigidbody2D:
   serializedVersion: 5
