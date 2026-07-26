@@ -116,6 +116,15 @@ namespace Countdown
             return new Vector2(x, y);
         }
 
+        public void SpawnNear(Vector2 center, int count, float scatter = 1.5f)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Vector2 offset = Random.insideUnitCircle * scatter;
+                InstantiateEnemy(center + offset);
+            }
+        }
+
         private void InstantiateEnemy(Vector2 position)
         {
             if (enemyPrefab == null) return;

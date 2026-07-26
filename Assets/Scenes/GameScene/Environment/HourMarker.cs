@@ -29,8 +29,13 @@ namespace Countdown
         [SerializeField] private float indicatorRadius = 3f;
         [SerializeField] private Color indicatorColor = Color.white;
 
+        [Header("Enemy Spawning")]
+        [SerializeField] private int baseSpawnCount = 1;
+        [SerializeField] private float spawnScatter = 2f;
+
         private const int IndicatorCount = 9;
         private Sequence animationSequence;
+        private int _deathCount = 0;
 
         public int Hour => hour;
         public HourMarkerPhase Phase { get; private set; } = HourMarkerPhase.Rising;
@@ -94,6 +99,8 @@ namespace Countdown
         public void OnDestroyed()
         {
             Phase = HourMarkerPhase.Destroyed;
+            _deathCount++;
+            SpawnEnemies();
         }
         
         public void ApplyActivatedVisual()
@@ -112,6 +119,13 @@ namespace Countdown
                 .Append(sprite.DOColor(startColor, 1f)).SetEase(Ease.InOutCubic)
                 .Append(hourText.DOColor(textStartColor, 1f)).SetEase(Ease.InOutCubic);
             SetAllIndicators(false);
+        }
+
+        private void SpawnEnemies()
+        {
+            if (EnemySpawner2D.Instance == null) return;
+            int count = baseSpawnCount + _deathCount;
+            EnemySpawner2D.Instance.SpawnNear(transform.position, count, spawnScatter);
         }
 
         private static string ToRomanNumeral(int number)
