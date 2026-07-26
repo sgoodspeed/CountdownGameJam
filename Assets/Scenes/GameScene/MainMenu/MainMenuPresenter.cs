@@ -22,7 +22,8 @@ namespace Countdown
             view.PlayButtonClicked += HandlePlayButtonClicked;
             view.QuitButtonClicked += HandleQuitButtonClicked;
             
-            SoundManager.Instance.PlayMusic(bgm);
+            if(bgm != null)
+                SoundManager.Instance.PlayMusic(bgm);
         }
 
         private void OnDisable()
@@ -30,7 +31,8 @@ namespace Countdown
             view.PlayButtonClicked -= HandlePlayButtonClicked;
             view.QuitButtonClicked -= HandleQuitButtonClicked;
             
-            SoundManager.Instance.StopMusic();
+            if(bgm != null)
+                SoundManager.Instance.StopMusic();
         }
 
         public void Show() => gameObject.SetActive(true);

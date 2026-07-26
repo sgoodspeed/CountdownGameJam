@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 5255795776549847504}
   view: {fileID: 2130810892220524074}
+  bgm: {fileID: 8300000, guid: a395858b86f64ab419acb7a827478057, type: 3}
 --- !u!1 &2551078168795486959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 7181989090537563353}
   view: {fileID: 3942402534967040838}
+  bgm: {fileID: 0}
 --- !u!1 &6264955488982686551
 GameObject:
   m_ObjectHideFlags: 0
