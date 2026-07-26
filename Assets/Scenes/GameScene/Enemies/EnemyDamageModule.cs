@@ -18,6 +18,9 @@ namespace Countdown
         [SerializeField] private SpriteFlashSettings hitFlash;
         [SerializeField] private SpriteFlashSettings deathFlash;
 
+        [Header("Sound")]
+        [SerializeField] private SoundConfig hitSound;
+
         [Header("Health")]
         [SerializeField] protected float maxHealth = 10f;
 
@@ -62,6 +65,9 @@ namespace Countdown
         {
             _flashTween?.Kill(true);
             _flashTween = SpriteFlash.Play(flashRenderers, hitFlash);
+
+            if (hitSound != null)
+                SoundManager.Instance.Play(hitSound);
 
             ApplyKnockback(hitDirection, knockbackDistance);
             ApplyStun(stunDuration);
