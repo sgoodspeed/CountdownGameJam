@@ -84,7 +84,7 @@ namespace Countdown
             if (_pool != null)
                 _pool.Release(this);
             else
-                gameObject.SetActive(false);
+                Destroy(gameObject);
         }
     }
 }

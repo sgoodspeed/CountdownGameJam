@@ -24,6 +24,13 @@ namespace Countdown
         [SerializeField] private float spawnRadius = 8f;
         [SerializeField] private float spawnInterval = 2f;
 
+        [Header("Flying Enemy")]
+        [SerializeField] private GameObject flyingEnemyPrefab;
+        [Tooltip("Chance (0-1) that a spawn produces a flying enemy.")]
+        [SerializeField] private float flyingEnemyChance = 0.15f;
+        [Tooltip("How far beyond the boundary edge the flying enemy spawns/exits.")]
+        [SerializeField] private float flyingSpawnOffset = 1f;
+
         private int _currentEnemyCount = 0;
         private int _lastAngleIndex = -1;
         private Coroutine _spawnCoroutine;
@@ -87,8 +94,13 @@ namespace Countdown
 
         public void ExecuteSingleSpawn()
         {
+            if (flyingEnemyPrefab != null && Random.value < flyingEnemyChance)
+            {
+                SpawnFlyingEnemy();
+                return;
+            }
+
             int nextIndex;
-            // Ensure we don't spawn in the exact same direction or immediately adjacent angle twice in a row
             do
             {
                 nextIndex = Random.Range(0, 8);
@@ -106,6 +118,30 @@ namespace Countdown
 
             Vector2 targetPos = (Vector2)playerTransform.position + CalculateRadialOffset(angle, spawnRadius);
             InstantiateEnemy(targetPos);
+        }
+
+        private void SpawnFlyingEnemy()
+        {
+            Vector2 center = levelBoundary != null
+                ? (Vector2)levelBoundary.transform.position
+                : Vector2.zero;
+            float radius = levelBoundary != null ? levelBoundary.radius : 8f;
+            float edgeDist = radius + flyingSpawnOffset;
+
+            float spawnAngle = Random.Range(0f, 360f);
+            float exitAngle = spawnAngle + 180f + Random.Range(-30f, 30f);
+
+            Vector2 spawnPos = center + CalculateRadialOffset(spawnAngle, edgeDist);
+            Vector2 destPos = center + CalculateRadialOffset(exitAngle, edgeDist);
+
+            GameObject newEnemy = Instantiate(flyingEnemyPrefab, spawnPos, Quaternion.identity);
+            _currentEnemyCount++;
+
+            if (newEnemy.TryGetComponent(out FlyingEnemy2D flyingEnemy))
+            {
+                flyingEnemy.target = playerTransform;
+                flyingEnemy.SetDestination(destPos);
+            }
         }
 
         private Vector2 CalculateRadialOffset(float angleInDegrees, float radius)
