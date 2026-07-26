@@ -10,17 +10,20 @@ namespace Countdown
 
         public int MarkerCount { get => hourMarkers.Length; }
         
-        public int ActiveMarkers
+        public HourMarker HighestActiveMarker
         {
             get
             {
-                var activeCount = 0;
+                HourMarker highest = null;
                 foreach (var marker in hourMarkers)
                 {
-                    if (marker.Phase == HourMarkerPhase.Active) { activeCount++; }
+                    if (marker.Phase == HourMarkerPhase.Active && (highest?.Hour ?? 0) < marker.Hour)
+                    {
+                        highest = marker;
+                    }
                 }
 
-                return activeCount;
+                return highest;
             }
         }
         
