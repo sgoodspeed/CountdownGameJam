@@ -191,16 +191,16 @@ namespace Countdown
             return true;
         }
 
-        public void SpawnOnHourMarkerDeath(Vector2 center, int count, float scatter = 1.5f)
+        public void SpawnOnHourMarkerDeath(Vector2 center, int count, int markerDeathCount, float scatter = 1.5f)
         {
             _totalHourMarkerDeaths++;
 
             int flyingCount = 0;
-            if (_totalHourMarkerDeaths >= 3)
-                flyingCount = 1 + (_totalHourMarkerDeaths - 3) / 2;
+            if (markerDeathCount >= 3)
+                flyingCount = 1 + (markerDeathCount - 3) / 2;
 
             int towerCount = 0;
-            if (_totalHourMarkerDeaths >= 5)
+            if (markerDeathCount >= 5)
                 towerCount = 1;
 
             int groundCount = Mathf.Max(0, count - flyingCount - towerCount);
