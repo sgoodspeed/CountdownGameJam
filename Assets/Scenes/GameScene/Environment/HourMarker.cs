@@ -113,7 +113,7 @@ namespace Countdown
         {
             if (EnemySpawner2D.Instance == null) return;
             int count = baseSpawnCount + _deathCount;
-            EnemySpawner2D.Instance.SpawnNear(transform.position, count, spawnScatter);
+            EnemySpawner2D.Instance.SpawnOnHourMarkerDeath(transform.position, count, spawnScatter);
         }
 
         private void UpdateDamageState()

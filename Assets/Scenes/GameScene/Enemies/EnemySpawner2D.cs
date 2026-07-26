@@ -26,21 +26,18 @@ namespace Countdown
 
         [Header("Flying Enemy")]
         [SerializeField] private GameObject flyingEnemyPrefab;
-        [Tooltip("Chance (0-1) that a spawn produces a flying enemy.")]
-        [SerializeField] private float flyingEnemyChance = 0.15f;
         [Tooltip("How far beyond the boundary edge the flying enemy spawns/exits.")]
         [SerializeField] private float flyingSpawnOffset = 1f;
 
         [Header("Tower Enemy")]
         [SerializeField] private GameObject towerEnemyPrefab;
-        [Tooltip("Chance (0-1) that a spawn produces a tower enemy instead of a ground/flying enemy.")]
-        [SerializeField] private float towerEnemyChance = 0.1f;
         [Tooltip("How far along the line from center to marker the tower guards (0 = center, 1 = at marker).")]
         [SerializeField, Range(0f, 1f)] private float towerGuardFraction = 0.55f;
         [SerializeField] private int maxTowerEnemies = 3;
 
         private int _currentEnemyCount = 0;
         private int _currentTowerCount = 0;
+        private int _totalHourMarkerDeaths = 0;
         private int _lastAngleIndex = -1;
         private Coroutine _spawnCoroutine;
         private HourMarkerContainer _hourMarkerContainer;
@@ -112,17 +109,6 @@ namespace Countdown
 
         public void ExecuteSingleSpawn()
         {
-            if (towerEnemyPrefab != null && _currentTowerCount < maxTowerEnemies && Random.value < towerEnemyChance)
-            {
-                if (TrySpawnTowerEnemy()) return;
-            }
-
-            if (flyingEnemyPrefab != null && Random.value < flyingEnemyChance)
-            {
-                SpawnFlyingEnemy();
-                return;
-            }
-
             int nextIndex;
             do
             {
@@ -203,6 +189,33 @@ namespace Countdown
             }
 
             return true;
+        }
+
+        public void SpawnOnHourMarkerDeath(Vector2 center, int count, float scatter = 1.5f)
+        {
+            _totalHourMarkerDeaths++;
+
+            int flyingCount = 0;
+            if (_totalHourMarkerDeaths >= 3)
+                flyingCount = 1 + (_totalHourMarkerDeaths - 3) / 2;
+
+            int towerCount = 0;
+            if (_totalHourMarkerDeaths >= 5)
+                towerCount = 1;
+
+            int groundCount = Mathf.Max(0, count - flyingCount - towerCount);
+
+            for (int i = 0; i < groundCount; i++)
+            {
+                Vector2 offset = Random.insideUnitCircle * scatter;
+                InstantiateEnemy(center + offset);
+            }
+
+            for (int i = 0; i < flyingCount; i++)
+                SpawnFlyingEnemy();
+
+            for (int i = 0; i < towerCount; i++)
+                TrySpawnTowerEnemy();
         }
 
         public void SpawnNear(Vector2 center, int count, float scatter = 1.5f)
