@@ -42,7 +42,7 @@ namespace Countdown
             Reset();
         }
 
-        public override void TakeDamage(float amount, Vector2 hitDirection, float knockbackDistance = 0f)
+        public override void TakeDamage(float amount, Vector2 hitDirection, float knockbackDistance = 0f, float stunDuration = 0f)
         {
             if (IsDead || amount <= 0f) return;
             if (hourMarker.Phase != HourMarkerPhase.Active) return;

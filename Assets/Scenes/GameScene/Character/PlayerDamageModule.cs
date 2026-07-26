@@ -37,7 +37,7 @@ namespace Countdown
                 GameState.Instance.ClockRanOut -= Die;
         }
 
-        public override void TakeDamage(float amount, Vector2 hitDirection, float knockbackDistance = 0f)
+        public override void TakeDamage(float amount, Vector2 hitDirection, float knockbackDistance = 0f, float stunDuration = 0f)
         {
             if (IsDead || amount <= 0f) return;
             if (Time.time < _invulnerableUntil) return;
@@ -48,7 +48,7 @@ namespace Countdown
             _flashTween = SpriteFlash.Play(flashRenderers, hitFlash);
 
             ApplyKnockback(hitDirection, knockbackDistance);
-            ApplyStun();
+            ApplyStun(stunDuration);
 
             GameState.Instance.GameClock.AddHours(-amount, invulnerabilityDuration);
         }
@@ -59,15 +59,15 @@ namespace Countdown
                 body.MovePosition(body.position + direction * distance);
         }
 
-        private void ApplyStun()
+        private void ApplyStun(float duration)
         {
-            if (StunDuration <= 0f) return;
+            if (duration <= 0f) return;
 
             _stunTween?.Kill();
             if (movement != null) movement.enabled = false;
             if (melee != null) melee.enabled = false;
 
-            _stunTween = DOVirtual.DelayedCall(StunDuration, () =>
+            _stunTween = DOVirtual.DelayedCall(duration, () =>
             {
                 if (this == null || IsDead) return;
                 if (body != null) body.linearVelocity = Vector2.zero;

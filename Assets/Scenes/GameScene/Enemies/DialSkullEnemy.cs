@@ -56,9 +56,6 @@ namespace Countdown
 
             _lungeDirection = ((Vector2)target.position - body.position).normalized;
 
-            if (animator != null)
-                animator.SetTrigger("IsAttacking");
-
             yield return new WaitForSeconds(windUpDuration);
 
             skullState = SkullState.Lunging;

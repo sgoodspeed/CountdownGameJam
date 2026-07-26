@@ -7,6 +7,7 @@ namespace Countdown
     {
         [SerializeField] private float damageAmount = 10f;
         [SerializeField] private float knockbackDistance = 5f;
+        [SerializeField] private float stunDuration = 0.3f;
         [Tooltip("The character that owns this weapon (e.g. TestCharacter). Used to calculate outward knockback direction.")]
         [SerializeField] private Transform owner;
 
@@ -48,7 +49,7 @@ namespace Countdown
                     hitDirection = Vector2.right;
                 }
 
-                damageable.TakeDamage(damageAmount, hitDirection, knockbackDistance);
+                damageable.TakeDamage(damageAmount, hitDirection, knockbackDistance, stunDuration);
             }
         }
     }

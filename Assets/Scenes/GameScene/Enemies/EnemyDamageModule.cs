@@ -44,12 +44,12 @@ namespace Countdown
                 flashRenderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
-        public override void TakeDamage(float amount, Vector2 hitDirection, float knockbackDistance = 0f)
+        public override void TakeDamage(float amount, Vector2 hitDirection, float knockbackDistance = 0f, float stunDuration = 0f)
         {
             if (IsDead || amount <= 0f) return;
 
             CurrentHealth = Mathf.Max(0f, CurrentHealth - amount);
-            OnDamaged(hitDirection, knockbackDistance);
+            OnDamaged(hitDirection, knockbackDistance, stunDuration);
 
             if (CurrentHealth <= 0f)
             {
@@ -58,16 +58,13 @@ namespace Countdown
             }
         }
 
-        private void OnDamaged(Vector2 hitDirection, float knockbackDistance)
+        private void OnDamaged(Vector2 hitDirection, float knockbackDistance, float stunDuration)
         {
             _flashTween?.Kill(true);
             _flashTween = SpriteFlash.Play(flashRenderers, hitFlash);
 
             ApplyKnockback(hitDirection, knockbackDistance);
-            ApplyStun();
-
-            if (animator != null && !string.IsNullOrEmpty(hitTrigger))
-                animator.SetTrigger(hitTrigger);
+            ApplyStun(stunDuration);
         }
 
         private void ApplyKnockback(Vector2 direction, float distance)
@@ -76,14 +73,14 @@ namespace Countdown
                 _body.MovePosition(_body.position + direction * distance);
         }
 
-        private void ApplyStun()
+        private void ApplyStun(float duration)
         {
-            if (StunDuration <= 0f) return;
+            if (duration <= 0f) return;
 
             _stunTween?.Kill();
             if (_enemy != null) _enemy.enabled = false;
 
-            _stunTween = DOVirtual.DelayedCall(StunDuration, () =>
+            _stunTween = DOVirtual.DelayedCall(duration, () =>
             {
                 if (this == null || IsDead) return;
                 if (_body != null) _body.linearVelocity = Vector2.zero;
