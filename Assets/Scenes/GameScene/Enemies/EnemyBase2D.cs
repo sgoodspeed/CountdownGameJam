@@ -23,7 +23,7 @@ namespace Countdown
         public Transform target;
 
         [Header("References")]
-        [SerializeField] private Rigidbody2D body;
+        [SerializeField] protected Rigidbody2D body;
         [SerializeField] private Collider2D collision;
         [Tooltip("Layers considered as obstacles by the chase movement's avoidance cast.")]
         [SerializeField] private LayerMask movementCastLayers = ~0;

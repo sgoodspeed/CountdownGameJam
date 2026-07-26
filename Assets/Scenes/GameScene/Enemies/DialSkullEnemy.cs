@@ -1,9 +1,3 @@
-// ============================================================================
-// PURPOSE:
-//   2D implementation of the Dial Skull enemy. Inherits custom 2D movement
-//   from EnemyBase2D while adding swipe-attack pause timing and death animations.
-// ============================================================================
-
 using System.Collections;
 using UnityEngine;
 
@@ -11,20 +5,23 @@ namespace Countdown
 {
     public class DialSkullEnemy : EnemyBase2D
     {
-        public enum SkullState { Chasing, Attacking }
+        public enum SkullState { Chasing, WindingUp, Lunging }
 
         [Header("Dial Skull Properties")]
         [SerializeField] private SkullState skullState = SkullState.Chasing;
         [SerializeField] private float attackRange = 1.5f;
         [SerializeField] private float attackCooldown = 1.5f;
-        [SerializeField] private float attackPauseDuration = 0.8f;
+        [SerializeField] private float windUpDuration = 0.8f;
+        [SerializeField] private float lungeSpeed = 12f;
+        [SerializeField] private float lungeDuration = 0.3f;
 
         [Header("Components")]
         [SerializeField] protected Animator animator;
-        [Tooltip("Trigger hitbox enabled for the duration of the swipe - disabled the rest of the time.")]
+        [Tooltip("Trigger hitbox enabled during the lunge - disabled the rest of the time.")]
         [SerializeField] private GameObject attackHitbox;
 
         private bool _isAttacking = false;
+        private Vector2 _lungeDirection;
 
         protected override void Awake()
         {
@@ -36,37 +33,45 @@ namespace Countdown
         {
             if (target == null) return;
 
-            float distanceToTarget = Vector2.Distance(transform.position, target.position);
-
             if (skullState == SkullState.Chasing)
             {
-                // Run base 2D physics chase movement (includes wobble & raycast collision)
                 base.FixedUpdate();
 
-                // Trigger attack when close enough
+                float distanceToTarget = Vector2.Distance(transform.position, target.position);
                 if (distanceToTarget <= attackRange && !_isAttacking)
                 {
                     StartCoroutine(PerformAttackRoutine());
                 }
+            }
+            else if (skullState == SkullState.Lunging)
+            {
+                body.MovePosition(body.position + _lungeDirection * (lungeSpeed * Time.fixedDeltaTime));
             }
         }
 
         private IEnumerator PerformAttackRoutine()
         {
             _isAttacking = true;
-            skullState = SkullState.Attacking;
+            skullState = SkullState.WindingUp;
 
-            // Pause movement during swipe (by simply not calling base.FixedUpdate())
+            _lungeDirection = ((Vector2)target.position - body.position).normalized;
+
             if (animator != null)
-            {
                 animator.SetTrigger("IsAttacking");
-            }
 
-            // Wait for attack swipe animation to complete
-            yield return new WaitForSeconds(attackPauseDuration);
+            yield return new WaitForSeconds(windUpDuration);
+
+            skullState = SkullState.Lunging;
+            if (attackHitbox != null)
+                attackHitbox.SetActive(true);
+
+            yield return new WaitForSeconds(lungeDuration);
+
+            if (attackHitbox != null)
+                attackHitbox.SetActive(false);
+
             skullState = SkullState.Chasing;
 
-            // Wait out cooldown before next attack
             yield return new WaitForSeconds(attackCooldown);
             _isAttacking = false;
         }
