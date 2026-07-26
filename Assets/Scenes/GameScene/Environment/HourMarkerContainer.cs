@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Countdown
@@ -68,14 +67,6 @@ namespace Countdown
             }
             
             return lowest;
-        }
-
-        public List<Vector2> GetActiveMarkerPositions()
-        {
-            return hourMarkers
-                .Where(m => m.Phase == HourMarkerPhase.Active)
-                .Select(m => (Vector2)m.transform.position)
-                .ToList();
         }
 
         public void OnBeforeSerialize()

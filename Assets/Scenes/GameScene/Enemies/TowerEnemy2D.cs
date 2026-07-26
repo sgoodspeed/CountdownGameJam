@@ -5,7 +5,10 @@ namespace Countdown
 {
     public class TowerEnemy2D : EnemyBase2D
     {
-        public enum TowerState { Burrowed, Emerging, Shooting, Waiting, Burrowing }
+        public enum TowerState { Walking, Burrowed, Emerging, Shooting, Waiting, Burrowing }
+
+        [Header("Walking")]
+        [SerializeField] private float arrivalDistance = 0.5f;
 
         [Header("Tower Cycle Timing")]
         [SerializeField] private float burrowedDuration = 4f;
@@ -27,13 +30,29 @@ namespace Countdown
         [SerializeField] private Animator animator;
         [SerializeField] private Collider2D hitCollider;
 
-        private TowerState _state = TowerState.Burrowed;
+        private TowerState _state = TowerState.Walking;
+        private Vector2 _guardPosition;
+        private Transform _walkTarget;
         private float _nextFireTime;
         private float _burrowedY;
 
         private static readonly int IsEmerged = Animator.StringToHash("IsEmerged");
 
         public TowerState State => _state;
+
+        public void SetGuardPosition(Vector2 position)
+        {
+            _guardPosition = position;
+
+            if (_walkTarget == null)
+            {
+                var go = new GameObject("TowerWalkTarget");
+                _walkTarget = go.transform;
+            }
+
+            _walkTarget.position = position;
+            target = _walkTarget;
+        }
 
         protected override void Awake()
         {
@@ -45,18 +64,26 @@ namespace Countdown
         protected override void Start()
         {
             base.Start();
-            currentState = AIState.Guarding;
+            currentState = AIState.Chasing;
 
             if (visuals != null)
                 _burrowedY = visuals.localPosition.y - emergeHeight;
-
-            SetBurrowed();
-            StartCoroutine(TowerCycleRoutine());
         }
 
         protected override void FixedUpdate()
         {
-            // Tower doesn't move
+            if (_state == TowerState.Walking)
+            {
+                base.FixedUpdate();
+
+                float dist = Vector2.Distance(body.position, _guardPosition);
+                if (dist <= arrivalDistance)
+                {
+                    body.MovePosition(_guardPosition);
+                    currentState = AIState.Guarding;
+                    StartCoroutine(TowerCycleRoutine());
+                }
+            }
         }
 
         protected override void Update()
@@ -72,32 +99,32 @@ namespace Countdown
 
         private IEnumerator TowerCycleRoutine()
         {
+            // Re-target the player for shooting
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null) target = playerObj.transform;
+
+            SetBurrowed();
             yield return new WaitForSeconds(burrowedDuration);
 
             while (true)
             {
-                // Emerge
                 _state = TowerState.Emerging;
                 if (hitCollider != null) hitCollider.enabled = true;
                 if (animator != null) animator.SetBool(IsEmerged, true);
                 yield return StartCoroutine(AnimateEmerge(true));
 
-                // Shoot
                 _state = TowerState.Shooting;
                 _nextFireTime = Time.time;
                 yield return new WaitForSeconds(shootDuration);
 
-                // Wait
                 _state = TowerState.Waiting;
                 yield return new WaitForSeconds(waitAfterShootDuration);
 
-                // Burrow
                 _state = TowerState.Burrowing;
                 if (animator != null) animator.SetBool(IsEmerged, false);
                 yield return StartCoroutine(AnimateEmerge(false));
                 SetBurrowed();
 
-                // Stay underground
                 yield return new WaitForSeconds(burrowedDuration);
             }
         }
@@ -154,6 +181,12 @@ namespace Countdown
             {
                 projectile.Fire(origin, direction);
             }
+        }
+
+        private void OnDestroy()
+        {
+            if (_walkTarget != null)
+                Destroy(_walkTarget.gameObject);
         }
     }
 }

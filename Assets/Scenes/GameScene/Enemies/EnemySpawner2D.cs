@@ -179,16 +179,20 @@ namespace Countdown
         {
             if (_hourMarkerContainer == null) return false;
 
-            var positions = _hourMarkerContainer.GetActiveMarkerPositions();
-            if (positions.Count == 0) return false;
+            HourMarker highest = _hourMarkerContainer.HighestActiveMarker;
+            if (highest == null) return false;
 
             Vector2 center = levelBoundary != null
                 ? (Vector2)levelBoundary.transform.position
                 : Vector2.zero;
 
-            Vector2 markerPos = positions[Random.Range(0, positions.Count)];
+            Vector2 markerPos = (Vector2)highest.transform.position;
             Vector2 toCenter = (center - markerPos).normalized;
-            Vector2 spawnPos = markerPos + toCenter * towerMarkerInset;
+            Vector2 guardPos = markerPos + toCenter * towerMarkerInset;
+
+            // Spawn at normal radius like ground enemies, then walk to the guard position
+            float angle = Random.Range(0f, 360f);
+            Vector2 spawnPos = (Vector2)playerTransform.position + CalculateRadialOffset(angle, spawnRadius);
 
             GameObject newEnemy = Instantiate(towerEnemyPrefab, spawnPos, Quaternion.identity);
             _currentEnemyCount++;
@@ -196,7 +200,7 @@ namespace Countdown
 
             if (newEnemy.TryGetComponent(out TowerEnemy2D tower))
             {
-                tower.target = playerTransform;
+                tower.SetGuardPosition(guardPos);
             }
 
             return true;
