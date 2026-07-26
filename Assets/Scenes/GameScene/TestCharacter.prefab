@@ -289,7 +289,7 @@ MonoBehaviour:
   moveSpeed: 15
   movementCastLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   aimDeadZone: 0.5
   aimDamping: 15
   bodyVisual: {fileID: 6943433500690882144}

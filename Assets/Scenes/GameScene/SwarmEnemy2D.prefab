@@ -58,7 +58,7 @@ MonoBehaviour:
   collision: {fileID: 7029324339065225356}
   movementCastLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   skullState: 0
   attackRange: 2
   attackCooldown: 1.5
