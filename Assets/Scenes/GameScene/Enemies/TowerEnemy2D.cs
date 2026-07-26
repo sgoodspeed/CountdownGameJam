@@ -5,10 +5,11 @@ namespace Countdown
 {
     public class TowerEnemy2D : EnemyBase2D
     {
-        public enum TowerState { Walking, Idle, Shooting, Waiting }
+        public enum TowerState { Walking, Shooting, Waiting }
 
         [Header("Walking")]
         [SerializeField] private float arrivalDistance = 0.5f;
+        [SerializeField] private float fireStartDelay = 1f;
 
         [Header("Tower Cycle Timing")]
         [SerializeField] private float shootDuration = 3f;
@@ -27,6 +28,7 @@ namespace Countdown
         private Transform _walkTarget;
         private Transform _playerTransform;
         private float _nextFireTime;
+        private bool _arrived;
 
         public TowerState State => _state;
 
@@ -57,11 +59,14 @@ namespace Countdown
 
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null) _playerTransform = playerObj.transform;
+
+            _nextFireTime = Time.time + fireStartDelay;
+            _state = TowerState.Shooting;
         }
 
         protected override void FixedUpdate()
         {
-            if (_state == TowerState.Walking)
+            if (!_arrived)
             {
                 base.FixedUpdate();
 
@@ -70,6 +75,7 @@ namespace Countdown
                 {
                     body.MovePosition(_guardPosition);
                     currentState = AIState.Guarding;
+                    _arrived = true;
                     StartCoroutine(ShootCycleRoutine());
                 }
             }
@@ -79,7 +85,7 @@ namespace Countdown
         {
             base.Update();
 
-            if (_state == TowerState.Shooting && _playerTransform != null && Time.time >= _nextFireTime)
+            if (_state == TowerState.Shooting && _playerTransform != null && Time.time >= _nextFireTime && IsInsideBoundary())
             {
                 FireAtPlayer();
                 _nextFireTime = Time.time + 1f / fireRate;
@@ -97,6 +103,13 @@ namespace Countdown
                 _state = TowerState.Waiting;
                 yield return new WaitForSeconds(waitDuration);
             }
+        }
+
+        private bool IsInsideBoundary()
+        {
+            if (_boundary == null) return true;
+            float dist = ((Vector2)transform.position - (Vector2)_boundary.transform.position).magnitude;
+            return dist <= _boundary.radius;
         }
 
         private void FireAtPlayer()
