@@ -84,7 +84,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 15f0820059a89db42837273b5490f751, type: 2}
+    m_Motion: {fileID: 7400000, guid: 3c1c422c37fc4ed0a7a33200d4a49940, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -92,7 +92,7 @@ BlendTree:
     m_DirectBlendParameter: DamageState
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: d8504b34d84427c45859ed30c05aace0, type: 2}
+    m_Motion: {fileID: 7400000, guid: 9b3a554226234666be34bd818830e340, type: 2}
     m_Threshold: 0.2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 2
@@ -100,7 +100,7 @@ BlendTree:
     m_DirectBlendParameter: DamageState
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 5b6cecfdd4e6a524c803a582d5649fb2, type: 2}
+    m_Motion: {fileID: 7400000, guid: 65f05697f0824f54b4f35bb546c3d405, type: 2}
     m_Threshold: 0.4
     m_Position: {x: 0, y: 0}
     m_TimeScale: 3
@@ -108,7 +108,7 @@ BlendTree:
     m_DirectBlendParameter: DamageState
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 33672ba4902cc7146a72c878b81787e4, type: 2}
+    m_Motion: {fileID: 7400000, guid: 3f0ce31700cd42f9b91a22aec25ef6a1, type: 2}
     m_Threshold: 0.6
     m_Position: {x: 0, y: 0}
     m_TimeScale: 4
@@ -116,7 +116,7 @@ BlendTree:
     m_DirectBlendParameter: DamageState
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 535ce0a643680474d967b88e1bbdb931, type: 2}
+    m_Motion: {fileID: 7400000, guid: abc8718d85bf4f038c079b19ff8cb378, type: 2}
     m_Threshold: 0.8
     m_Position: {x: 0, y: 0}
     m_TimeScale: 5
@@ -124,7 +124,7 @@ BlendTree:
     m_DirectBlendParameter: DamageState
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 06ab631d20dd5114c8cc8947ffdc4686, type: 2}
+    m_Motion: {fileID: 7400000, guid: 822863f4a1b243f0a7181ca10b142fd3, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 6
