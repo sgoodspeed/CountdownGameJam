@@ -48,9 +48,6 @@ namespace Countdown
             if (meleeHitbox != null)
                 meleeHitbox.SetActive(true);
 
-            if (meleeAnimator != null)
-                meleeAnimator.SetTrigger(attackTrigger);
-
             if (swordPivot != null)
             {
                 bool isFlipped = staffRenderer != null && staffRenderer.flipY;
