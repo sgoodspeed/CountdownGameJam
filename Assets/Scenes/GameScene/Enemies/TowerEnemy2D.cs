@@ -23,6 +23,8 @@ namespace Countdown
         [Header("Components")]
         [SerializeField] private Animator animator;
 
+        private static readonly int IsMovingParam = Animator.StringToHash("IsMoving");
+
         private TowerState _state = TowerState.Walking;
         private Vector2 _guardPosition;
         private Transform _walkTarget;
@@ -62,6 +64,9 @@ namespace Countdown
 
             _nextFireTime = Time.time + fireStartDelay;
             _state = TowerState.Shooting;
+
+            if (animator != null)
+                animator.SetBool(IsMovingParam, !_arrived);
         }
 
         protected override void FixedUpdate()
@@ -76,6 +81,8 @@ namespace Countdown
                     body.MovePosition(_guardPosition);
                     currentState = AIState.Guarding;
                     _arrived = true;
+                    if (animator != null)
+                        animator.SetBool(IsMovingParam, false);
                     StartCoroutine(ShootCycleRoutine());
                 }
             }
