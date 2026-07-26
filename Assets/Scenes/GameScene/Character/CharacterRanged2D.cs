@@ -8,7 +8,9 @@ namespace Countdown
         [Header("Firing")]
         [SerializeField] private float fireRate = 5f;
         [SerializeField] private float spawnOffset = 0.5f;
+        [SerializeField] private float spawnJitter = 0.5f;
         [SerializeField] private Transform staffArm;
+        
         
         [Tooltip("Name of the InputSystem action that triggers firing.")]
         [SerializeField] private string inputActionName = "Shoot";
@@ -28,7 +30,7 @@ namespace Countdown
         {
             if (_shootAction == null || projectilePool == null) return;
 
-            if (_shootAction.triggered && Time.time >= _nextFireTime)
+            if (_shootAction.ReadValue<float>() > 0f && Time.time >= _nextFireTime)
             {
                 Fire();
                 _nextFireTime = Time.time + 1f / fireRate;
@@ -39,9 +41,10 @@ namespace Countdown
         {
             Vector2 direction = -staffArm.right;
             Vector2 spawnPos = (Vector2)transform.position + direction * spawnOffset;
+            Vector2 jitter = staffArm.up * (Random.Range(-1f, 1f) * spawnJitter);
 
             var projectile = projectilePool.Get();
-            projectile.Fire(spawnPos, direction);
+            projectile.Fire(spawnPos + jitter, direction);
         }
     }
 }

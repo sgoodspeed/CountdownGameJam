@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba500cc4ec76ab49bab5175310ab699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.Projectile2D
-  damage: 2
+  damage: 1
   knockbackDistance: 0.1
   targetLayers:
     serializedVersion: 2

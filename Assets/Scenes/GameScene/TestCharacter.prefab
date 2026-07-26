@@ -326,8 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafefaacb89daaa43962b2faf5100c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.CharacterRanged2D
-  fireRate: 20
+  fireRate: 10
   spawnOffset: 0.5
+  spawnJitter: 0.5
   staffArm: {fileID: 3151947449526335536}
   inputActionName: Shoot
   projectilePool: {fileID: 2809113494846744828}
