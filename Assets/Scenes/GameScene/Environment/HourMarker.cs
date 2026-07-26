@@ -24,8 +24,8 @@ namespace Countdown
         [SerializeField] private Color destroyedTextColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
 
         [Header("Health Indicators")]
+        [SerializeField] private GameObject indicatorPrefab;
         [SerializeField] private float indicatorRadius = 3f;
-        [SerializeField] private float indicatorScale = 0.3f;
         [SerializeField] private Color indicatorColor = Color.white;
 
         private const int IndicatorCount = 9;
@@ -110,33 +110,14 @@ namespace Countdown
 
         private void CreateHealthIndicators()
         {
-            _healthIndicators = new SpriteRenderer[IndicatorCount];
-            var usedSprite = sprite.sprite;
-
-            for (int i = 0; i < IndicatorCount; i++)
+            _healthIndicators = HourMarkerHealthIndicatorFactory.Create(new HourMarkerHealthIndicatorFactory.Config
             {
-                float angle = 90f - (i * 360f / IndicatorCount);
-                float rad = angle * Mathf.Deg2Rad;
-
-                var go = new GameObject($"HealthIndicator_{i}");
-                go.transform.SetParent(transform, false);
-                go.transform.localPosition = new Vector3(
-                    Mathf.Cos(rad) * indicatorRadius,
-                    Mathf.Sin(rad) * indicatorRadius,
-                    0f
-                );
-                go.transform.localScale = Vector3.one * indicatorScale;
-
-                var sr = go.AddComponent<SpriteRenderer>();
-                sr.sprite = usedSprite;
-                sr.drawMode = SpriteDrawMode.Simple;
-                sr.color = indicatorColor;
-                sr.sortingLayerID = sprite.sortingLayerID;
-                sr.sortingOrder = sprite.sortingOrder;
-
-                _healthIndicators[i] = sr;
-                go.SetActive(false);
-            }
+                Parent = transform,
+                Count = IndicatorCount,
+                Radius = indicatorRadius,
+                Prefab = indicatorPrefab,
+                SortingOrder = sprite.sortingOrder,
+            });
         }
 
         private void UpdateHealthIndicators()
