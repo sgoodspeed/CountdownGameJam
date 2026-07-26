@@ -23,6 +23,7 @@ namespace Countdown
         public float MaxTime { get; private set; }
         public float CurrentTime { get; private set; }
         public GameClockController GameClock { get; private set; }
+        public CircleBoundary Boundary { get; private set; }
 
         public float NormalizedTime => MaxTime > 0f ? Mathf.Clamp01(CurrentTime / MaxTime) : 0f;
 
@@ -33,6 +34,7 @@ namespace Countdown
             base.Awake();
             GameClock = new GameClockController();
             GameClock.TimeExpired += () => ClockRanOut?.Invoke();
+            Boundary = FindFirstObjectByType<CircleBoundary>();
         }
 
         private void Update()

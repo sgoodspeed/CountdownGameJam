@@ -73,7 +73,7 @@ namespace Countdown
             }
 
             if (_boundary == null)
-                _boundary = FindFirstObjectByType<CircleBoundary>();
+                _boundary = GameState.Instance.Boundary;
         }
 
         protected virtual void Update()

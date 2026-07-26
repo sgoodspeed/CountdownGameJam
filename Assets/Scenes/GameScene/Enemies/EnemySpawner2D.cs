@@ -50,7 +50,7 @@ namespace Countdown
 
             if (levelBoundary == null)
             {
-                levelBoundary = FindFirstObjectByType<CircleBoundary>();
+                levelBoundary = GameState.Instance.Boundary;
             }
         }
 
