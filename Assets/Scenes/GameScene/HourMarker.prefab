@@ -60,8 +60,7 @@ MonoBehaviour:
   destroyedColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.5}
   destroyedTextColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.5}
   indicatorPrefab: {fileID: 472181094885868230, guid: 3dd0b06032d309946b56c3f9f625ded0, type: 3}
-  indicatorRadius: 3
-  indicatorScale: 0.3
+  indicatorRadius: 2
   indicatorColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7668853536564285904
 MonoBehaviour:

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ namespace Countdown
         [SerializeField] private Color indicatorColor = Color.white;
 
         private const int IndicatorCount = 9;
+        private Sequence animationSequence;
 
         public int Hour => hour;
         public HourMarkerPhase Phase { get; private set; } = HourMarkerPhase.Rising;
@@ -46,6 +48,14 @@ namespace Countdown
         {
             hourText.text = ToRomanNumeral(hour);
             CreateHealthIndicators();
+            
+        }
+
+        private void Start()
+        {
+            sprite.color = startColor;
+            hourText.color = textStartColor;
+            SetAllIndicators(false);
         }
 
         private void Update()
@@ -57,6 +67,7 @@ namespace Countdown
                 { // but allow progress to revert if time moves backwards
                     Phase = HourMarkerPhase.Rising;
                     damageModule.Reset();
+                    animationSequence?.Kill();
                 }
                 else
                 { // stay in damaged / destroyed looking visual state
@@ -68,6 +79,7 @@ namespace Countdown
             {
                 Phase = HourMarkerPhase.Active;
                 damageModule.Activate();
+                ApplyActivatedVisual();
             }
 
             if (progress < 1f && Phase == HourMarkerPhase.Active)
@@ -76,8 +88,6 @@ namespace Countdown
                 damageModule.Reset();
             }
 
-            sprite.color = Color.Lerp(startColor, endColor, progress);
-            hourText.color = Color.Lerp(textStartColor, textEndColor, progress);
             UpdateHealthIndicators();
         }
 
@@ -85,11 +95,22 @@ namespace Countdown
         {
             Phase = HourMarkerPhase.Destroyed;
         }
+        
+        public void ApplyActivatedVisual()
+        {
+            animationSequence?.Kill();
+            animationSequence = DOTween.Sequence()
+                .Append(sprite.DOColor(endColor, 1f)).SetEase(Ease.InOutCubic)
+                .Append(hourText.DOColor(textEndColor, 1f)).SetEase(Ease.InOutCubic);
+            SetAllIndicators(true);
+        }
 
         public void ApplyDestroyedVisuals()
         {
-            sprite.color = destroyedColor;
-            hourText.color = destroyedTextColor;
+            animationSequence?.Kill();
+            animationSequence = DOTween.Sequence()
+                .Append(sprite.DOColor(startColor, 1f)).SetEase(Ease.InOutCubic)
+                .Append(hourText.DOColor(textStartColor, 1f)).SetEase(Ease.InOutCubic);
             SetAllIndicators(false);
         }
 
