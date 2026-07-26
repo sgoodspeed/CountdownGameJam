@@ -52,6 +52,10 @@ namespace Countdown
         [Tooltip("Smoothing time for the aim offset. Higher = slower/softer camera response to aiming.")]
         [SerializeField] private float aimSmoothTime = 0.4f;
 
+        [Header("Shake")]
+        [Tooltip("World-unit displacement at intensity 1.")]
+        [SerializeField] private float shakeMaxOffset = 0.5f;
+
         private Transform anchor;
         private Camera _outputCamera;
         private float currentLean;
@@ -59,6 +63,9 @@ namespace Countdown
         private float zoomVelocity;
         private Vector2 currentAimOffset;
         private Vector2 aimOffsetVelocity;
+        private float _shakeIntensity;
+        private float _shakeDuration;
+        private float _shakeTimer;
 
         protected override void Awake()
         {
@@ -104,7 +111,16 @@ namespace Countdown
                 aimOffset = Vector2.ClampMagnitude(currentAimOffset, aimMaxDistance);
             }
 
-            anchor.position = boundsCenter + clampedPlayerOffset + aimOffset;
+            Vector2 shakeOffset = Vector2.zero;
+            if (_shakeTimer > 0f)
+            {
+                _shakeTimer -= Time.deltaTime;
+                float t = Mathf.Clamp01(_shakeTimer / _shakeDuration);
+                float strength = t * t * _shakeIntensity * shakeMaxOffset;
+                shakeOffset = Random.insideUnitCircle * strength;
+            }
+
+            anchor.position = boundsCenter + clampedPlayerOffset + aimOffset + shakeOffset;
 
             float targetLean = boundsRadius > 0f ? Mathf.Clamp(playerOffset.x / boundsRadius, -1f, 1f) : 0f;
             currentLean = Mathf.SmoothDamp(currentLean, targetLean, ref leanVelocity, leanSmoothTime);
@@ -119,6 +135,16 @@ namespace Countdown
             float targetSize = Mathf.Lerp(minOrthoSize, maxOrthoSize, activeRatio);
             _outputCamera.orthographicSize = Mathf.SmoothDamp(
                 _outputCamera.orthographicSize, targetSize, ref zoomVelocity, zoomSmoothTime);
+        }
+
+        public static void Shake(float intensity, float duration)
+        {
+            if (Instance == null) return;
+            intensity = Mathf.Clamp01(intensity);
+            if (intensity <= 0f || duration <= 0f) return;
+            Instance._shakeIntensity = intensity;
+            Instance._shakeDuration = duration;
+            Instance._shakeTimer = duration;
         }
 
         private void ApplyLean(float lean)
