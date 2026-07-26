@@ -50,3 +50,6 @@ MonoBehaviour:
   enemyCap: 30
   spawnRadius: 12
   spawnInterval: 2
+  flyingEnemyPrefab: {fileID: 2236298257837654032, guid: ba63155c0fb4230419e617f897f8984f, type: 3}
+  flyingEnemyChance: 0.15
+  flyingSpawnOffset: 1
