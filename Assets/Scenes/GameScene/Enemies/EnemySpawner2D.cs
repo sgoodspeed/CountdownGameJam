@@ -81,9 +81,7 @@ namespace Countdown
                     ExecuteSingleSpawn();
                 }
 
-                // Add slight variance to spawn timing so it feels natural
-                float nextWait = spawnInterval + Random.Range(-spawnInterval * 0.3f, spawnInterval * 0.3f);
-                yield return new WaitForSeconds(Mathf.Max(0.2f, nextWait));
+                yield return new WaitForSeconds(spawnInterval);
             }
         }
 
@@ -105,14 +103,9 @@ namespace Countdown
             _lastAngleIndex = nextIndex;
 
             float angle = _lastAngleIndex * (360f / 8f);
-            float jitteredRadius = spawnRadius + Random.Range(-3f, 3f);
 
-            Vector2 targetPos = (Vector2)playerTransform.position + CalculateRadialOffset(angle, jitteredRadius);
-
-            if (IsValidSpawnPoint(targetPos))
-            {
-                InstantiateEnemy(targetPos);
-            }
+            Vector2 targetPos = (Vector2)playerTransform.position + CalculateRadialOffset(angle, spawnRadius);
+            InstantiateEnemy(targetPos);
         }
 
         private Vector2 CalculateRadialOffset(float angleInDegrees, float radius)
@@ -121,14 +114,6 @@ namespace Countdown
             float x = Mathf.Cos(radians) * radius;
             float y = Mathf.Sin(radians) * radius;
             return new Vector2(x, y);
-        }
-
-        private bool IsValidSpawnPoint(Vector2 point)
-        {
-            if (levelBoundary == null) return true;
-
-            Vector2 offsetFromCenter = point - (Vector2)levelBoundary.transform.position;
-            return offsetFromCenter.magnitude <= levelBoundary.radius;
         }
 
         private void InstantiateEnemy(Vector2 position)

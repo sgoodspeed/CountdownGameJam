@@ -47,6 +47,6 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2236298257837654032, guid: a616ff3172a22b644943c8c7dc410a6c, type: 3}
   playerTransform: {fileID: 0}
   levelBoundary: {fileID: 0}
-  enemyCap: 10
-  spawnRadius: 8
+  enemyCap: 30
+  spawnRadius: 12
   spawnInterval: 2

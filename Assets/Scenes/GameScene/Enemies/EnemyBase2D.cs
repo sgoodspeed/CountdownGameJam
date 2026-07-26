@@ -28,6 +28,12 @@ namespace Countdown
         [Tooltip("Layers considered as obstacles by the chase movement's avoidance cast.")]
         [SerializeField] private LayerMask movementCastLayers = ~0;
 
+        [Header("Boundary Tint")]
+        [Tooltip("Color to blend toward when outside the boundary.")]
+        [SerializeField] private Color outsideColor = Color.black;
+        [Tooltip("How far beyond the boundary the enemy can be before it's fully tinted.")]
+        [SerializeField] private float fadeDistance = 5f;
+
         // Wobble variables to spread out pathing
         private float _wobbleSpeed;
         private float _wobbleIntensity;
@@ -36,6 +42,10 @@ namespace Countdown
         private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
         private ContactFilter2D movementCastFilter;
 
+        private CircleBoundary _boundary;
+        private SpriteRenderer[] _spriteRenderers;
+        private Color[] _originalColors;
+
         protected virtual void Awake()
         {
             body.freezeRotation = true;
@@ -43,23 +53,32 @@ namespace Countdown
             movementCastFilter = ContactFilter2D.noFilter;
             movementCastFilter.SetLayerMask(movementCastLayers);
 
-            // Give each enemy instance a unique wobble personality
             _wobbleSpeed = Random.Range(0.8f, 2.5f);
             _wobbleIntensity = Random.Range(1.0f, 3.5f);
             _wobbleOffset = Random.Range(0f, 10f);
+
+            _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+            _originalColors = new Color[_spriteRenderers.Length];
+            for (int i = 0; i < _spriteRenderers.Length; i++)
+                _originalColors[i] = _spriteRenderers[i].color;
         }
 
         protected virtual void Start()
         {
-            // find player by tag if no target is assigned
             if (target == null)
             {
                 GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
                 if (playerObj != null)
-                {
                     target = playerObj.transform;
-                }
             }
+
+            if (_boundary == null)
+                _boundary = FindFirstObjectByType<CircleBoundary>();
+        }
+
+        protected virtual void Update()
+        {
+            UpdateBoundaryTint();
         }
 
         protected virtual void FixedUpdate()
@@ -67,6 +86,21 @@ namespace Countdown
             if (currentState == AIState.Chasing && target != null)
             {
                 ChaseTarget();
+            }
+        }
+
+        private void UpdateBoundaryTint()
+        {
+            if (_boundary == null || _spriteRenderers == null) return;
+
+            float dist = ((Vector2)transform.position - (Vector2)_boundary.transform.position).magnitude;
+            float overshoot = dist - _boundary.radius;
+            float t = Mathf.Clamp01(overshoot / fadeDistance);
+
+            for (int i = 0; i < _spriteRenderers.Length; i++)
+            {
+                if (_spriteRenderers[i] != null)
+                    _spriteRenderers[i].color = Color.Lerp(_originalColors[i], outsideColor, t);
             }
         }
 
