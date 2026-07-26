@@ -6,6 +6,7 @@ namespace Countdown
     public class MeleeDamageTrigger2D : MonoBehaviour
     {
         [SerializeField] private float damageAmount = 10f;
+        [SerializeField] private float knockbackDistance = 5f;
         [Tooltip("The character that owns this weapon (e.g. TestCharacter). Used to calculate outward knockback direction.")]
         [SerializeField] private Transform owner;
 
@@ -47,7 +48,7 @@ namespace Countdown
                     hitDirection = Vector2.right;
                 }
 
-                damageable.TakeDamage(damageAmount, hitDirection);
+                damageable.TakeDamage(damageAmount, hitDirection, knockbackDistance);
             }
         }
     }

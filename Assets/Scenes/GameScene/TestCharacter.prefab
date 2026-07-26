@@ -343,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b3666ec598fa846b3f657aca101b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.PlayerDamageModule
-  knockbackDistance: 0.5
   stunDuration: 0.3
   invulnerabilityDuration: 3
   flashRenderers:
@@ -578,6 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.MeleeDamageTrigger2D
   damageAmount: 4
+  knockbackDistance: 2
   owner: {fileID: 2373678540942378834}
 --- !u!212 &4481023688987666213
 SpriteRenderer:

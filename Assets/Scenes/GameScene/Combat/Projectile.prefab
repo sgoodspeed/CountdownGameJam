@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.Projectile2D
   damage: 2
+  knockbackDistance: 0.1
   targetLayers:
     serializedVersion: 2
     m_Bits: 4294967295

@@ -8,6 +8,7 @@ namespace Countdown
     {
         [Header("Damage")]
         [SerializeField] private float damage = 5f;
+        [SerializeField] private float knockbackDistance = 1f;
         [Tooltip("Which layers this projectile can hit and damage.")]
         [SerializeField] private LayerMask targetLayers = ~0;
 
@@ -61,7 +62,7 @@ namespace Countdown
             if (other.TryGetComponent(out IDamageable damageable))
             {
                 Vector2 hitDirection = _body.linearVelocity.normalized;
-                damageable.TakeDamage(damage, hitDirection);
+                damageable.TakeDamage(damage, hitDirection, knockbackDistance);
             }
 
             SpawnHitEffect();

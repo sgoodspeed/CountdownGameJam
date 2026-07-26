@@ -79,7 +79,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4293906ee651048468c60bc84f07e8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.EnemyDamageModule
-  knockbackDistance: 1.5
   stunDuration: 0.3
   animator: {fileID: 4027083013345845105}
   hitTrigger: IsHit
@@ -325,4 +324,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown.ContactDamageTrigger2D
   damageAmount: 4
+  knockbackDistance: 0.1
   cooldown: 0.5

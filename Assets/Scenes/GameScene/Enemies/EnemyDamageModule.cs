@@ -42,12 +42,12 @@ namespace Countdown
                 flashRenderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
-        public override void TakeDamage(float amount, Vector2 hitDirection)
+        public override void TakeDamage(float amount, Vector2 hitDirection, float knockbackDistance = 0f)
         {
             if (IsDead || amount <= 0f) return;
 
             CurrentHealth = Mathf.Max(0f, CurrentHealth - amount);
-            OnDamaged(hitDirection);
+            OnDamaged(hitDirection, knockbackDistance);
 
             if (CurrentHealth <= 0f)
             {
@@ -56,22 +56,22 @@ namespace Countdown
             }
         }
 
-        private void OnDamaged(Vector2 hitDirection)
+        private void OnDamaged(Vector2 hitDirection, float knockbackDistance)
         {
             _flashTween?.Kill(true);
             _flashTween = SpriteFlash.Play(flashRenderers, hitFlash);
 
-            ApplyKnockback(hitDirection);
+            ApplyKnockback(hitDirection, knockbackDistance);
             ApplyStun();
 
             if (animator != null && !string.IsNullOrEmpty(hitTrigger))
                 animator.SetTrigger(hitTrigger);
         }
 
-        private void ApplyKnockback(Vector2 direction)
+        private void ApplyKnockback(Vector2 direction, float distance)
         {
-            if (_body != null && KnockbackDistance > 0f)
-                _body.MovePosition(_body.position + direction * KnockbackDistance);
+            if (_body != null && distance > 0f)
+                _body.MovePosition(_body.position + direction * distance);
         }
 
         private void ApplyStun()

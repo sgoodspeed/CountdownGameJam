@@ -5,6 +5,7 @@ namespace Countdown
     public class ContactDamageTrigger2D : MonoBehaviour
     {
         [SerializeField] private float damageAmount = 10f;
+        [SerializeField] private float knockbackDistance = 0.5f;
         [SerializeField] private float cooldown = 0.5f;
 
         private float lastHitTime = 0f;
@@ -20,7 +21,7 @@ namespace Countdown
                 if (other.TryGetComponent(out IDamageable damageable))
                 {
                     Vector2 hitDirection = (other.transform.position - transform.position).normalized;
-                    damageable.TakeDamage(damageAmount, hitDirection);
+                    damageable.TakeDamage(damageAmount, hitDirection, knockbackDistance);
                 }
             }
         }
