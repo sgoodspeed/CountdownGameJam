@@ -95,7 +95,7 @@ MonoBehaviour:
     intensity: 1
     duration: 1
     flashes: 1
-  maxHealth: 10
+  maxHealth: 5
 --- !u!50 &7464281791331421156
 Rigidbody2D:
   serializedVersion: 5
